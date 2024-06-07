@@ -1,0 +1,1591 @@
+body.gradient.template-customers-login .content-for-layout.focus-none{
+  background-image: url(https://cdn.shopify.com/s/files/1/0587/5171/3418/files/background-829550bd2c1829fa3acec160c9cb92a54e7860c3d0a2b3339b4ac74ebce4d389.jpg?v=1654498090);
+  background-size: cover;
+  height: 100%;
+  padding: 55px 30px 65px;
+  display: flex;
+}
+
+#recover_form form {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#recover_form form .field {
+    display: block;
+}
+
+#recover_form form .field label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    letter-spacing: .01527em;
+    color: #fff;
+    font-family: HelveticaNow,Arial,sans-serif;
+    text-align: right;
+    font-size: 16px;
+    position: static;
+}
+
+#recover_form form .field input#RecoverEmail {
+    height: 49px!important;
+    padding: 15px;
+    line-height: 1.4;
+    color: #333;
+    transition: border .25s,color .25s,background .25s;
+    font-family: HelveticaNow,Arial,sans-serif;
+    border: 0;
+}
+
+#recover_form form button {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.customer.login #recover,
+.customer.login div#recover_form > p {
+  color: #fff;
+}
+
+.form__message.recover_success {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+#recover_form form .field:before, #recover_form form .field:after {
+    display: none;
+}
+
+.customer.login {
+  align-self: center;
+  width:100%;
+}
+body.gradient.template-customers-login .footer {
+  margin-top: 0px !important;
+}
+.customer.login h1#login {
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: normal;
+  letter-spacing: -0.019em;
+  color: #fff;
+}
+.customer.login p.login-content {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+}
+form#customer_login label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  letter-spacing: 0.01527em;
+  color: #fff;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  text-align: right;
+  font-size: 16px;
+}
+.customer .field{
+  margin-top: 0 !important;
+}
+form#customer_login .field input {
+  height: 49px !important;
+  padding: 15px;
+  line-height: 1.4;
+  color: #333;
+  transition: border 250ms, color 250ms, background 250ms;
+  font-family: "HelveticaNow", Arial, sans-serif;
+}
+.customer button:after, .customer button:before{
+  box-shadow: none !important;
+  bottom: 0;
+  box-shadow: none!important;
+  left: 0;
+  right: 0;
+}
+form#customer_login  button {
+  background: #3d6472 !important;
+  color: #ffffff !important;
+  height: 60px;
+  position: relative;
+  text-align: center;
+  transition: border 100ms, color 100ms, background 100ms;
+  width: 100%;
+  font-family: "Neutraface Slab Book", Arial, sans-serif !important;
+  letter-spacing: -0.019em !important;
+  font-size: 20px !important;
+  margin-top: 20px;
+}
+.customer.account button:after {
+  border-bottom-color: #223840;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  transition: border-bottom-width 100ms;
+}
+
+.customer.account button:hover:after {
+  border-bottom-width: 2px;
+}
+
+
+
+form#customer_login a.recovery {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  color: #ccc !important;
+  font-size: 16px;
+  text-align: right !important;
+  text-decoration: none;
+  float: right;
+}
+form#customer_login a.recovery:before {
+  content: '\e601';
+  font-family: 'icomoon';
+  font-size: 12px;
+  left: -7px;
+  margin-left: 7px;
+  position: relative;
+  top: -1px;
+  transition: left 100ms ease-in-out;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.tab-buttons span {
+  display: inline-block;
+  padding: 15px 12%;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  position: relative;
+}
+.tab-buttons span.active {
+  color: #26dfb3;
+}
+.tab-buttons span.active:after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: calc(50% - 3px);
+  background: #26dfb3;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.register-error {
+    font-size: 16px;
+    color: #f00;
+    text-align: right;
+}
+
+form#create_customer label {
+  display: block;
+  margin-top: 20px;
+  letter-spacing: 0.01527em;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  text-align: right;
+}
+form#create_customer .field input {
+  padding: 15px!important;
+  height: 49px;
+  text-align: right;
+}
+form#create_customer button,
+.content2 form#create_customer input.button {
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  letter-spacing: -0.019em;
+  width: 100%;
+  height: 60px;
+  background: #3d6472 !important;
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 20px;
+}
+form#create_customer input[type="checkbox"] {
+  margin-top: 20px;
+  align-self: center;
+  height: 20px;
+  width: 20px;
+}
+form#create_customer .accepts-marketing {
+  display: flex;
+  gap: 10px;
+}
+.password-match {
+  display:none;
+}
+.block-width {
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+@media (min-width: 767px){
+  .customer:not(.account):not(.order) {
+    max-width: 500px !important;
+    padding: 0 !important;
+  }
+}
+@media (max-width: 767px){
+  .customer:not(.account):not(.order) {
+    max-width: 400px !important;
+    padding: 0 !important;
+  }
+}
+
+
+
+/* ACCOUNT PAGE CSS */
+body.gradient.template-customers-account .customer.account {
+  max-width: 1000px;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+.tabs-account{
+  float: left;
+  padding: 35px 30px;
+  min-width: 340px;
+}
+.tabs-account button.tablinks{
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+body.gradient.template-customers-account .focus-none { 
+  background-color: rgba(230,227,227,0.25);
+}
+.tabs-account button.tablinks.active {
+  color: #26dfb3;
+  background-color: #eee;
+  padding: 23px 38px 22px 20px;
+  text-align: left;
+  background-color: #fff;
+  line-height: 19px;
+  font-size: 16px;
+  font-family: "HelveticaNow", Arial, sans-serif;
+}
+.tabs-account button.tablinks {
+  color: #666666;
+  background-color: #eee;
+  padding: 23px 38px 22px 20px;
+  text-align: left;
+  background-color: #fff;
+  line-height: 19px;
+  font-size: 16px;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.tabs-account button.active:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  background: #26dfb3;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  -webkit-transform: translateY(calc(-50% - 1px));
+  transform: translateY(calc(-50% - 1px));
+  z-index: 9;
+}
+.tabs-account button:before , .tabs-account button:after , .tabs-account button.active:before , .tabs-account button.active:after {
+  border: none;
+}
+.customer.account .tabs-account-details {
+  display: flex;
+  width: 100%;
+}
+.tab-account-content {
+  width: 65%;
+  padding: 35px 35px 0 0;
+}
+.tab-account-content .tabcontent .profile {
+  background-color: #fff;
+  padding: 35px 35px 0;
+  margin-bottom: 18px;
+}
+.tab-account-content .tabcontent .profile h2.profile-heading {
+  margin: 0;
+  line-height: 1.3;
+  font-size: 40px;
+  text-align: center;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: -0.019em;
+}
+.tab-account-content .tabcontent .profile p.profile-desc {
+  margin: 8px auto 0;
+/*   color: #666; */
+  color: #000;
+  line-height: 1.4;
+  text-align: center;
+  width: 90%;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  padding: 0 10px 50px;
+}
+.tabs-account button.tablinks.active{
+  padding-left: 38px;
+}
+.tab-account-content .tabcontent h2.password-main {
+  line-height: 1;
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+  cursor: default;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  letter-spacing: -0.019em;
+  margin: 0;
+}
+.tab-account-content .tabcontent .pass-head {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.tab-account-content .tabcontent .password {
+  background-color: #fff;
+  padding: 30px;
+  display: block !important;
+}
+.tab-account-content .tabcontent p.pass-modify {
+  padding: 30px 20px 0;
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  line-height: 1.4;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+.tab-account-content .tabcontent button.reset-pass {
+  text-decoration: none;
+  position: sticky;
+  top: 5px;
+  padding: 5px 0;
+  color: #333;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  letter-spacing: 0;
+}
+button.reset-pass:before {
+  content: '\e601';
+  font-family: 'icomoon';
+  font-size: 12px;
+  left: -7px;
+  margin-left: 7px;
+  position: relative;
+  top: -3px;
+  transition: left 100ms ease-in-out;
+  vertical-align: middle;
+  cursor: pointer;
+}
+button.reset-pass.reset-pass.active-form-home {
+  background-color: #fff0;
+}
+button.reset-pass.reset-pass.active-form-home:after, 
+button.reset-pass.reset-pass.active-form-home:before , 
+button.reset-pass.reset-pass:after, 
+button.reset-pass.reset-pass:before , 
+button.reset-pass.reset-pass {
+  box-shadow: none !important;
+  border: none;
+  background: none;
+}
+button.reset-pass.reset-pass:before {
+  position: relative;
+  transform: rotate(0deg)!important;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+}
+button.reset-pass.reset-pass.active-form-home:before {
+  transform: rotate(90deg) !important;
+  display: inline-block;
+  position: relative;
+}
+.wrap-form form label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  letter-spacing: .01527em;
+  color: #333;
+  font-family: HelveticaNow,Arial,sans-serif;
+  text-align: right;
+  font-size: 16px;
+}
+
+.customer.addresses.acoount-page li.box5 .edit-address form input[type=checkbox] {
+  width: auto;
+  margin-top: 20px !important;
+  opacity: 0;
+  right: 0;
+  left: unset !important;
+}
+
+.wrap-form form button {
+  background: #3d6472!important;
+  color: #FFD!important;
+  height: 60px;
+  position: relative;
+  text-align: center;
+  transition: border .1s,color .1s,background .1s;
+  width: 100%;
+  font-family: Neutraface Slab Book,Arial,sans-serif!important;
+  letter-spacing: -.019em!important;
+  font-size: 20px!important;
+  margin-top: 20px;
+}
+.wrap-form form {
+  margin-top: 20px;
+}
+.wrap-form {
+  display: none;
+}
+.tab-account-content .tabcontent .personal-details {
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 18px;
+  display: block !important;
+}
+.tab-account-content .tabcontent .personal-head {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.tab-account-content .tabcontent h2.personal-main {
+  line-height: 1;
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+  cursor: default;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  letter-spacing: -.019em;
+  margin: 0;
+}
+.tab-account-content .tabcontent .personal-info {
+  padding: 30px 0px 0;
+}
+.personal-details .personal-info table, .personal-details .personal-info tbody, .personal-details .personal-info tr, .personal-details .personal-info th, .personal-details .personal-info td {
+  border: 0 !important;
+  box-shadow: none;
+}
+.personal-details .personal-info td {
+  text-align: right !important;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+/*   color: #999; */
+  color: #000;
+}
+.personal-details .personal-info th {
+  width: 15%;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+/*   color: #666; */
+  line-height: 1;
+  color: #000;
+}
+.tab-account-content .tabcontent .addresses {
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 18px;
+  display: block !important;
+}
+.tab-account-content .tabcontent .add-head {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.tab-account-content .tabcontent h2.add-main {
+  line-height: 1;
+  text-align: center;
+  font-size: 22px;
+  color: #333;
+  cursor: default;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  letter-spacing: -.019em;
+  margin: 0;
+}
+p.custom-add {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  max-width: 80%;
+  cursor: pointer;
+/*   color: #666; */
+  color: #000;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  letter-spacing: normal;
+  margin-left: auto !important;
+}
+.address-inlist:after {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.2;
+  position: absolute;
+  left: 0;
+  top: 15px;
+  content: '\e602';
+  font-size: 10px;
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 400ms, -webkit-transform 400ms;
+  margin: 15px 0;
+}
+.address-inlist{
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+i.account__delete-icon:before {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e92e';
+  font-size: 20px;
+  line-height: 1.2;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  opacity: 0;
+  visibility: hidden;
+}
+.address-inlist:hover i.account__delete-icon:before {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+li[data-address] > button::after {
+  display: none;
+}
+
+.account__delete-icon {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  padding: 15px;
+  line-height: 1;
+  -webkit-transform: translate(8px,-50%);
+  transform: translate(8px,-50%);
+  transition: all .5s;
+  margin: 15px 0;
+}
+.overlay {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  background-color: rgba(0,0,0,.8);
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+}
+.popup {
+  background: #fff;
+  width: 83vw;
+  max-width: 600px;
+  min-height: 260px;
+  padding: 16px 0 36px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 16px 50px 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.overlay .popup h2.del-head {
+  margin: 20px 0 10px !important;
+  font-size: 36px;
+  letter-spacing: 0.01527em;
+  line-height: 1.1;
+  text-align: center !important;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+.overlay .popup p.delete-msg {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  color: #333;
+  font-size: 16px;    
+  padding: 8px 8px 0;
+}
+.overlay .popup p.delete-add {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  color: #333;
+  padding: 8px 8px 0;
+  font-size: 16px;
+}
+.overlay .popup .del-buttons {
+  display: flex;
+  -ms-flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 20px;
+}
+.overlay .popup .del-buttons button:after , .del-buttons button:before{
+  border: 0 !important;
+  box-shadow: none;
+}
+.overlay .popup .del-buttons button.delete {
+  width: 100%;
+  background-color: #3d6472;    
+  text-align: center;
+  line-height: 17px;
+  font-family: HelveticaNow,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.overlay .popup .del-buttons button.delete:hover {
+    background-color: #333;
+}
+
+.del-buttons button.reset {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  line-height: 17px;
+  font-family: HelveticaNow,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid #999;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+#target, .address_popup  {
+  display:none;
+}
+.addresses ul {
+  margin-top: 0;
+}
+.box5  {
+  display:none;
+}
+.address-inlist.box1 li.box5 {
+  transition: all 0.4s ease;
+}
+.address-inlist.box1.active li.box5 {
+  display: block;
+}
+.address-inlist.box1.active:after {
+  transform: rotate(360deg);
+}
+.order-details {
+  display: block !important;
+}
+li.box5 p {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  white-space: normal;
+  line-height: 1.4;
+  color: #666;
+  text-align: right;
+}
+button.edit-add {
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  white-space: normal;
+  line-height: 1.4;
+  color: #333;
+}
+button.edit-add:before {
+  content: '\e601';
+  font-family: 'icomoon';
+  font-size: 12px;
+  left: -7px;
+  margin-left: 7px;
+  position: relative;
+  top: -1px;
+  transition: left 100ms ease-in-out;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 0;
+  box-shadow: none;
+  transform: rotate(180deg);
+}
+button.edit-add:after {
+  border: 0;
+  box-shadow: none;
+}
+button.edit-add {
+  position: sticky;
+  margin: 0 !important;
+  padding: inherit;
+}
+li.box5 {
+  text-align: right;
+  margin-top: 10px !important;
+}
+.add-new button {
+  width: 100%;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  letter-spacing: -0.019em;
+  cursor: pointer;
+  background: #3d6472;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 20px 35px;
+  max-width: 360px;
+  margin: 0 !important;
+}
+.add-new {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  margin: 30px auto 0;
+  width: 80%;
+  max-width: 360px;
+  overflow: auto;
+  font-size: 18px;
+}
+.customer.addresses.acoount-page {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+button.tablinks a {
+  color: #666 !important;
+  background-color: #eee;
+  text-align: left;
+  background-color: #fff;
+  line-height: 19px;
+  font-size: 16px !important;
+  font-family: HelveticaNow,Arial,sans-serif;
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-decoration: none !important;
+  letter-spacing: 0;
+}
+.addresses form>div:nth-of-type(1), .addresses form>div:nth-of-type(2){
+  box-sizing: border-box;
+  flex-basis: 100% !important;
+  margin: 0 !important;
+}
+.field select {
+  width: 100% !important;
+}
+.tabs-account a.tablinks {
+  color: #666!important;
+  background-color: #fff!important;
+  text-align: left;
+  line-height: 19px;
+  font-size: 16px!important;
+  font-family: HelveticaNow,Arial,sans-serif!important;
+  margin-bottom: 0;
+  width: 100%;
+  text-decoration: none!important;
+  letter-spacing: 0;
+  display: flex;
+}
+li.tablinks a {
+  display: block!important;
+  line-height: 19px;
+  font-size: 16px;
+/*   color: #666!important; */
+  color: #000!important;
+  cursor: pointer!important;
+  margin-bottom: 5px!important;
+  font-family: HelveticaNow,Arial,sans-serif;
+  text-decoration: none;
+}
+.order-details h2.order-title {
+  margin: 0;
+  line-height: 1.3;
+  font-size: 40px;
+  text-align: center;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  font-weight: 400;
+  letter-spacing: -.019em;
+  margin-bottom: 20px;
+}
+table.order-history thead tr th {
+  line-height: 1;
+  text-align: left;
+  font-size: 12px;
+  color: #333;
+  cursor: default;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  letter-spacing: -.019em;
+  margin: 0;
+}
+table.order-history tbody tr td {
+  line-height: 1;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  cursor: default;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  letter-spacing: -.019em;
+  margin: 0;
+}
+div#EditAddress_6758557384842 form#address_form_6758557384842 label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  letter-spacing: 0.01527em;
+  line-height: 1.4;
+  font-family: "HelveticaNow", Arial, sans-serif;
+}
+
+
+
+
+
+
+
+/* MANEESH CSS */
+.customer.addresses.acoount-page .add-new {
+  width: 100%;
+  max-width: 100%;
+}
+.customer.addresses.acoount-page .add-new #AddAddress h2 {
+  margin: 0;
+  letter-spacing: -0.019em;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  display: block;
+  position: relative;
+  color: #333;
+  cursor: default;
+  padding: 30px;
+  line-height: 1;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form , .customer.addresses.acoount-page li.box5 .edit-address form {
+  display: block;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .field , .customer.addresses.acoount-page li.box5 .edit-address form .field{
+  margin-bottom: 15px;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .field input[type=text],
+.customer.addresses.acoount-page .add-new #AddAddress form select,
+.customer.addresses.acoount-page .add-new #AddAddress form .field input[type=tel],
+.customer.addresses.acoount-page li.box5 .edit-address form input ,
+.customer.addresses.acoount-page li.box5 .edit-address form select{
+  border: 1px solid #e5e5e5;
+  display: block;
+  padding: 0;
+  position: relative;
+  box-shadow: none;
+  padding: 12px 14px;
+  width: 100%;
+  line-height: 1.4;
+  color: #333;
+  transition: border 250ms, color 250ms, background 250ms;
+  font-family: HelveticaNow, Arial, sans-serif;
+  font-weight: 400;
+  text-align: right;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form label ,
+.customer.addresses.acoount-page li.box5 .edit-address form label {
+  padding: 0;
+  margin: 0;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  letter-spacing: 0.01527em;
+  font-size: 14px;
+  color: #666;
+  text-align: right;
+  line-height: 1.4;
+  font-family: HelveticaNow, Arial, sans-serif;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .field input[type=text]:focus,
+.customer.addresses.acoount-page .add-new #AddAddress form select:focus, 
+.customer.addresses.acoount-page li.box5 .edit-address form select:focus,
+.customer.addresses.acoount-page li.box5 .edit-address form .field input{
+  border-bottom-color: #36dfb5;
+  box-shadow: none;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .field input[type=text]:focus,
+.customer.addresses.acoount-page .add-new #AddAddress form select:focus{
+  box-shadow: none;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .field:after , .customer.addresses.acoount-page li.box5 .edit-address form .field:after{
+  box-shadow: none;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"], 
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"] + label,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"],
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"] + label{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #666;
+  line-height: 21px;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"] ,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"]{
+  box-sizing: border-box;
+  padding: 0;
+  left: -9999px;
+  position: absolute;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"] + label,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"] + label{
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: 0;
+  position: relative;
+  display: inline-block;
+  margin: 10px 0 0 35px;
+  padding-right: 30px;
+  line-height: 21px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #666;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"] + label:before,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"] + label:before{
+  outline: 0;
+  transition: border-color 500ms;
+  border-radius: 0;
+  background: #ffffff;
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  border: 1px solid #e5e5e5;
+  width: 20px;
+  height: 20px;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type=checkbox]:not(:checked)+label:after,
+.customer.addresses.acoount-page .add-new #AddAddress form input[type="checkbox"] + label:after,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type="checkbox"] + label:after,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type=checkbox]:not(:checked)+label:after{
+  font-family: 'icomoon';
+  font-size: 12px;
+  color: #36dfb5;
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 0;
+  margin: 4px;
+  background-color: #36dfb5;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form input[type=checkbox]:checked+label:after,
+.customer.addresses.acoount-page li.box5 .edit-address form input[type=checkbox]:checked+label:after{
+  opacity: 1;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .submit-btn,
+.customer.addresses.acoount-page li.box5 .edit-address form .submit-btn{
+  vertical-align: top;
+  position: relative;
+  margin: 30px auto 0;
+  width: 80%;
+  max-width: 360px;
+  overflow: auto;
+  font-size: 18px;
+  min-width: 330px;
+  display: flex;
+  justify-content: space-between;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .submit-btn .add-address, 
+.customer.addresses.acoount-page li.box5 .edit-address form .submit-btn .add-address{
+  position: relative;
+  text-align: center;
+  transition: border 100ms, color 100ms, background 100ms;
+  display: inline-block;
+  line-height: 1;
+  font-size: 20px;
+  padding: 20px 33px;
+  color: #ffffff;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  letter-spacing: -0.019em;
+  cursor: pointer;
+  margin: 0;
+  width: calc(50% - 10px);
+  background-color: #3d6472;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .submit-btn .add-address.right-btn, 
+.customer.addresses.acoount-page li.box5 .edit-address form .submit-btn .add-address.right-btn{
+  background: #8a8a8a;
+}
+.customer.addresses.acoount-page .add-new #AddAddress form .select:after,
+.customer.addresses.acoount-page li.box5 .edit-address form .select:after {
+  box-shadow: none;
+}
+i.account__delete-icon:hover:before {
+  color: red;
+}
+.add-content > ul {
+  transform: translate(0%);
+  opacity: 1;
+  visibility: visible;
+  transition: all .7s ease;
+  height: 100%;
+  overflow-x: visible;
+}
+.add-content > ul.clicked {
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .7s ease;
+  height: 0;
+  overflow-x: hidden;
+}
+/* .add-content > ul, 
+.add-content > ul + .add-new button[type="button"] {
+    transform: translate(0);
+    opacity: 1;
+    visibility: visible;
+    transition: all .7s ease;
+    height: 100%;
+    overflow-x: visible;
+}
+.add-content > ul.clicked, 
+.add-content > ul + .add-new button[type="button"] {
+    transform: translate(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .7s ease;
+    height: 0;
+    overflow-x: hidden;
+} */
+.tab-account-content .tabcontent h2.add-main {
+  position: relative;
+}
+.tab-account-content .tabcontent h2.add-main:before {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\e602';
+  display: inline-block;
+  font-size: 10px;
+}
+.tab-account-content .tabcontent h2.add-main:before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition: left 500ms, opacity 500ms, -webkit-transform 100ms;
+  transition: left 500ms, opacity 500ms, transform 100ms;
+  transition: left 500ms, opacity 500ms, transform 100ms, -webkit-transform 100ms;
+}
+.tab-account-content .tabcontent .customer.addresses .add-content > ul, .tab-account-content .tabcontent .customer.addresses .add-content .add-new button[type="button"] {
+  transform: translate(0);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+}
+
+.tab-account-content .tabcontent .customer.addresses .add-content>ul {
+	padding-right:0;
+}
+
+.tab-account-content .tabcontent .customer.addresses.clicked .add-content > ul, .tab-account-content .tabcontent .customer.addresses.clicked .add-content .add-new button[type="button"] {
+  transform: translate(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .7s ease;
+  height: 0;
+  overflow-x: hidden;
+}
+.tab-account-content .tabcontent .customer.addresses.clicked .add-content #AddAddress {
+  transform: translate(0%);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+}
+
+.tab-account-content .tabcontent .customer.addresses .add-content #AddAddress {
+  transform: translate(100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow-x: hidden;
+  transition: all .7s ease;
+}
+.tab-account-content .tabcontent .addresses {
+/*   overflow: hidden; */
+}
+
+.customer.addresses.acoount-page .add-new #AddAddress form input[type=checkbox] {
+    opacity: 0;
+    margin-top: 15px;
+}
+
+.empty-order {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+p.empty-content {
+  color: #000;
+  margin: 8px auto 0;
+  padding-bottom: 10px;
+  line-height: 1.4;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+}
+a.empty-url {
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  padding: 5px 0;
+  color: #333;
+  cursor: pointer;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+}
+a.empty-url:before {
+  content: '\e601';
+  font-family: 'icomoon';
+  font-size: 12px;
+  left: 0px;
+  margin-left: 7px;
+  position: relative;
+  top: -2px;
+  transition: left 100ms ease-in-out;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.tab-account-content .tabcontent h2.add-main:before {
+  opacity: 0;
+}
+.tab-account-content .tabcontent .customer.addresses.clicked h2.add-main:before{
+  opacity: 1;
+}
+.tab-account-content .tabcontent .customer.addresses.clicked .add-new form {
+  margin-top: 0;
+}
+.tab-account-content .tabcontent .customer.addresses.clicked .add-new {
+  margin-top: -64px;
+}
+.customer.addresses.acoount-page {
+  margin-bottom: 18px !important;
+}
+.hide-form {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}
+/* .tabcontent.tab-content.current .edit-address.active {
+  transform: translate(100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow-x: hidden;
+  transition: all .7s ease;
+}
+.tabcontent.tab-content.current .edit-address.active.hide-form {
+  transform: translate(0);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+} */
+.tabcontent.tab-content.current .address-inlist.box1.active .edit-address.hide-form {
+  transform: translate(100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow-x: hidden;
+  transition: all .7s ease;
+}
+.tabcontent.tab-content.current .address-inlist.box1.active .edit-address {
+  transform: translate(0);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+}
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active .custom-add, 
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active li p, 
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active .account__delete-icon, 
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active button.edit-add {
+  transform: translate(-100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow-x: hidden;
+  transition: all .7s ease;
+}
+
+.customer.addresses.acoount-page .add-content .address-inlist.box1.active .custom-add, 
+.customer.addresses.acoount-page .add-content .address-inlist.box1.active li p, 
+.customer.addresses.acoount-page .add-content .address-inlist.box1.active .account__delete-icon, 
+.customer.addresses.acoount-page .add-content .address-inlist.box1.active button.edit-add {
+  transform: translate(0%);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+}
+
+.customer.addresses.acoount-page.open-slide .add-content ul .address-inlist.box1:not(.active) {
+  transform: translate(-100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow-x: hidden;
+  transition: all .7s ease;
+}
+
+.customer.addresses.acoount-page.open-slide .add-content ul .address-inlist.box1 {
+  transform: translate(0%);
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  overflow-x: visible;
+  transition: all .7s ease;
+}
+.tab-account-content .tabcontent .customer.addresses.acoount-page.open-slide .add-content .add-new button[type=button]{
+  transform: translate(-100%);
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  transition: all .7s ease;
+}
+/* .tab-account-content .tabcontent .customer.addresses.acoount-page .add-content .add-new button[type=button]{
+    transform: translate(0%);
+    opacity: 1;
+    visibility: visible;
+height: 100%;
+transition: all .7s ease;
+}
+*/
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active:after {
+  display: none;
+}
+
+.customer.addresses.acoount-page.open-slide .add-content .address-inlist.box1.active .edit-address {
+  margin-top: -90px;
+}
+.customer.addresses.acoount-page .add-content .address-inlist.box1.active .custom-add {
+  overflow-x: hidden;
+}
+.address-inlist.box1.active .account__delete-icon{
+  top: 5px !important;
+}
+.customer.addresses.acoount-page.open-slide h2.add-main:before {
+  opacity: 1;
+  cursor: pointer;
+  z-index:999;
+}
+.customer.addresses.acoount-page.open-slide .addresses {
+  margin-bottom: -100px;
+}
+
+nav.tabs ul li.tablinks {
+  display: block !important;
+  background: #fff;
+  padding-top: 23px !important;
+  padding-right: 20px !important;
+  padding-bottom: 22px !important;
+  padding-left: 20px !important;
+  line-height: 19px;
+  font-size: 16px;
+/*   color: #666 !important; */
+  color: #000 !important;
+  cursor: pointer !important;
+  margin-bottom: 5px !important;
+  font-family: "HelveticaNow", Arial, sans-serif;
+}
+.tabs-container nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tabs-container nav ul li:hover { color: #3e4b58;}
+
+.tabs-container nav ul li.active {
+  color: #3e4b58;
+  border-top: none;
+}
+.tabs-container {
+  position: relative;
+}
+.tabs-container nav ul li {
+  order: 1;
+  margin-bottom: 0 !important;
+}
+.tabs-container nav ul li.active {
+  order: 0;
+  color: #26dfb3 !important;
+  padding-left: 38px !important;
+  margin-bottom: 0 !important;
+}
+.tabs-container nav ul li.active:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  background: #26dfb3;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  -webkit-transform: translateY(calc(-50% - 1px));
+  transform: translateY(calc(-50% - 1px));
+}
+.tabs-container nav ul li.active:after {
+  font-family: 'icomoon' !important;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+  line-height: 1.2;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  right: 20px;
+  font-size: 10px;
+  color: #999;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 250ms, -webkit-transform 250ms;
+}
+.tabs-container nav ul li:not(.active) {
+  position: absolute;
+  top: -999em;
+}
+.tabs-container nav ul.expanded li.active:after{
+  border-top-color: transparent;
+  border-bottom-color: #555;
+  top: 35px;
+}
+.tabs-container nav ul.expanded li:not(.active) {
+  position: relative;
+  top: auto;
+}
+div#tab-2 {
+  background-color: #fff;
+  padding: 20px;
+}
+.tab-content{
+  display: none;
+}
+.tab-content.current{
+  display: inherit;
+}
+
+.show_recovery_form #recover,
+.show_recovery_form #recover_form {
+  display: block;
+}
+
+.show_recovery_form > .block-width,
+.show_recovery_form > p.login-content,
+.show_recovery_form > h1#login {
+    display: none;
+}
+
+#recover_form a.return_login {
+    padding: 15px 12%;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    font-family: HelveticaNow,Arial,sans-serif;
+    position: relative;
+    text-decoration: none;
+}
+
+small#RecoverEmail-email-error {
+    color: #fff;
+}
+
+small#RecoverEmail-email-error svg {
+    margin-left: 10px;
+}
+
+.errors ul {
+    text-align: right;
+}
+
+@media (max-width:1024px) and (min-width: 800px){
+  .customer.account .tabs-account-details {
+    display: flex;
+    width: 100%;
+  }
+  .tabs-account {
+    padding: 30px 30px;
+    width: 35% !important;
+  }
+  .tab-account-content {
+    width: 65%;
+    padding: 30px 35px 0 0;
+  }
+  .customer.account {
+    margin-top: 0;
+  }
+}
+@media (max-width:799px){
+  .customer.account .tabs-account-details{
+    display: block;
+  }
+  .tab-account-content {
+    width: 100%;
+    padding: 35px 30px;
+  }
+  .tabs-account {
+    float: none;
+    padding: 0 0 30px 0;
+    min-width: 340px;
+  }
+  .personal-info table tbody tr th {
+    display: block;
+  }
+  .personal-info table tbody tr {
+    display: flex;
+    flex-direction: unset;
+  }
+  .personal-info table tbody tr td {
+    padding: 0 !important;
+    width: 100%;
+  }
+  table.order-history tbody tr {
+    padding: 0 30px;
+  }
+  .personal-details .personal-info th{
+    padding-left: 0;
+  }
+  .tab-account-content .tabcontent .profile p.profile-desc {
+    margin: 0px auto 0;
+    width: 100%;
+  }
+  .add-new {
+    position: relative;
+    margin: 30px auto 0;
+    width: 80% !important;
+    max-width: 360px;
+    overflow: auto;
+    font-size: 18px;
+  }
+  nav.tabs ul li.tablinks {
+    padding: 23px 20px 22px!important;
+    color: #666!important;
+    cursor: pointer!important;
+    margin-bottom: 5px!important;
+    font-family: HelveticaNow,Arial,sans-serif;
+    background: #ebebeb !important;
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 80%);
+    border-bottom: 1px solid #ffffff;
+  }
+  body.gradient.template-customers\/account .customer.account {
+    max-width: 1000px;
+    padding: 0;
+    margin-top: 0 !important
+  }
+  .tabs-account.tabs-container nav.tabs ul li.tablinks {
+    margin-bottom: 0 !important;
+  }
+  nav.tabs ul {
+    position: relative;
+  }
+  ul.expanded li.tablinks.current.active:after {
+    transform: translateY(-50%) rotate(180deg);
+    position: absolute;
+    line-height: 1.2;
+  }
+}
+@media all and (min-width: 799px) {
+  nav {
+    background: transparent;
+  }
+  .tabs-container nav ul li.active {
+    color: #26dfb3 !important;
+    padding-left: 38px !important;
+    position: relative;
+    margin-bottom: 5px !important;
+  }
+  .tabs-container nav ul {
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+  }
+  .tabs-container nav ul li {
+    display: inline-block;
+    padding: 0 0 .2rem 0;
+    border: none;
+  }
+  .tabs-container nav ul li:not(.active) {
+    position: relative;
+    top: auto;
+  }
+  .tabs-container nav ul li.active {
+    order: 1;
+  }
+  .tabs-container nav ul li.active:after {
+    display: none;
+  }
+  li.tablinks.active:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    background: #26dfb3;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    -webkit-transform: translateY(calc(-50% - 1px));
+    transform: translateY(calc(-50% - 1px));
+  }
+}
+@media (max-width: 425px){
+  .tab-account-content {
+    width: 100%;
+    padding: 0;
+  }
+}

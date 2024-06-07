@@ -1,0 +1,119 @@
+<div class="athlete__intro-gallery">
+  <div class="athlete__wrap athlete__wrap--transparent">
+    <div class="athlete__intro-stats">
+    	
+    {%- if article.metafields.featured_top_icons.size > 0 -%}
+      
+      {% for i in (1..5) %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: i %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+      
+      {%- assign iconTitleKey = 'icons_' | append: i | append: '_title' -%}
+      {%- assign iconImageKey = 'icons_' | append: i | append: '_image' -%}
+      {%- assign iconTitle = article.metafields.featured_top_icons[iconTitleKey] -%}
+      
+      {%- assign iconImage = article.metafields.featured_top_icons[iconImageKey] -%}
+      
+      {%- if iconImage  != blank  or iconTitle -%}
+      
+      <div class="athlete__intro-stat"> 
+        
+      {%- if iconImage  != blank -%}      
+        <div class="athlete__intro-stat-image">
+          <div class="athlete__intro-stat-image-wrapper">
+          	{{iconImage | image_url: width: 115 | image_tag: loading: 'lazy'}} 
+          </div>
+        </div>              
+      {%- endif -%}
+      
+      {%- if iconTitle -%}
+        <div class="athlete__intro-stat-text">
+          <p>
+            {{ iconTitle }}
+          </p>
+        </div>
+      {%- endif -%}
+      
+      </div>
+      {%- endif -%}
+      
+      
+      {%- endfor -%}
+      
+      {%- endif -%}  
+      
+
+      {%- if article.metafields.feature_top_products.size > 0 -%}
+
+      {% for i in (1..5) %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: i %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+      {%- assign productTitleKey = 'product_' | append: i | append: '_title' -%}
+      {%- assign productLinkKey = 'product_' | append: i | append: '_link' -%}
+      {%- assign productTitle = article.metafields.feature_top_products[productTitleKey] -%}
+      
+      {%- assign productHandle = article.metafields.feature_top_products[productLinkKey] -%}
+      
+      {%- if productHandle  or productTitle -%}
+      
+      <div class="athlete__intro-stat"> 
+        {%- if productHandle -%}
+
+        {%- assign articleProduct = all_products[productHandle] -%}
+
+        <div class="athlete__intro-stat-image">
+          <div class="athlete__intro-stat-image-wrapper">
+            <a href="{{ articleProduct.url }}">
+          	{{ articleProduct.featured_image | image_url: width: 115 | image_tag: loading: 'lazy'}} 
+            </a>
+          </div>
+        </div>
+        
+        {%- endif -%}
+
+        {%- if productTitle -%}
+
+        <div class="athlete__intro-stat-text">
+          <p>
+            <a href="{{ articleProduct.url }}">
+              {{ productTitle }}
+            </a>
+          </p>
+        </div>
+
+        {%- endif -%}
+
+        {%- endif -%}
+        
+      </div>
+      
+      {%- endfor -%}
+      
+      {%- endif -%}  
+      
+ 
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<style>
+ 
+  .article-template .athlete__intro-gallery {
+    background-color: {{ article.metafields.athletes_article.athletes_position_border_color.value }};
+  }
+
+</style>

@@ -1,0 +1,64 @@
+<div class="spefications">
+    
+    {%- if collection and collection.metafields.specifications.size> 0 -%}
+    
+
+  {%- if collection.metafields.specifications.content.value != blank -%}
+
+  <div class="specification-wrapper">
+    {{ collection.metafields.specifications.content.value }}
+  </div>
+  
+  
+   {%- comment -%}
+    {%- for specification in collection.metafields.specifications -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: specification %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {%- assign specificationName = specification | first -%}
+    {%- assign specificationName = specificationName | split:"__" | last -%}
+    {%- assign specificationContent = specification | last -%}    
+    <div class="specification-name">{{specificationName | capitalize}}</div>
+    <div class="specification-values">
+      
+      {%- if shop.metafields[specificationName].values != blank -%}
+      
+      {%- assign speficationValues = shop.metafields[specificationName].values | split: ", " -%}
+      
+      <ul class="specification-values">
+      {%- for speficationValue in speficationValues -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: speficationValue %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+        
+        {%- assign speficationValue1 = speficationValue | strip -%}
+        <li class="{% if speficationValue1 == specificationContent %}selected{% endif %}">{{speficationValue}}</li>
+       {%- endfor -%}
+      
+      </ul>
+      {%- else -%}
+      
+      {{specificationContent}}
+      
+      {%- endif -%}
+      
+    </div>
+    {%- endfor -%}
+     {%- endcomment -%}
+  
+     {%- else -%}
+    
+    Select a model to begin comparing
+    
+  {%- endif -%}
+    {%- endif -%}
+    
+</div>

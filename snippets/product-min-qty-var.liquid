@@ -1,0 +1,6 @@
+{% assign showProduct = true %}
+{% assign product_min_qty_limit = settings.product_min_qty_limit | default: 3 %}
+{% assign _variant = _product.selected_or_first_available_variant %}
+{% if _variant.inventory_policy == "deny" and _variant.inventory_quantity <= product_min_qty_limit %}
+{% assign showProduct = false %}
+{% endif %}

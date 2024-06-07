@@ -1,0 +1,210 @@
+<section class="gender-collection-list">
+  {%- if section.settings.section_title != blank -%}
+    <div class="collection-hero__text-wrapper">
+      <h2 class="collection-hero__title">{{ section.settings.section_title }}</h2>
+    </div>
+{% endif %}
+<div class="container">
+  <div class="blocks-wrapper-list">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'text' -%}
+      <div class="category_slider_card">
+        <div class="category-slider">
+          {%- if block.settings.block_image != blank -%}
+          <div class="category-card__image" style="background-image:url('{{ block.settings.block_image | img_url: "master" }}')"></div>
+          {% else %}
+          <div class="category-card__image" style="background-color:{{ block.settings.block_color }}"></div>
+          {% endif %}
+          {%- if block.settings.block_title != blank -%}
+          <h3 class="category-card__title">{{ block.settings.block_title }}</h3>
+          {% endif %}
+           {%- if block.settings.block_link != blank -%}
+        <a href="{{ block.settings.block_link }}"></a>
+        {% endif %}
+        </div>
+      </div>
+    
+    {%- when 'content' -%}
+        
+        <div class="page-content">
+          {{ page.content }}
+        </div>   
+    
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+  </div>
+</section>
+
+<style>
+.gender-collection-list h2.collection-hero__title {
+    text-align: center;
+}
+  
+.gender-collection-list .blocks-wrapper-list  .category_slider_card .category-slider .category-card__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all .5s cubic-bezier(.85,0,.15,1);
+    transition: all .5s cubic-bezier(.85,0,.15,1);
+    top: 0;
+    left: 0;
+    background-size: cover;
+    pointer-events: none;
+    display: block;
+  overflow:hidden;
+}
+
+.gender-collection-list .blocks-wrapper-list .category_slider_card .category-slider {
+    width: 100%;
+    position: relative;
+    -webkit-transition: all .5s cubic-bezier(.85,0,.15,1);
+    transition: all .5s cubic-bezier(.85,0,.15,1);
+    margin: 16px 0;
+}
+
+.gender-collection-list .blocks-wrapper-list  .category_slider_card .category-slider:before {
+    content: "";
+    display: block;
+    padding-top: 136%;
+}
+
+.gender-collection-list .blocks-wrapper-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gender-collection-list .blocks-wrapper-list .category_slider_card {
+    flex-basis: 30%;
+    max-width: 30%;
+}
+
+.gender-collection-list .blocks-wrapper-list .category_slider_card .category-slider>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.gender-collection-list .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.gender-collection-list .blocks-wrapper-list .category_slider_card .category-slider .category-card__image:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all .5s cubic-bezier(.85,0,.15,1);
+    transition: all .5s cubic-bezier(.85,0,.15,1);
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    opacity: .5;
+    content: "";
+    background: -webkit-gradient(linear,left bottom,left top,from(rgba(0,0,0,.6)),to(transparent));
+    background: linear-gradient(0deg,rgba(0,0,0,.6),transparent);    
+}
+
+  .gender-collection-list .blocks-wrapper-list .category_slider_card:hover .category-slider .category-card__image {
+    -webkit-transition-timing-function: cubic-bezier(0,.55,.45,1);
+    transition-timing-function: cubic-bezier(0,.55,.45,1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.gender-collection-list .blocks-wrapper-list .category_slider_card:hover .category-slider .category-card__image:before {
+    opacity: 1;
+    -webkit-transform: scaleY(4);
+    transform: scaleY(4);
+    -webkit-transition-timing-function: cubic-bezier(0,.55,.45,1);
+    transition-timing-function: cubic-bezier(0,.55,.45,1);
+    -webkit-transition-delay: .15s;
+    transition-delay: .15s;
+}
+
+@media (max-width:767px) {
+  .gender-collection-list .blocks-wrapper-list .category_slider_card:hover .category-slider .category-card__image {
+    transform: none;
+  }
+
+  .gender-collection-list .blocks-wrapper-list {
+    display: block;
+  }
+  
+  .gender-collection-list .blocks-wrapper-list .category_slider_card {
+    max-width: 100%;
+  }
+
+.gender-collection-list .container {
+    padding: 0 24px;
+}
+  
+  
+}
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Gender Collection List",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "default": "Section Title",
+        "label": "t:sections.text-over-image-block.settings.section_title.label"
+      }  
+	],
+    "blocks": [
+        {
+          "type": "content",
+  		"name": "Page Content",
+        "limit": 1
+        },
+		{
+		"type": "text",
+		"name": "t:sections.text-over-image-block.blocks.text.name",
+		"settings": [
+			{
+              "type": "color",
+              "id": "block_color",
+			  "label": "t:sections.text-over-image-block.blocks.text.settings.block_color.label"
+            },
+            {
+              "type": "image_picker",
+              "id": "block_image",
+			  "label": "t:sections.text-over-image-block.blocks.text.settings.block_image.label",
+			  "info": "t:sections.text-over-image-block.blocks.text.settings.block_image.info"
+            },
+           {
+              "type": "text",
+              "id": "block_title",
+              "label": "t:sections.text-over-image-block.blocks.text.settings.block_title.label"
+            },
+   			{
+              "type": "url",
+              "id": "block_link",
+              "label": "t:sections.text-over-image-block.blocks.text.settings.block_link.label"
+            } 
+          ]
+		}
+	],
+    	"presets": [
+      {
+        "name": "Gender Collection List"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

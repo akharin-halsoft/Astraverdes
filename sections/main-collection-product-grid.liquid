@@ -1,0 +1,834 @@
+{%- comment -%} Wholesale_Club_Product_Visibility_Resource_Page Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility" %}{%- endcapture -%}
+{%- if hide_resource == 'true' -%}
+  {% render 'wc_page_replacement' %}
+{%- else -%}
+  {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  {{ 'collection-top-bar.css' | asset_url | stylesheet_tag }}
+
+  <link
+    rel="preload"
+    href="{{ 'component-rte.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+
+  <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+  {% assign sizeFilters = '' %}
+
+  {%- for filter in collection.filters -%}
+    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+    {%- capture hide_resource -%}{% render "wc_product_visibility", resource: filter %}{%- endcapture -%}
+    {%- if hide_resource == 'true' -%}
+      {% continue %}
+    {%- endif -%}
+    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {% for filter_value in filter.active_values %}
+      {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+      {%- capture hide_resource -%}{% render "wc_product_visibility", resource: filter_value %}{%- endcapture -%}
+      {%- if hide_resource == 'true' -%}
+        {% continue %}
+      {%- endif -%}
+      {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+      {% if filter_value.param_name == 'filter.v.option.size' %}
+        {% assign sizeFilters = sizeFilters | append: filter_value.value | append: ',' %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% assign sizeFilters = sizeFilters | remove_last: ',' %}
+
+  {{ 'ajaxinate.min.js' | asset_url | script_tag }}
+
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    }
+  {%- endstyle -%}
+
+  {%- assign _gender = false -%}
+  {%- for _current_tag in current_tags -%}
+    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+    {%- capture hide_resource -%}{% render "wc_product_visibility", resource: _current_tag %}{%- endcapture -%}
+    {%- if hide_resource == 'true' -%}
+      {% continue %}
+    {%- endif -%}
+    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {%- if _current_tag == 'M' or _current_tag == 'W' or _current_tag == 'Men' or _current_tag == 'Women' -%}
+      {% if _current_tag == 'M' or _current_tag == 'Men' %}
+        {%- assign _gender = 'Men' -%}
+      {% endif %}
+
+      {% if _current_tag == 'W' or _current_tag == 'Women' %}
+        {%- assign _gender = 'Women' -%}
+      {% endif %}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <div
+    data-current-tags="{{current_tags | size}}"
+    data-collection-handle="{{collection.handle}}"
+    data-product-main-section
+    class="{% if _gender %}{{_gender | append:"-collection" | handle }}{% endif %} section-{{ section.id }}-padding"
+  >
+    <div class="collection-hero__text-wrapper border-bottom mobile">
+      <h1 class="collection-hero__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <div id="ProductGridContainer" class="collection-grid">
+      <div class="collection_top_bar">
+        {% include 'breadcrumbs' %}
+
+        {%- if section.settings.enable_sorting -%}
+          <div class="custom-sorting-wrapper caption">
+            <h2 class="sort_by_eading">
+              {% comment %}
+                {% render 'icon-caret' %}
+              {% endcomment %}
+              <span class="sorting__icon icon-chevron"></span>
+              {{ 'products.facets.sort_by_label' | t }}
+            </h2>
+
+            {%- assign sort_by = collection.sort_by -%}
+            <ul class="custom_sort_by_wrapper">
+              <li>
+                <div class="sort_mobile_popup_header">
+                  <div class="mobile_sortby_text">
+                    <span class="icon-sort explore-sort__icon-sort"></span>
+                    Sort By
+                  </div>
+                  <span class="overlay__close icon-cross"></span>
+                </div>
+              </li>
+
+              {%- for option in collection.sort_options -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: option %}{%- endcapture -%}
+                {%- if hide_resource == 'true' -%}
+                  {% continue %}
+                {%- endif -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                <li data-option-value="{{option.value}}" class="{% if option.value == sort_by %}selected{% endif %}">
+                  {{ option.name | escape }}
+                </li>
+              {%- endfor -%}
+
+              <li class="button-wrapper">
+                <button data-action="SortBy" type="submit" value="Sort">Sort</button>
+              </li>
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="tags">
+          <h2 class="product-count__text text-body">
+            <span id="ProductCount">
+              {%- if collection.results_count -%}
+                {{
+                  'templates.search.results_with_count'
+                  | t: terms: collection.terms, count: collection.results_count
+                }}
+              {%- elsif collection.products_count == collection.all_products_count -%}
+                {%- comment -%}
+                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
+                {%- endcomment -%}
+
+              {%- else -%}
+                {{
+                  'products.facets.product_count'
+                  | t: product_count: collection.products_count, count: collection.products_count
+                }}
+              {%- endif -%}
+            </span>
+          </h2>
+
+          {%- liquid
+            assign sort_by = collection.sort_by | default: collection.default_sort_by
+            assign total_active_values = 0
+            if collection.url
+              assign results_url = collection.url
+            else
+              assign terms = collection.terms | escape
+              assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+            endif
+          -%}
+
+          <div class="active-facets active-facets-desktop">
+            {%- for filter in collection.filters -%}
+              {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+              {%- capture hide_resource -%}{% render "wc_product_visibility", resource: filter %}{%- endcapture -%}
+              {%- if hide_resource == 'true' -%}
+                {% continue %}
+              {%- endif -%}
+              {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+              {%- for value in filter.active_values -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: value %}{%- endcapture -%}
+                {%- if hide_resource == 'true' -%}
+                  {% continue %}
+                {%- endif -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                <facet-remove>
+                  <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                    <span class="active-facets__button-inner button button--tertiary">
+                      {{ value.label | escape }}
+                      {% render 'icon-close-small' %}
+                      <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                    </span>
+                  </a>
+                </facet-remove>
+              {%- endfor -%}
+              {% if filter.type == 'price_range' %}
+                {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                  <facet-remove>
+                    <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                      <span class="active-facets__button-inner button button--tertiary">
+                        {%- if filter.min_value.value -%}
+                          {{ filter.min_value.value | money }}
+                        {%- else -%}
+                          {{ 0 | money }}
+                        {%- endif -%}
+                        -
+                        {%- if filter.max_value.value -%}
+                          {{ filter.max_value.value | money }}
+                        {%- else -%}
+                          {{ filter.range_max | money }}
+                        {%- endif -%}
+                        {% render 'icon-close-small' %}
+                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                      </span>
+                    </a>
+                  </facet-remove>
+                {%- endif -%}
+              {% endif %}
+            {%- endfor -%}
+            <facet-remove class="active-facets__button-wrapper">
+              <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+                <span>{{ 'products.facets.clear_all' | t }}</span>
+              </a>
+            </facet-remove>
+          </div>
+        </div>
+
+        <div class="mobile_filter_trigger">
+          <span class="filters__filter-icon icon-filter"></span>
+          Filter
+        </div>
+      </div>
+
+      {%- paginate collection.products by section.settings.products_per_page -%}
+        {%- if collection.products.size == 0 -%}
+          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+            <div class="loading-overlay gradient"></div>
+            <div class="title-wrapper center">
+              {% if collection.handle == 'cariuma-shirts' %}
+                <h2 class="title title--primary">מגיע בקרוב</h2>
+              {% else %}
+                <h2 class="title title--primary">
+                  {{ 'sections.collection_template.empty' | t -}}
+                  <br>
+                  {{
+                    'sections.collection_template.use_fewer_filters_html'
+                    | t: link: collection.url, class: 'underlined-link link'
+                  }}
+                </h2>
+              {% endif %}
+            </div>
+          </div>
+        {%- else -%}
+          <div class="filters-collection-grid">
+            <div class="filters__inner sticky-menu">
+              <div class="collection-hero__text-wrapper border-bottom">
+                <h1 class="collection-hero__title">
+                  <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+                  {{- collection.title | escape -}}
+                </h1>
+
+                {%- if section.settings.show_collection_description -%}
+                  <div class="collection-hero__description rte">{{ collection.description }}</div>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%}
+                        <div class="side-bar-menu border-bottom">
+                          {%- if section.settings.menu_sidebar != blank -%}
+                          <nav class="header__inline-menu">
+                            <ul class="list-menu list-menu--inrow" role="list">
+                              {%- for link in section.settings.menu_sidebar.links -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: link %}{%- endcapture -%}
+                {%- if hide_resource == "true" -%}
+                  {% continue %}
+                {%- endif -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                              <li>
+                                <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                                  <span {%- if link.current %} class="header__active-menu-item"{%- endif -%}>{{ link.title | escape }}</span>
+                                </a>
+
+                                <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                  {%- for childlink in link.links -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: childlink %}{%- endcapture -%}
+                {%- if hide_resource == "true" -%}
+                  {% continue %}
+                {%- endif -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                                  <li>
+                                    <a href="{{ childlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                      {{ childlink.title | escape }}
+                                    </a>
+                                  </li>
+                                  {%- endfor -%}
+                                </ul>
+
+                              </li>
+                              {%- endfor -%}
+                            </ul>
+                          </nav>
+                          {%- endif -%}
+                        </div>
+              {%- endcomment -%}
+
+              {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+                {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+                <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+                <div class="collection-filter-wrapper" id="main-collection-filters" data-id="{{ section.id }}">
+                  {% render 'facets',
+                    results: collection,
+                    enable_filtering: section.settings.enable_filtering,
+                    enable_sorting: section.settings.enable_sorting,
+                    collapse_on_larger_devices: section.settings.collapse_on_larger_devices
+                  %}
+                </div>
+              {%- endif -%}
+
+              <div class="side-bar-menu border-bottom">
+                {%- if section.blocks.size > 0 -%}
+                  {% for block in section.blocks %}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                    {%- capture hide_resource -%}{% render "wc_product_visibility", resource: block %}{%- endcapture -%}
+                    {%- if hide_resource == 'true' -%}
+                      {% continue %}
+                    {%- endif -%}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                    {%- assign tag_values = block.settings.tag_values | strip -%}
+
+                    {%- if tag_values.size > 0 -%}
+                      {%- assign tag_values = tag_values | split: ',' -%}
+
+                      {%- assign _active_current_tag = false -%}
+
+                      {%- for tag_value in tag_values -%}
+                        {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                        {%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag_value %}{%- endcapture -%}
+                        {%- if hide_resource == 'true' -%}
+                          {% continue %}
+                        {%- endif -%}
+                        {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                        {%- assign _tag_value = tag_value | strip -%}
+
+                        {%- for tag in current_tags -%}
+                          {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                          {%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+                          {%- if hide_resource == 'true' -%}
+                            {% continue %}
+                          {%- endif -%}
+                          {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                          {%- if tag == _tag_value -%}
+                            {%- assign _active_current_tag = tag -%}
+
+                            {% break %}
+                          {%- endif -%}
+                        {%- endfor -%}
+
+                        {%- if _active_current_tag -%}
+                          {%- break -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <nav class="header__inline-menu">
+                        <ul class="list-menu list-menu--inrow" role="list">
+                          <li class="{% if block.settings.tag_title == 'מין' %}open_filter_menu {% endif %}">
+                            {%- assign blockTitle = block.settings.tag_title | escape -%}
+
+                            {%- if _active_current_tag -%}
+                              {%- assign blockTitle = _active_current_tag -%}
+                            {%- endif -%}
+
+                            {% if block.settings.tag_title == 'מין' %}
+                              {%- if blockTitle == 'M' -%}
+                                {%- assign blockTitle = 'גברים' -%}
+                              {% endif %}
+                              {%- if blockTitle == 'W' -%}
+                                {%- assign blockTitle = 'נשים' -%}
+                              {% endif %}
+                              {%- if blockTitle == 'U' -%}
+                                {%- assign blockTitle = 'לִשְׁנֵי הַמִינִים' -%}
+                              {% endif %}
+                            {% endif %}
+                            <span class="toggle_filter_title {%- if link.current %} header__active-menu-item {%- endif -%}">
+                              {{- blockTitle -}}
+                            </span>
+
+                            <ul
+                              class="menu-drawer__menu list-menu"
+                              role="list"
+                              tabindex="-1"
+                              {% if block.settings.tag_title == 'מין' %}
+                                style="display: block"
+                              {% endif %}
+                            >
+                              {%- for tag_value in tag_values -%}
+                                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag_value %}{%- endcapture -%}
+                                {%- if hide_resource == 'true' -%}
+                                  {% continue %}
+                                {%- endif -%}
+                                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                                {%- assign _tag_value = tag_value | strip -%}
+
+                                {%- assign _tag_title = _tag_value | capitalize -%}
+
+                                {% if block.settings.tag_title == 'מין' %}
+                                  {%- if _tag_title == 'M' -%}
+                                    {%- assign _tag_title = 'גברים' -%}
+                                  {% endif %}
+                                  {%- if _tag_title == 'W' -%}
+                                    {%- assign _tag_title = 'נשים' -%}
+                                  {% endif %}
+                                  {%- if _tag_title == 'U' -%}
+                                    {%- assign _tag_title = 'לִשְׁנֵי הַמִינִים' -%}
+                                  {% endif %}
+                                {% endif %}
+                                <li>
+                                  {%- if _active_current_tag -%}
+                                    {{ _tag_title | link_to_tag: _tag_value }}
+                                  {%- else -%}
+                                    {{ _tag_title | link_to_add_tag: _tag_value }}
+                                  {%- endif -%}
+                                </li>
+                              {%- endfor -%}
+
+                              {% comment %}
+                                 <li>
+                                   {%- if _active_current_tag -%}
+                                  {{ block.settings.tag_title | escape | link_to_remove_tag: _active_current_tag }}
+                                  {%- else -%}
+
+                                   <a href="{{collection.url}}">
+                                     {% if block.settings.tag_title == 'מין' %}
+                                          לִמְחוֹק
+                                       {% else %}
+                                     {{block.settings.tag_title}}
+
+                                      {% endif %}
+                                      </a>
+                                   {%- endif -%}
+                                </li>
+                              {% endcomment %}
+                            </ul>
+                          </li>
+                        </ul>
+                      </nav>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+          <div class="collection collection-main-wrapper">
+            <div class="loading-overlay gradient"></div>
+
+            <ul
+              id="product-grid"
+              data-id="{{ section.id }}"
+              class="
+                grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                {% if section.settings.columns_desktop == 1 %} grid--full-width{% else %}
+                grid--{{ section.settings.columns_desktop }}-col-desktop
+                {% endif %}
+              "
+            >
+              {%- for product in collection.products -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                {%- capture hide_resource -%}{% render "wc_product_visibility", resource: product %}{%- endcapture -%}
+                {%- if hide_resource == 'true' -%}
+                  {% continue %}
+                {%- endif -%}
+                {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                {% comment %} Wholesale_Club_Product_Prices Start {% endcomment %}
+                {% assign base_product = product %}
+                {% assign base_variant = product.selected_or_first_available_variant %}
+
+                {% if shop.metafields.sawholesale.base_price == blank %}
+                  {% assign base_price = 'compare_at_price' %}
+                {% else %}
+                  {% assign base_price = shop.metafields.sawholesale.base_price %}
+                {% endif %}
+
+                {% assign saw_discount = 0 -%}
+                {%- assign saw_has_discount = false %}
+
+                {% if customer.tags != blank %}
+                  {% for mf in base_product.metafields.sawholesale %}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                    {%- capture hide_resource -%}{% render "wc_product_visibility", resource: mf %}{%- endcapture -%}
+                    {%- if hide_resource == 'true' -%}
+                      {% continue %}
+                    {%- endif -%}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                    {% capture product_customer_tag %}{{ mf | first | replace: 'discount_', '' }}{% endcapture %}
+                    {% if customer.tags contains product_customer_tag %}
+                      {% assign saw_has_discount = true %}
+                      {% assign discount_key = product_customer_tag | prepend: 'discount_' %}
+                      {% assign price_key = product_customer_tag | prepend: 'price_' %}
+                      {% assign saw_discount = base_product.metafields.sawholesale[discount_key] | divided_by: 100.0 %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+
+                {% assign saw_discount = 1 | minus: saw_discount %}
+
+                {% if base_price == 'price'
+                  or base_variant.compare_at_price == blank
+                  or base_variant.compare_at_price == 0
+                  or base_variant.compare_at_price < base_variant.price
+                %}
+                  {% assign saw_variant_compare_at_price = base_variant.price %}
+                {% else %}
+                  {% assign saw_variant_compare_at_price = base_variant.compare_at_price %}
+                {% endif %}
+
+                {% assign cpe = shop.metafields.sawholesale.cpe | default: 'true' %}
+                {% if base_variant.metafields.sawholesale[price_key] != blank and cpe == 'true' %}
+                  {% assign saw_variant_price = base_variant.metafields.sawholesale[price_key] %}
+                {% else %}
+                  {% assign saw_variant_price = saw_variant_compare_at_price | times: saw_discount %}
+                {% endif %}
+
+                {% if saw_has_discount == false or saw_variant_price >= saw_variant_compare_at_price %}
+                  {% assign WCProduct_Price = base_product.price %}
+                  {% assign WCProduct_ComparePrice = base_product.compare_at_price %}
+                  {% assign WCProduct_PriceMin = base_product.price_min %}
+                  {% assign WCProduct_ComparePriceMin = base_product.compare_at_price_min %}
+                  {% assign WCProduct_PriceMax = base_product.price_max %}
+                  {% assign WCProduct_ComparePriceMax = base_product.compare_at_price_max %}
+                  {% assign WCProduct_VariantPrice = base_variant.price %}
+                  {% assign WCProduct_VariantComparePrice = base_variant.compare_at_price %}
+                {% else %}
+                  {% assign WCProduct_Price = saw_variant_price %}
+                  {% assign WCProduct_PriceMin = base_product.price_min | times: saw_discount %}
+                  {% assign WCProduct_PriceMax = base_product.price_max | times: saw_discount %}
+                  {% assign WCProduct_ComparePrice = saw_variant_compare_at_price %}
+                  {% if base_product.compare_at_price_min != 0 -%}
+                    {%- assign WCProduct_ComparePriceMin = base_product.compare_at_price_min -%}
+                  {%- else -%}
+                    {%- assign WCProduct_ComparePriceMin = base_product.price_min -%}
+                  {%- endif %}
+                  {% if base_product.compare_at_price_max != 0 -%}
+                    {%- assign WCProduct_ComparePriceMax = base_product.compare_at_price_max -%}
+                  {%- else -%}
+                    {%- assign WCProduct_ComparePriceMax = base_product.price_max -%}
+                  {%- endif %}
+                  {% assign WCProduct_VariantPrice = saw_variant_price %}
+                  {% assign WCProduct_VariantComparePrice = saw_variant_compare_at_price %}
+                {% endif %}
+                {% comment %} Wholesale_Club_Product_Prices End {% endcomment %}
+
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+
+                {% assign unavailableVariants = product.variants | where: 'available', false %}
+                {% assign showProduct = true %}
+
+                {% if unavailableVariants.size > 0 %}
+                  {% assign sizeOptions = unavailableVariants | map: 'option1' %}
+                  {% for sizeOption in sizeOptions %}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+                    {%- capture hide_resource -%}{% render "wc_product_visibility", resource: sizeOption %}{%- endcapture -%}
+                    {%- if hide_resource == 'true' -%}
+                      {% continue %}
+                    {%- endif -%}
+                    {%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                    {% if sizeFilters contains sizeOption %}
+                      {% assign showProduct = false %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+
+                {% if product.featured_image != blank and product.available %}
+                  {% include 'product-min-qty-var', _product: product %}
+                  {% comment %}{% if showProduct and product.price > 0 %}{% endcomment %}
+                  {% if product.price > 0 %}
+                    <li class="grid__item">
+                      {% render 'card-product',
+                        card_product: product,
+                        media_aspect_ratio: section.settings.image_ratio,
+                        show_secondary_image: section.settings.show_secondary_image,
+                        show_vendor: section.settings.show_vendor,
+                        show_rating: section.settings.show_rating,
+                        lazy_load: lazy_load,
+                        is_collection: true
+                      %}
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {%- endfor -%}
+            </ul>
+
+            {% comment %}
+              {%- if paginate.pages > 1 -%}
+              {% render 'pagination', paginate: paginate, anchor: '' %}
+              {%- endif -%}
+            {% endcomment %}
+
+            <div id="AjaxinatePagination">
+              {% if paginate.next %}
+                <div class="load-more_wrap">
+                  <a class="btn js-load-more" href="{{ paginate.next.url }}">
+                    <span load-more-text>Load more</span>
+                    <span class="hide" loader></span>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+
+            {%- comment -%}
+              <div class="load-more_wrap">
+                <button class="btn js-load-more">
+                  <span load-more-text>Load more</span>
+                  <span class="hide" loader></span>
+                </button>
+              </div>
+            {%- endcomment -%}
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+
+  <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+      new Ajaxinate({
+      container: '#product-grid',
+      pagination: '#AjaxinatePagination',
+      loadingText: 'Loading more...',
+      method: "click" // click/scroll
+    });
+    });
+
+      {%- if current_tags.size > 0 -%}
+
+
+
+
+      {%- endif -%}
+  </script>
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_Resource_Page End {%- endcomment -%}
+{% schema %}
+{
+"name": "t:sections.main-collection-product-grid.name",
+"class": "section",
+"settings": [
+{
+"type": "range",
+"id": "products_per_page",
+"min": 8,
+"max": 24,
+"step": 4,
+"default": 16,
+"label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+},
+{
+"type": "range",
+"id": "columns_desktop",
+"min": 1,
+"max": 5,
+"step": 1,
+"default": 4,
+"label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+},
+{
+"type": "header",
+"content": "t:sections.main-collection-product-grid.settings.header__3.content"
+},
+{
+"type": "select",
+"id": "image_ratio",
+"options": [
+{
+"value": "adapt",
+"label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+},
+{
+"value": "portrait",
+"label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+},
+{
+"value": "square",
+"label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+}
+],
+"default": "adapt",
+"label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+},
+{
+"type": "checkbox",
+"id": "show_secondary_image",
+"default": false,
+"label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+},
+{
+"type": "checkbox",
+"id": "show_vendor",
+"default": false,
+"label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+},
+{
+"type": "checkbox",
+"id": "show_rating",
+"default": false,
+"label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+"info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+},
+{
+"type": "header",
+"content": "t:sections.main-collection-product-grid.settings.header__1.content"
+},
+{
+"type": "checkbox",
+"id": "enable_filtering",
+"default": true,
+"label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+"info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+},
+{
+"type": "checkbox",
+"id": "enable_sorting",
+"default": true,
+"label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+},
+{
+"type": "checkbox",
+"id": "collapse_on_larger_devices",
+"default": false,
+"label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+},
+{
+"type": "header",
+"content": "t:sections.main-collection-product-grid.settings.header_mobile.content"
+},
+{
+"type": "select",
+"id": "columns_mobile",
+"default": "2",
+"label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+"options": [
+{
+"value": "1",
+"label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+},
+{
+"value": "2",
+"label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+}
+]
+},
+{
+"type": "header",
+"content": "t:sections.all.padding.section_padding_heading"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "t:sections.all.padding.padding_top",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "t:sections.all.padding.padding_bottom",
+"default": 36
+},
+{
+"type": "checkbox",
+"id": "show_collection_description",
+"default": true,
+"label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+},
+{
+"type": "link_list",
+"id": "menu_sidebar",
+"default": "main-menu",
+"label": "Menu List For sidebar"
+}
+],
+"blocks": [
+	{
+  "type": "tag_group",
+  "name": "Sideber Filter",
+  "settings": [
+		{
+          "type": "text",
+          "id": "tag_title",
+          "label": "Tag Title"
+        },
+		{
+          "type": "textarea",
+          "id": "tag_values",
+          "label": "Tag Value",
+		  "info": "Tag value should be in seperated comma(,) like men, women, etc"
+        }
+	]
+}
+]
+}
+{% endschema %}

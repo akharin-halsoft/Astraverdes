@@ -1,0 +1,105 @@
+{
+  "sections": {
+    "5b721bf2-a67b-4e81-8d99-cdf94a69fd88": {
+      "type": "block-collection-list",
+      "blocks": {
+        "46b8aa55-15b2-442d-bb38-150c71a62c93": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/DGT_129697_Banner_Atar_copy_4.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/נשים-נעליים-אופנה-ויום-יום"
+          }
+        },
+        "e5f784da-1b0f-4cfe-89d1-e406fb06d5a8": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_b10f0159-7e1e-47e0-a807-4860bd2b53ae.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/נשים-נעליים-ריצה-ואימון"
+          }
+        },
+        "c69c6ad5-711b-45b9-898d-16f26f0103ee": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_2_c33011be-512d-48ed-b5f0-6915a690d9c9.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/נשים-ביגוד"
+          }
+        },
+        "a4fb5e22-d5ac-433e-8502-552786ff51f0": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "32c1356d-1f81-4ddd-a48b-f2681095239f": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/2268x1522_copy_4-4.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/women-apparel"
+          }
+        },
+        "b8955cda-1908-4c35-89b1-059f16336dfd": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/DGT_129697_Banner_Atar_copy_8.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/נשים-נעליים-מירוץ"
+          }
+        },
+        "0f09b703-48f5-485b-ac5a-168cfc3b06fe": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/2268x1522_copy_4.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/roger-collection"
+          }
+        },
+        "f1ca6317-9a58-4356-b798-1eb2f649f3af": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/2268x1522.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/cloud-collection"
+          }
+        },
+        "f86b0101-1962-44f6-aa6d-8afeae77695b": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/2268x1522_copy_2.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/נשים-נעליים"
+          }
+        }
+      },
+      "block_order": [
+        "46b8aa55-15b2-442d-bb38-150c71a62c93",
+        "e5f784da-1b0f-4cfe-89d1-e406fb06d5a8",
+        "c69c6ad5-711b-45b9-898d-16f26f0103ee",
+        "a4fb5e22-d5ac-433e-8502-552786ff51f0",
+        "32c1356d-1f81-4ddd-a48b-f2681095239f",
+        "b8955cda-1908-4c35-89b1-059f16336dfd",
+        "0f09b703-48f5-485b-ac5a-168cfc3b06fe",
+        "f1ca6317-9a58-4356-b798-1eb2f649f3af",
+        "f86b0101-1962-44f6-aa6d-8afeae77695b"
+      ],
+      "settings": {
+        "section_title": "רשימת קולקציות לנשים"
+      }
+    }
+  },
+  "order": [
+    "5b721bf2-a67b-4e81-8d99-cdf94a69fd88"
+  ]
+}

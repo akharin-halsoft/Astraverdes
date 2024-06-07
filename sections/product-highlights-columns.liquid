@@ -1,0 +1,105 @@
+{{ 'product-highlights-columns.css' | asset_url | stylesheet_tag }}
+
+<div class="section-{{ section.id }} section-highlight-wrpper">  
+
+  {%- for index in (1..5) -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: index %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+  {%- assign highlightKey = 'highlight' | append: index -%}
+  {%- assign highlight = product.metafields.highlights[highlightKey] -%}
+  {%- assign highlightTitleText = highlight | split: "[/TITLE]" | first -%}
+
+  {%- assign highlightTitle = highlightTitleText | split: "[TITLE]" | last | strip -%}
+
+  {%- if highlight != blank and highlightTitle -%}
+
+
+  {%- assign highlightImageName = highlightTitle | handle | append: ".jpg" -%}
+  {%- assign highlightImage = images[highlightImageName] -%}
+
+
+  {%- if forloop.first == true -%}
+  {%- if highlightImage != blank -%}  
+  <div data-handle="{{highlightTitle | handle }}" class="highlight-image active" style="background-image:url({{ highlightImage | img_url: "master" }})"></div>
+  {%- endif -%}
+  {%- else -%}
+  
+  {%- if highlightImage != blank -%}  
+  <div data-handle="{{highlightTitle | handle }}" class="highlight-image" style="background-image:url({{ highlightImage | img_url: "master" }})"></div>
+  {%- endif -%}
+  {%- endif -%}
+  
+  {%- endif -%}
+  {%- endfor -%} 
+
+  {%- if product.metafields.highlights.size > 0 -%}
+  
+  <div class="highlight-content-wrapper">
+
+    {%- assign firstActive = false -%}
+    
+    {%- for index in (1..5) -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: index %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+    {%- assign highlightKey = 'highlight' | append: index -%}
+    {%- assign highlight = product.metafields.highlights[highlightKey] -%}
+
+    {%- assign highlightContent = highlight | split: "[/TITLE]" | last -%}
+    {%- assign highlightTitleText = highlight | split: "[/TITLE]" | first -%}
+
+    {%- assign highlightTitle = highlightTitleText | split: "[TITLE]" | last | strip -%}
+
+    {%- if highlight != blank and highlightTitle -%}
+
+    <div data-handle="{{highlightTitle | handle }}" class="highlight-content {% unless firstActive %}active{% endunless %} ">
+
+      {%- if highlightTitle -%}
+      <h3>{{highlightTitle}}</h3>
+      {%- endif -%}
+
+      {%- if highlightContent -%}
+    
+      <div class="highlight-content-inner">
+          <h4>{{highlightTitle}}</h4>
+        {{highlightContent}}
+      </div>
+      {%- endif -%}
+
+    </div>  
+    
+    {%- assign firstActive = true -%}
+    {%- endif -%}
+    
+    
+    {%- endfor -%} 
+    
+  </div>
+ {%- endif -%}
+  
+
+</div>
+
+{% schema %}
+  {
+    "name": "Product Highlights",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

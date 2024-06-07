@@ -1,0 +1,76 @@
+<div class="related_article_wrapper">
+    {% assign related_posts = "" %}
+
+    {% assign relatedArticles = blog.articles %}
+
+    {% if relatedArticles.size > 0 %}
+
+    <ul class="_related_article-summary">
+      {% assign index = 'now' | date: '%S' %}
+      {% assign index = index | times: relatedArticles.size %}
+      {% assign index = index | divided_by: 60 %}
+      {% for _article in relatedArticles limit: 4 %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _article %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+      {%- if _article.id != article.id -%}
+      <li class="article-list__item">
+        <a href="{{ _article.url }}"></a>
+        <div class="article-summary">
+          {%- if _article.image -%}
+          <div class="article-summary__thumb">
+            
+             {%- if _article.metafields.blog.featured_image -%}
+              
+              <img src="{{ _article.metafields.blog.featured_image | img_url: "master" }}" class="motion-reduce" />
+              
+              {%- else -%}
+              
+              <img
+                srcset="{{ _article.image.src | img_url: 'master' }}"
+                src="{{ _article.image.src | img_url: 'master' }}"
+                alt="{{ _article.image.src.alt | escape }}"
+                class="motion-reduce"
+                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+              >
+              
+              {%- endif -%}
+            
+            
+          </div>
+          {%- endif -%}
+          <div class="article-summary__label">
+            <div class="article-summary__title">{{ _article.title }}</div>
+            <div class="article-summary__text">
+              <div class="article-summary__text-keyline"></div>
+              {%- if _article.excerpt.size > 0 -%}
+              {{ _article.excerpt | strip_html }}
+              {%- else -%}
+              {{ _article.content | strip_html }}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </li>
+      {%- endif -%}
+      {% endfor %}
+    </ul>
+
+    {% else %}
+    <ul class="related_post hidden">
+      No related posts!
+    </ul>
+    {% endif %}
+  </div>
+
+{% schema %}
+  {
+    "name": "Related Article",
+    "settings": []
+  }
+{% endschema %}

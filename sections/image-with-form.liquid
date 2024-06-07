@@ -1,0 +1,483 @@
+<div class="image_with_form_wrapper">
+  <div class="inner_wrapper">
+    {%- if section.settings.section_title != blank -%}
+    <h2>
+      {{ section.settings.section_title }}
+    </h2>
+    {%- endif -%}
+    <div class="image_form_wrapper">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'image' -%}
+        <div class="image_wrapper">
+          <img src="{{ block.settings.image | img_url: "master" }}">
+        </div>
+      {%- when 'form' -%}
+        
+        <div class="form_wrapper">
+          <div class="form-success">{{ block.settings.success_message }}</div>
+          <form method="post" action="https://onrunning.zissu.info/api/v1/createUser" id="club_member_customer" accept-charset="UTF-8">
+          
+
+            <input type="hidden" name="form_type" value="create_customer" />
+          
+           <div class="club-register-error hide" id="ClubRegisterFormFirstName--error">{{ 'customer.club_member_register.first_name_error' | t }}</div>
+            <div class="field first-name">
+              <label for="first-name">{{ 'customer.club_member_register.first_name' | t }}</label>
+              <input 
+                type="text" 
+                name="first_name"
+                 id="ClubRegisterFormFirstName"
+                placeholder="{{ 'customer.club_member_register.first_name' | t }}"
+                >
+            </div>
+
+          <div class="club-register-error hide" id="ClubRegisterFormLastName--error">{{ 'customer.club_member_register.last_name_error' | t }}</div>
+            <div class="field last-name">
+              <label for="last-name">{{ 'customer.club_member_register.last_name' | t }}</label>
+              <input 
+                type="text" 
+                name="last_name"
+                 id="ClubRegisterFormLastName"
+                placeholder="{{ 'customer.club_member_register.last_name' | t }}"
+                >
+            </div>
+
+          <div class="club-register-error hide" id="ClubRegisterFormDateBirth--error">{{ 'customer.club_member_register.date_birth_error' | t }}</div>
+             <div class="field date-of-birth">
+              <label for="date-of-birth">{{ 'customer.club_member_register.date_birth' | t }}</label>
+              <input 
+                type="date"
+                name="birthDate"
+                id="ClubRegisterFormDateBirth"
+                placeholder="{{ 'customer.club_member_register.date_birth' | t }}"
+                min='1960-01-01'
+                max='2007-01-01'
+                >
+            </div>
+ 
+          
+           <div class="club-register-error hide" id="ClubRegisterFormPhone--error">{{ 'customer.club_member_register.phone_error' | t }}</div>
+           <div class="field phone">
+              <label for="phone">{{ 'customer.club_member_register.phone' | t }}</label>
+              <input 
+                type="text"
+                autocorrect="off"
+                autocapitalize="off"
+                name="phone"
+                id="ClubRegisterFormPhone"
+                {% if form.errors contains 'form' %}
+                  aria-invalid="true"
+                {% endif %}
+                placeholder="{{ 'customer.club_member_register.phone' | t }}"            
+                >
+            </div>
+           
+           <div class="club-register-error hide" id="ClubRegisterFormEmail--error">{{ 'customer.club_member_register.email_error' | t }}</div> 
+            <div class="field email">
+              <label for="email">{{ 'customer.club_member_register.email' | t }}</label>
+              <input 
+                type="email" 
+                name="email"
+                placeholder="{{ 'customer.club_member_register.email' | t }}"
+                id="ClubRegisterFormEmail"
+               >
+            </div>
+          
+                 <div class="club-register-error hide" id="ClubRegisterFormSelect--error">{{ 'customer.club_member_register.select_error' | t }}</div>
+             	<div class="field option">
+              <label for="CustomerFormBranch">{{ 'customer.club_member_register.option' | t }}</label>
+              <select id="CustomerFormBranch" name="branch" id="ClubRegisterFormSelect">
+                <option value="">{{ 'customer.club_member_register.option' | t }}</option>
+                <option value="קניון עזריאלי ת"א  ">קניון עזריאלי ת"א</option>
+                <option value="קניון איילון ר"ג  ">קניון איילון ר"ג</option>
+                <option value=" קניון מלחה ירושלים ">קניון מלחה ירושלים</option>
+                <option value=" פופ קניוןהזהב ראשל"צ">פופ קניוןהזהב ראשל"צ</option>
+                <option value="קניון קריון קניוןביאליק ">קניון קריון קניוןביאליק</option>
+                <option value="קניון דיזינגוף סנטר ת"א ">קניון דיזינגוף סנטר ת"א</option>
+                <option value="פופ קניוןעזריאלי מודיעין ">פופ קניוןעזריאלי מודיעין</option>
+                <option value="קניון קניוןעופר פתח תקווה ">קניון קניוןעופר פתח תקווה</option>
+                <option value="קניון גראנד קניון ב"ש ">קניון גראנד קניון ב"ש</option>
+                <option value="קניון רמת אביב ">קניון רמת אביב</option>
+                <option value="קניון כפר סבא ">קניון כפר סבא</option>
+                <option value="קניון חולון ">קניון חולון</option>
+                <option value="קניון הרצליה שבעת הכוכבים ">קניון הרצליה שבעת הכוכבים</option>
+                <option value="קניון - גבעתיים ">קניון - גבעתיים</option>
+                <option value="קניון אייס מול אילת ">קניון אייס מול אילת</option>
+                <option value="חנות רמת החייל ">חנות רמת החייל</option>
+                <option value="מול החוף - חדרה ">מול החוף - חדרה</option>
+                <option value="חנות שנקין תל אביב ">חנות שנקין תל אביב</option>
+                <option value="חנות מול הים אילת ">חנות מול הים אילת</option>
+              </select>
+              </div>
+
+        {% comment %}
+              <input 
+                type="hidden" 
+                name="password"
+                value="Password1"
+                id= "ClubRegisterFormPassword"
+                placeholder="{{ 'customer.club_member_register.password' | t }}" 
+               >
+           
+              <input 
+                type="hidden" 
+                name="password_confirmation"
+                id= "ClubRegisterFormConPassword"
+                value="Password1"
+                placeholder="{{ 'customer.club_member_register.password_confirm' | t }}" 
+               >
+        {% endcomment %}
+   
+        
+            <div class="submit">
+              {% comment %}
+              <button class="submit_member">{{ 'customer.club_member_register.submit' | t }}</button>
+              {% endcomment %}
+              <input type="button" club-member-register-button value="{{ 'customer.club_member_register.submit' | t }}">
+            </div>
+
+
+           <div class="field checkbox">
+              <input type="checkbox" 
+                name="accepts_marketing" 
+                aria-required="true"
+                value=""
+                id="customerForm_check"
+                checked
+                {% if form.errors contains 'checkbox' %}
+                    aria-invalid="true"
+                    aria-describedby="RegisterForm-checkbox-error"
+                  {% endif %}
+              required  
+              />
+        {% comment %} <label for="customerForm_check">{{ 'customer.club_member_register.checkbox' | t }}</label>{% endcomment %}
+        {% if block.settings.bottom_content != blank %} 
+             <label for="customerForm_check">{{ block.settings.bottom_content }}</label> 
+          {% else %}  
+             <label for="customerForm_check">{{ 'customer.club_member_register.checkbox' | t }}</label> 
+          {% endif %}
+      </div>
+          {% comment %}
+              {% if block.settings.bottom_content != blank %}
+          <div class="bottom_content">
+            <p>{{ block.settings.bottom_content }}</p>
+          </div>
+            {% endif %}
+            {% endcomment %}
+          </form>
+          
+        </div>          
+      {%- endcase -%}
+    {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .club-member-error-message {
+    color: #f00;
+    margin-bottom: 5px;
+  }
+.image_form_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .image_with_form_wrapper .form-success {
+    padding-right: 30px;
+}
+
+.image_form_wrapper > div {
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.image_form_wrapper .image_wrapper img {
+    width: auto;
+    max-width: 460px;
+    vertical-align: middle;
+}
+
+.image_with_form_wrapper {
+    background-color: #F1F1F1;
+}
+
+.image_with_form_wrapper .inner_wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+.image_form_wrapper #club_member_customer label {
+    display: none;
+}
+
+.image_with_form_wrapper #club_member_customer {
+    max-width: 239px;
+    margin: 0 auto;
+}
+
+.image_with_form_wrapper #club_member_customer .field {
+    display: block;
+    margin-bottom: 21px;
+    height: unset;
+    min-height: auto;
+}
+  
+.image_with_form_wrapper #club_member_customer .field:before,
+.image_with_form_wrapper #club_member_customer .field:after {
+    display: none;
+}
+
+.image_with_form_wrapper #club_member_customer .field input,
+  .image_with_form_wrapper #club_member_customer .field select {
+    width: 100%;
+    min-height: 40px;
+    color: #000;
+    text-align: right;
+    /* font-family: Open Sans Hebrew; */
+    font-family: HelveticaNow,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 1px solid #000;
+    background: #FFF;
+    opacity: 1;
+      padding: 2px 18px;
+}
+.image_with_form_wrapper .form-success p {
+    font-family: HelveticaNow,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
+.image_with_form_wrapper #club_member_customer .field input:focus-visible,
+.image_with_form_wrapper #club_member_customer .field select:focus-visible {
+    outline: 0;
+    box-shadow: unset;
+    outline-offset: unset;
+}
+
+.image_with_form_wrapper #club_member_customer .field input::-webkit-input-placeholder {
+    opacity: 1;
+    color: #000;
+}
+  
+.image_with_form_wrapper #club_member_customer  .submit input[type="button"] {
+    border: 2px solid #73B6BE;
+    background: #73B6BE;
+    width: 100%;
+    min-height: 40px;
+    color: #FFF;
+    text-align: center;
+    /* font-family: Open Sans Hebrew; */
+    font-family: HelveticaNow,Arial,sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+  .image_with_form_wrapper #club_member_customer .field.checkbox {
+    margin-bottom: 0;
+    margin-top: 21px;
+    display: flex;
+    align-items: center;
+}
+
+.image_with_form_wrapper #club_member_customer .field.checkbox label,
+  .image_with_form_wrapper #club_member_customer .field.checkbox label p{
+    display: block;
+    color: #000;
+    text-align: right;
+    /* font-family: Open Sans Hebrew; */
+    font-family: HelveticaNow,Arial,sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.image_with_form_wrapper #club_member_customer .field.checkbox input#customerForm_check {
+    width: 15px;
+    height: 15px;
+    min-height: unset;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+}
+  
+.image_with_form_wrapper #club_member_customer .bottom_content {
+    margin-top: 10px;
+}
+  /* new css  */
+.image_with_form_wrapper #club_member_customer .bottom_content p {
+    color: #000;
+    text-align: right;
+    /* font-family: Open Sans Hebrew; */
+    font-family: HelveticaNow,Arial,sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+.image_with_form_wrapper #club_member_customer .field.checkbox label p {
+    margin: 0;
+      letter-spacing: .5px;
+}
+  .image_with_form_wrapper #club_member_customer .field select option {
+    font-size: 18px;
+    font-family: HelveticaNow,Arial,sans-serif;
+}
+.club-register-error {
+    font-size: 12px;
+    margin-top: 0;
+    color: red;
+    font-family: HelveticaNow,Arial,sans-serif;
+}
+
+  @media screen and (min-width: 767px){
+    .image_form_wrapper > div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+  }
+  
+@media (max-width:767px) {
+.image_with_form_wrapper {
+    padding: 40px 0;
+  position:relative;
+}
+
+  .image_with_form_wrapper:before {
+    content: '';
+    border-bottom: 20px solid #fff;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 47%;
+    transform: rotate(180deg);
+}
+
+.image_form_wrapper > div {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+  .image_with_form_wrapper #club_member_customer {
+    max-width: 238px;
+    margin: 0 auto;
+}
+
+.image_with_form_wrapper #club_member_customer .bottom_content {
+    margin-top: 24px;
+}
+  
+  .image_form_wrapper .image_wrapper {
+    display: none;
+}
+} 
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Image With Form",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Heading",
+        "info": "Section Heading"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+      {
+      "type": "form",
+      "name": "Form",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bottom_content",
+          "label": "Content Bottom Form"
+        },
+        {
+          "type": "richtext",
+          "id": "success_message",
+          "label": "Success Message"
+        }
+      ]
+    }      
+  ],   
+  "presets": [
+      {
+        "name": "Image With Form"
+      }
+    ] 
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% comment %}
+{% javascript %}
+
+  function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+}
+  
+  (function() {
+    $('div.form-success').hide();
+    if(typeof getUrlParameter('created') !== 'undefined' && getUrlParameter('created') === 'true') {
+      $('div.form-success').show();
+      $('form#club_member_customer').hide();
+    }
+    var REDIRECT_PATH = window.location.pathname+"?created=true";
+    var selector = '#club_member_customer, form[action$="/account"][method="post"]',
+        $form = document.querySelectorAll(selector)[0];
+
+    if ($form) {
+      $redirect = document.createElement('input');
+      $redirect.setAttribute('name', 'return_to');
+      $redirect.setAttribute('type', 'hidden');
+      $redirect.value = REDIRECT_PATH;
+      $form.appendChild($redirect);
+    }
+  })();
+
+
+
+// by default checkbox checked
+    
+{% endjavascript %}
+{% endcomment %}

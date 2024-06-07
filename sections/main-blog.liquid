@@ -1,0 +1,287 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+
+<script src="{{ 'infinite-scroll-docs.min.js' | asset_url }}" defer="defer"></script>
+
+{%- comment -%}
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    new InfiniteScroll('.blog-articles', {
+      history: false,
+      path: ".pagination__next",
+    });
+  });
+</script>
+{%- endcomment -%}
+
+{%- style -%}
+
+{%- comment -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+{%- endcomment -%}
+
+  @media screen and (min-width: 800px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+  }
+{%- endstyle -%}
+
+{% if section.settings.show_filter %}
+{% if blog.all_tags.size > 0 %}
+<div class="tag-filter-container">
+  <ul class="tag-filters">
+  {% comment %}
+    <li class="tag-filters__item  {% unless current_tags %}active {% endunless %}">
+      <a href="{{blog.url}}">{{ 'blogs.article.topbar-text.stories_all' | t }}</a>
+    </li>
+  {% endcomment %}
+    {% assign tags =  section.settings.tags | split: "," %}
+
+    {% for tag in tags %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+    {%- assign tag1 = tag | strip -%} 
+
+    {%- if current_tags contains tag1 -%}
+    <li class="tag-filters__item active">{{ tag1 | link_to_remove_tag: tag1 }}</li>
+    {%- else -%}
+    <li class="tag-filters__item">{{ tag1 | link_to_tag: tag1 }}</li>
+    {%- endif -%}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% endif %}
+
+  <div class="main-blog section-{{ section.id }}-padding">
+    
+    <div class="main-blog-inner page-width">
+
+      {% if section.settings.show_blog_title %}
+      <h1 class="title--primary">{{ blog.title | escape }}</h1>
+      {% endif %}
+      
+      {% assign firstArticle = blog.articles | first %}
+
+      {%- if  firstArticle  -%}
+      <div class="first_blog_post">        
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: firstArticle,
+          media_height: section.settings.image_height,
+          media_aspect_ratio: article.image.aspect_ratio,
+          show_image: section.settings.show_image,
+          show_date: section.settings.show_date,
+          show_author: section.settings.show_author,
+          show_excerpt: true 
+          -%}
+        </div>
+      </div>
+      {%- endif -%}
+      
+
+      {%- paginate blog.articles by section.settings.items_per_page -%}
+
+      <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %} image-grid" data-js="image-grid">
+        
+        <div class="image-grid__col-sizer"></div>
+        <div class="image-grid__gutter-sizer"></div>
+        
+        {%- for article in blog.articles -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: article %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+        {%- if article.id != firstArticle.id -%}
+        <div class="blog-articles__article article image-grid__item">
+          {%- render 'article-card',
+            article: article,
+          media_height: section.settings.image_height,
+          media_aspect_ratio: article.image.aspect_ratio,
+          show_image: section.settings.show_image,
+          show_date: section.settings.show_date,
+          show_author: section.settings.show_author,
+          show_excerpt: true 
+          -%}
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+        
+        
+      </div>
+      
+      <div class="scroller-status" style="display: none;">
+        <div class="loader-ellips infinite-scroll-request" style="display: none;">
+       <img src="https://cdn.shopify.com/s/files/1/0587/5171/3418/files/cloud-loader-7438a2242102a717b5c52c9487141d74a9b5302b48afbfc7b9ab89ff95904048.gif?v=1654603751">
+        </div>
+<!--         <p class="scroller-status__message infinite-scroll-last" style="display: none;">End of content</p> -->
+        <p class="scroller-status__message infinite-scroll-error" style="display: none;">No more pages to load</p>
+      </div>
+
+      
+      {%- if paginate.next -%}
+      <p class="pagination" style="display: none;">
+        <a class="pagination__next" href="{{ paginate.next.url }}">Next page</a>
+      </p>
+      {%- endif -%}
+
+      
+      {%- comment -%}
+      {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+      {%- endcomment -%}
+      
+      {%- endpaginate -%}
+      
+    </div>
+    
+    
+  </div>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_filter",
+      "label": "Show Filters",
+      "default": true
+    },
+ 	{
+      "type": "textarea",
+      "id": "tags",
+      "label": "Artcles Tags"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_blog_title",
+      "label": "Show Blog Title",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "range",
+      "id": "items_per_page",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Items per page",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

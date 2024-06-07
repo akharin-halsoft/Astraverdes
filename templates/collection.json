@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "background-1"
+      }
+    },
+    "43f818bb-698d-46c5-9f9f-6bd1fb1c55af": {
+      "type": "collection-list",
+      "blocks": {
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloud-5-m"
+          }
+        },
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloud-5-push-m"
+          }
+        },
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloud-5-combo-m"
+          }
+        },
+        "94ad20ec-12c8-4ce1-b3bf-9a1af11d75a7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloud-nova-m"
+          }
+        },
+        "2299a59a-d929-4b54-83ab-afad3b3e84f5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloudnova-form-m"
+          }
+        },
+        "bbc18d8a-08f9-4a12-ba36-35c1861cbfcf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloudaway-m"
+          }
+        },
+        "bbe29a7d-d4f7-423a-ade6-640550978a75": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "38ea1977-5bdd-4457-93b4-ddee01d5fc76": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "94a43677-bb96-4331-b304-4d76ad5400aa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "2bd1c37c-d048-4ad4-891f-d873fe58f17f": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "e85169fb-1692-4944-824c-dd8d79b238a3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "f2c5b086-5f7c-4d51-9747-73c889b3a05b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-0",
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-1",
+        "template--15785664184458__43f818bb-698d-46c5-9f9f-6bd1fb1c55af-1681212957dd005170-2",
+        "94ad20ec-12c8-4ce1-b3bf-9a1af11d75a7",
+        "2299a59a-d929-4b54-83ab-afad3b3e84f5",
+        "bbc18d8a-08f9-4a12-ba36-35c1861cbfcf",
+        "bbe29a7d-d4f7-423a-ade6-640550978a75",
+        "38ea1977-5bdd-4457-93b4-ddee01d5fc76",
+        "94a43677-bb96-4331-b304-4d76ad5400aa",
+        "2bd1c37c-d048-4ad4-891f-d873fe58f17f",
+        "e85169fb-1692-4944-824c-dd8d79b238a3",
+        "f2c5b086-5f7c-4d51-9747-73c889b3a05b"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "הדגמים שלנו",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "3f0bed49-995c-4419-9dfa-7f9f512aa0e2": {
+          "type": "tag_group",
+          "settings": {
+            "tag_title": "מין",
+            "tag_values": "M, W"
+          }
+        },
+        "090051e1-2a36-46db-b259-168f5796ea86": {
+          "type": "tag_group",
+          "settings": {
+            "tag_title": "כל המוצרים",
+            "tag_values": "Footwear, Apparel, Accessories"
+          }
+        }
+      },
+      "block_order": [
+        "3f0bed49-995c-4419-9dfa-7f9f512aa0e2",
+        "090051e1-2a36-46db-b259-168f5796ea86"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "collapse_on_larger_devices": false,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_collection_description": true,
+        "menu_sidebar": ""
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may be interested in",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "165287781381b4a398": {
+      "type": "recommendation_product",
+      "settings": {
+        "title": "אתם עשויים להתעניין גם ב...",
+        "heading_size": "h1",
+        "collection": "accessories",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_view_all": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "43f818bb-698d-46c5-9f9f-6bd1fb1c55af",
+    "product-grid",
+    "recommendations",
+    "165287781381b4a398"
+  ]
+}

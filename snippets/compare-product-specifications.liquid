@@ -1,0 +1,56 @@
+<div class="product-compare-specifications-wrapper">
+  
+  <div class="product_compare-selector-block">
+    
+    {%- if collection and collection.products.size > 0 -%}
+
+    <div class="product-compare-image">
+      
+      <a href="{{collection.products.first.url}}">
+        <div class="product-featured-image" style="background-image:url('{{ collection.products.first.featured_media | image_url }}')"></div>
+      </a>
+      
+    </div>
+
+    {%- else -%}
+
+    <div class="product-compare-image">
+
+      <svg data-v-44953018="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="specs__silhouette">
+        <path d="M82.9 68c-2.5 1.9-4.8 1.1-6.7-.3-2-.3-.5.5-2 2-1.9 1.4-5.5 2-7.4.2-.5-.5-.2-2-1.1-2.1-.8-.1-1 2.2-1.7 2.8-1.1.9-3.7.8-5 .7-3.8.4-2.6-2-4.2-3.7-1.1-.1-.8 1.5-1.4 2.1-2.8 2.4-7.8 2.1-9.8-.7-.6-.7 0-2.7-1.8-1.4-1 4.3-6.3 4.4-9.6 2.9-1.8-1.5-.1-4.7-2.5-2.9-1.5 3.3-4.9 4-8.3 3.2-3.1-.8-2-1.9-3.3-3.8-.9-1.4.3-.9-1.5-.2-3 4.6-12 2.5-15.1-1.2-1-1.7.4-3.2 1-4.9 1.4-3.7.5-8.3 1.1-12.6.6-5.6 5.3-22.6 10.4-9.3 6.4 2.4 15.3 3.3 21.1-1 .8-1.1 0-1.3.1-2.8 0-1.1 1.6-5.4 2.6-6.2C40 27.1 46.3 32.6 49 34c9.8 5.1 19.3 12.7 30.7 13.9 5.7 1.8 12.5-1.9 17.4 1.6 2.9 3.2 2.8 7.3.1 10.5-1.5 1.9-2.4 2.9-4.5 1.5-.8.4-.2 1.5-.8 2.3-.7 1-3.1 2.5-4.4 2.5-.4.2-2.1-1.6-2.6-1.3-.5.4-.6 2.3-2 3z" fill="none" stroke="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5,4"></path>
+      </svg>
+
+      {%- comment -%}
+      <img class="product-featured-image" src="{{ 'default-product-image.png' | asset_url }}"
+           alt="{{ collection.title | escape }}" loading="lazy">
+      {%- endcomment -%}
+    </div>
+
+    {%- endif -%}
+
+    <div class="collections-list">
+      <select name="select-collection" data-select-collection>
+        <option value="" class="unselect">Select model</option>
+        {% for _collection in collections limit: 50 %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _collection %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+        {%- if _collection.metafields.specifications.size > 0 -%}
+        <option {% if compare_from_collection.id == _collection.id %} disabled {% endif %} {% if _collection.id == collection.id %} disabled selected {% endif %} value="{{_collection.url}}">{{_collection.title}}</option>
+        {%- endif -%}
+
+        {% endfor %}
+      </select>
+    </div>    
+
+  </div>
+  
+  <div data-specifications>
+    {%- render 'collection-specifications', collection: collection -%}
+  </div>
+  
+</div>

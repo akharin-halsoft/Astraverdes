@@ -1,0 +1,18 @@
+<div class="empty-cart">
+  <p class="empty-cart__text">
+    {{ 'sections.cart_drawer.empty' | t }}
+  </p>
+  
+  {%- assign emptyCartButtons = section.blocks | where: "type", "empty_cart_button" -%} 
+  {%- if emptyCartButtons.size > 0 -%}
+  <div class="empty_button_wrapper">
+    {%- for block in emptyCartButtons -%}
+    {%- assign emptyCartButtonsText = block.settings.button_label -%}
+    {%- assign emptyCartButtonsLink = block.settings.button_link -%}  
+    <a href="{{ emptyCartButtonsLink }}" class="empty_buttons">
+    	{{ emptyCartButtonsText }}
+    </a>
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+</div>

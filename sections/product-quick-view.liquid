@@ -1,0 +1,457 @@
+
+{% comment %} Wholesale_Club_Product_Prices Start {% endcomment %}
+{% assign base_product = product %}
+{% assign base_variant = product.selected_or_first_available_variant %}
+
+{% if shop.metafields.sawholesale['base_price'] == blank %}
+  {% assign base_price = 'compare_at_price' %}
+{% else %}
+  {% assign base_price = shop.metafields.sawholesale['base_price'] %}
+{% endif %}
+
+{% assign saw_discount = 0 %}{% assign saw_has_discount = false %}
+
+{% if customer.tags != blank %}
+  {% for mf in base_product.metafields.sawholesale %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: mf %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {% capture product_customer_tag %}{{ mf | first | replace: 'discount_', '' }}{% endcapture %}
+    {% if customer.tags contains product_customer_tag %}
+      {% assign saw_has_discount = true %}
+      {% assign discount_key = product_customer_tag | prepend: 'discount_' %}
+      {% assign price_key = product_customer_tag | prepend: 'price_' %}
+      {% assign saw_discount = base_product.metafields.sawholesale[discount_key] | divided_by: 100.0 %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% assign saw_discount = 1 | minus: saw_discount %}
+
+{% if base_price == 'price' or base_variant.compare_at_price == blank  or base_variant.compare_at_price == 0 or base_variant.compare_at_price < base_variant.price %}
+  {% assign saw_variant_compare_at_price = base_variant.price %}
+{% else %}
+  {% assign saw_variant_compare_at_price = base_variant.compare_at_price %}
+{% endif %}
+
+{% assign cpe = shop.metafields.sawholesale['cpe'] | default: "true" %}
+{% if base_variant.metafields.sawholesale[price_key] != blank and cpe == "true" %}
+  {% assign saw_variant_price = base_variant.metafields.sawholesale[price_key] %}
+{% else %}
+  {% assign saw_variant_price = saw_variant_compare_at_price | times: saw_discount %}
+{% endif %}
+
+{% if saw_has_discount == false or saw_variant_price >= saw_variant_compare_at_price %}
+  {% assign WCProduct_Price = base_product.price %}
+  {% assign WCProduct_ComparePrice = base_product.compare_at_price %}
+  {% assign WCProduct_PriceMin = base_product.price_min %}
+  {% assign WCProduct_ComparePriceMin = base_product.compare_at_price_min %}
+  {% assign WCProduct_PriceMax = base_product.price_max %}
+  {% assign WCProduct_ComparePriceMax = base_product.compare_at_price_max %}
+  {% assign WCProduct_VariantPrice = base_variant.price %}
+  {% assign WCProduct_VariantComparePrice = base_variant.compare_at_price %}
+{% else %}   
+  {% assign WCProduct_Price = saw_variant_price %}
+  {% assign WCProduct_PriceMin = base_product.price_min | times: saw_discount %}
+  {% assign WCProduct_PriceMax = base_product.price_max | times: saw_discount %}
+  {% assign WCProduct_ComparePrice = saw_variant_compare_at_price %}
+  {% if base_product.compare_at_price_min != 0 %}{% assign WCProduct_ComparePriceMin = base_product.compare_at_price_min %}{% else %}{% assign WCProduct_ComparePriceMin = base_product.price_min %}{% endif %}
+  {% if base_product.compare_at_price_max != 0 %}{% assign WCProduct_ComparePriceMax = base_product.compare_at_price_max %}{% else %}{% assign WCProduct_ComparePriceMax = base_product.price_max %}{% endif %}
+  {% assign WCProduct_VariantPrice = saw_variant_price %}
+  {% assign WCProduct_VariantComparePrice = saw_variant_compare_at_price %}
+{% endif %}
+{% comment %} Wholesale_Club_Product_Prices End {% endcomment %}
+<div class="product-quick-view-main-wrapper" data-product-id="{{product.id}}" data-product-url="{{product.url}}">
+  
+  <span data-action="close-quick-view">X</span>
+  
+  <div class="product-details-wrapper">
+   
+ 
+{%- assign show_secondary_image = settings.show_secondary_image -%}
+{%- assign show_vendor = settings.show_vendor -%}
+{%- assign show_rating = settings.show_rating -%}
+{%- assign media_aspect_ratio = settings.media_aspect_ratio -%}
+
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
+{%- if product and product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == nil
+      assign ratio = 1
+    endif
+  -%}
+
+{%- assign productCardTitle = product.title -%}
+{%- assign colorsetCollection = false -%}
+
+{%- for tag in product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+
+{%- if tag contains 'ColorSet:' -%}
+
+{%- assign productCardTitle = product.title | split: "-" | first -%}
+{%- assign colorsetCollectionTitle = tag | split: "ColorSet:" | last | strip | handle -%}
+{%- assign colorsetCollection = collections[colorsetCollectionTitle ] -%}
+
+{%- break -%}
+{%- endif -%}
+
+{%- endfor -%}
+
+{%- assign gender = false -%}
+{%- for _tag in product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+    {%- assign _downcaseTag = _tag | downcase -%}
+
+    {%- if _downcaseTag contains 'men' -%}
+
+    {%- assign gender = "men" -%}
+
+    {%- endif -%}
+
+
+    {%- if _downcaseTag contains 'women' -%}
+
+    {%- assign gender = "women" -%}
+
+    {%- endif -%}
+
+
+    {%- endfor -%}
+    
+  <div data-product-card data-product-id="{{product.id}}" data-product-url="{{product.url}}" data-show-colors-on-hover="{{settings.show_colors_on_hover}}" class="card-wrapper underline-links-hover">
+    <div class="card
+      card--{{ settings.card_style }}
+      {% if product.featured_media %} card--media{% else %} card--text{% endif %}
+      {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }}{% endif %}
+      {% if extend_height %} card--extend-height{% endif %}
+      {% if product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}"
+      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+    >
+      
+      <div class="card__badge {{ settings.badge_position }}">
+            
+            {%- assign label =  false -%}
+            
+            {%- if settings.show_labels -%}
+            {%- for tag in  card_product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+            
+            {%- assign _downcaseTag = tag | downcase -%}
+            
+            {%- if _downcaseTag contains '__label:' -%}
+            
+            {%- assign label =  tag | split: "__label:" | last -%}
+            
+            {%- break -%}
+            
+            {%- endif -%}
+            
+            {%- endfor -%}
+             {%- endif -%}
+            
+            {%- if card_product.available == false -%}
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
+            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
+            {%- elsif label -%}
+            <span class="label-badge badge badge--bottom-left color-{{ settings.custom_label_color_scheme }}">{{label }}</span>
+            {%- endif -%}
+          </div>
+      
+      <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+        
+        {%- assign featured_media = product.featured_media -%}
+        <div id="product-images-{{ product.id }}" class="product-images-slider">
+            
+            <ul id="slider-product-images-{{ product.id }}" class="product-images-list list-unstyled slider">
+              {%- if featured_media != null -%}
+                {%- capture media_index -%}
+                  {%- if featured_media.media_type == 'model' -%}{%- increment model_index -%}
+                  {%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{%- increment video_index -%}
+                  {%- elsif featured_media.media_type == 'image'%}{%- increment image_index -%}
+                  {%- endif -%}
+                {%- endcapture -%}
+                {%- assign media_index = media_index | plus: 1 -%}
+                <li id="slide-product-image-{{ section.id }}-0" class="product-image-list__item" data-target="{{ section.id }}-{{ featured_media.id }}" data-media-position="{{ media_index }}">
+                  
+                    <img id="product-image-{{ product.id }}-0" 
+                      src="{{ featured_media | image_url }}"
+                      alt="{{ featured_media.alt | escape }}"                    
+                      loading="lazy"
+                    >
+                </li>
+              {%- endif -%}
+              {%- for media in product.media -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: media %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+                {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+                  {%- capture media_index -%}
+                    {%- if media.media_type == 'model' -%}{%- increment model_index -%}
+                    {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{%- increment video_index -%}
+                    {%- elsif media.media_type == 'image'%}{%- increment image_index -%}
+                    {%- endif -%}
+                  {%- endcapture -%}
+                  {%- assign media_index = media_index | plus: 1 -%}
+                   <li id="slide-product-media-{{ product.id }}-{{ forloop.index }}" class="product-image-list__item" data-target="{{ product.id }}-{{ media.id }}"  data-media-position="{{ media_index }}">
+                    {%- if media.media_type == 'model' -%}
+                      <span class="product_image__badge" aria-hidden="true">
+                        {%- render 'icon-3d-model' -%}
+                      </span>
+                    {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                     {% comment %}
+                      <span class="product_image__badge" aria-hidden="true">
+                        {%- render 'icon-play' -%}
+                      </span>
+                     {% endcomment %}
+                    {%- endif -%}
+                    
+                      <img id="product-image-{{ product.id }}-{{ forloop.index }}"
+                        src="{{ media | image_url }}"
+                        alt="{{ media.alt | escape }}"
+                       
+                        loading="lazy"
+                      >
+                  </li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+           
+          </div>
+        
+      </div>
+      <div class="card__content">
+        
+          {%- if product.available == false -%}
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
+          {%- elsif WCProduct_ComparePrice > WCProduct_Price and product.available -%}
+            <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    
+    {%- if settings.show_colors and colorsetCollection.id != blank -%}
+    
+    {%- render 'product-colors-mobile', colorCollection: colorsetCollection, product: product, is_collection: is_collection -%}
+    
+    {%- endif -%}
+    
+    <div class="product-details-wrapper">
+      
+      <div class="card__information">
+        <div class="card_inner">
+          <h3 class="card__heading{% if product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+            <a href="{{ product.url }}" class="full-unstyled-link">
+
+              {{ productCardTitle | escape }}
+            </a>
+          </h3>
+          
+        {% render 'price', product: product, price_class: '' %}
+        </div>
+        
+
+        {%- if product.metafields.my_fields.color != blank -%}
+        <h4 class="card__color">
+          {{ product.metafields.my_fields.color | replace: ' ', ' | ' }}
+        </h4>
+        {%- endif -%}
+        
+        {%- if gender -%}
+        <div class="gender-product">{{gender | append: "'s" | capitalize }}</div>
+        {%- endif -%}
+
+
+          <div class="card-information">
+            {%- if show_vendor -%}
+              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+              <div class="caption-with-letter-spacing light">{{ product.vendor }}</div>
+            {%- endif -%}
+
+            <span class="caption-large light">{{ block.settings.description | escape }}</span>
+
+            {%- if show_rating and product.metafields.reviews.rating.value != blank -%}
+              {% liquid
+                assign rating_decimal = 0
+                assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                if decimal >= 0.3 and decimal <= 0.7
+                  assign rating_decimal = 0.5
+                elsif decimal > 0.7
+                  assign rating_decimal = 1
+                endif
+              %}
+              <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+                <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+              </div>
+              <p class="rating-text caption">
+                <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+              </p>
+              <p class="rating-count caption">
+                <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+              </p>
+            {%- endif -%}
+
+            
+            
+            {%- comment -%}
+            {%- if colorsetCollection.id != blank -%}            
+            <span class="colors-count">{{colorsetCollection.products.size}} Colors</span>
+            {%- endif -%}
+            {%- endcomment -%}
+            
+            
+          </div>
+        </div>
+       
+  </div>
+    
+    <div class="product-actions-container">
+      <div class="atc-button">
+        <button class="btn atc-button">
+          <span>+</span>
+          <span class="atc-text">{{ 'products.product.add_to_cart' | t }}</span>
+        </button>
+      </div>
+      <div class="product-details-link">
+        <a href="{{product.url}}">{{ 'products.product.learn_more' | t }}</a>
+      </div>
+    </div>
+{%- else -%}
+  <div class="card-wrapper underline-links-hover">
+    <div class="card
+      card--{{ settings.card_style }}
+      card--text
+      {% if extend_height %} card--extend-height{% endif %}
+      {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }}{% endif %}
+      {% if product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}"
+      style="--ratio-percent: 100%;"
+    >
+      <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: 100%;">
+        <div class="card__content">
+          <div class="card__information">
+            <h3 class="card__heading">
+              <a role="link" aria-disabled="true" class="full-unstyled-link">
+                {{ 'onboarding.product_title' | t }}
+              </a>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__information">
+          <h3 class="card__heading{% if settings.card_style == 'standard' %} h5{% endif %}">
+            <a role="link" aria-disabled="true" class="full-unstyled-link">
+              {{ 'onboarding.product_title' | t }}
+            </a>
+          </h3>
+          <div class="card-information">
+            {%- if show_vendor -%}
+              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+              <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
+            {%- endif -%}
+            {% render 'price' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+    
+  </div>
+  
+  <div class="product-options-wrapper">
+    
+    {%- render 'product-options', product: product, gender: gender -%}
+    
+  </div>
+  
+  <div class="cart-product-details">
+    
+    <div class="cart-product-details-inner">    
+    <div class="quick-view-confirmation__title">{{ 'products.product.added_to_your_basket' | t }}</div>
+    <div class="quick-view-confirmation__image-container">
+      
+       <img class="product-featured-image" src="{{ product.featured_media | image_url }}"
+                        alt="{{ product.featured_media.alt | escape }}" loading="lazy">
+      
+    </div>
+    <div class="quick-view-confirmation__description-box">
+      
+      <div class="quick-view-confirmation__title-box">        
+        <div class="quick-view-confirmation__product-title">{{product.title}}</div>
+        <div class="quick-view-confirmation__price">{{- WCProduct_VariantPrice | money -}}</div>        
+        
+      </div>
+      
+      
+      {%- if product.metafields.my_fields.color != blank -%}
+        <div class="quick-view-confirmation__color">
+          {{ product.metafields.my_fields.color | replace: ' ', ' | ' }}
+        </div>
+        {%- endif -%}
+       
+        
+        <div class="quick-view-confirmation__option">
+        {%- if gender -%}
+        <span class="gender-product">{{gender | append: "'s" | capitalize }}</span>
+          <span class="option-value"></span>
+        {%- endif -%}
+      </div>
+      
+    </div>
+    <div class="quick-view-confirmation__button-box">
+      <a class="button quick-view-confirmation__button checkout-button" href="{{ routes.cart_url }}">
+      
+        <span>{{ 'products.product.proceed_to_checkout' | t }}</span>
+        
+      </a>
+      
+      <button data-continue-shopping class="button quick-view-confirmation__button checkout-button">
+        
+        <span>{{ 'products.product.continue_shopping' | t }}</span>
+        
+      </button>
+    </div>
+    </div>
+  </div>
+  
+</div>

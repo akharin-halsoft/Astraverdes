@@ -1,0 +1,25 @@
+{%- if article.metafields.slider.size > 0 -%}
+
+
+<div class="picture-gallery__slider">
+  {%- for slide in article.metafields.slider -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: slide %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+  
+  {%- assign articleImage = slide | last -%}
+  
+  {%-if articleImage -%}
+  <div class="picture-gallery-item" >   
+    <div class="gallery-img-holder js-gallery-popup">
+      <img src="{{articleImage | img_url: "master"}}" class="gallery-img">    
+    </div>
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- endif -%}

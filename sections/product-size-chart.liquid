@@ -1,0 +1,27 @@
+{%- assign productCategory = false -%}
+
+{%- if product.metafields.size_chart.category -%}
+
+{%- assign _categoryName = product.metafields.size_chart.category -%}
+{%- assign _categoryName = _categoryName | strip -%}
+{%- assign productCategory = _categoryName | handle -%}
+
+{%- endif -%}
+
+{%- assign sizeChartPageHandle = productCategory | append: "-size-chart" -%}
+
+{%- assign sizeChartPage =  shop.metafields.size-chart[productCategory].value -%}
+
+<div class="size-chart-page-content-wrapper" data-product-handle="{{product.handle}}">
+  <div class="size-chart-page-overlay">
+  <div class="size-chart-container">
+    <div class="size-chart-inner-wrapper">
+      <div class="size-chart-close-button-wrapper" data-size-chart-close></div>
+      <div class="size-chart-page-content">      
+        {{sizeChartPage.content}}
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

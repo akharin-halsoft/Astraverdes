@@ -1,0 +1,59 @@
+{%- if article.metafields.article.athletes_name -%}
+<h2 class="article_product_title">{{ article.metafields.article.athletes_name }}{{ 'general.author_item' | t }}</h2>
+{%- endif -%}
+
+{%- if article.metafields.products.size > 0 -%}
+
+
+<div class="article_product_wrapper">
+  {%- for _product in article.metafields.products -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _product %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+  
+  {%- assign articleProduct = _product | last -%}
+  {%- assign articleProduct = all_products[articleProduct] -%}
+  
+  {%-if articleProduct.id != blank -%}
+
+  <div class="contentful-block--product">   
+    <picture>
+      {{ articleProduct.featured_image | image_url: width: 2000 | image_tag: loading: 'lazy'}} 
+    </picture>
+    
+    <div class="article-product__contents">
+      
+      {%- assign productCardTitle = articleProduct.title | split: "-" | first -%}
+      <div class="article-product__contents-name">{{ productCardTitle }}</div>
+
+      {%- if articleProduct.metafields.my_fields.subtitle != blank -%}
+
+      <h4 class="card__subheading">
+
+        {{ articleProduct.metafields.my_fields.subtitle }}
+
+      </h4>
+
+      {%- endif -%}
+      
+      <div class="article-product__contents-link">
+        <a href="{{ articleProduct.url }}" >{{ 'general.article_product_button' | t }}</a>
+      </div>
+      
+    </div>
+  
+  </div>
+ 
+  
+  
+  {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- endif -%}
+
+
+

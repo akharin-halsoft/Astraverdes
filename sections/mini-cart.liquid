@@ -1,0 +1,236 @@
+{% comment %}
+    Renders cart drawer
+
+    Usage:
+    {% render 'cart-drawer' %}
+{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}">
+<noscript>{{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+
+<cart-drawer class="cart-drawer-main-wrapper">
+      
+  
+  		<div class="cart-drawer-overlay"></div>
+
+      <div class="cart-drawer__header cart-drawer-icon">
+        <button type="button" class="cart-drawer__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+          <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>
+        </button>
+
+        <div class="cart-drawer__header-title">
+           {{ 'sections.cart_drawer.title' | t }}
+        </div>
+
+      </div>
+
+      <div id="cart-drawer" class="cart-drawer focus-inset {% if cart != empty %} with-product{% else %} without-product{% endif %}" aria-modal="true" aria-label="{{ 'sections.cart_drawer.title' | t }}" role="dialog" tabindex="-1">
+
+        <form id="mini-cart-form" action="{{ routes.cart_url }}" novalidate method="post">
+          <input type="hidden" name="checkout">
+
+          <div id="cart-drawer-products" class="cart-drawer-products">
+            {%- if cart != empty -%}
+
+            {%- render 'cart-drawer-products' -%}           
+
+          {%- if section.settings.show_cart_note -%}
+              <cart-note class="cart__note field">
+                <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+                <textarea class="text-area field__input" name="note" form="cart-drawer-form" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
+              </cart-note>
+            {%- endif -%}
+            
+              {% assign total_price = cart.total_price | divided_by: 100.0 %}
+              {% assign cart_free_shipping_threshold = settings.cart_free_shipping_threshold | times: 1.0 %}
+
+             {%  if total_price >= cart_free_shipping_threshold %}
+             <div class="cart_shipping">
+              <span class="order_text">
+                {{ 'sections.cart_drawer.shipping' | t }}
+              </span>
+              <span class="order_amount">
+                {{ 'sections.cart_drawer.free' | t }}
+              </span>
+            </div>
+               {% endif %}
+            
+            <div id="cart-subtotals" class="cart-subtotals">
+              {%- render 'cart-subtotals' -%}
+            </div>   
+            {% unless customer and customer.tags contains "Club Member" %}
+              <div class="loyalty_programe_text">
+            {{ 'sections.cart_drawer.loyalty_programe_html' | t }}
+            </div>
+              {% endunless %}
+            {%- else -%}
+
+            {%- render 'empty-cart' -%}           
+
+            {%- endif -%}
+
+          </div>
+        </form>
+  
+        {%- if section.settings.delivery_notice != blank -%}
+        <div class="mini-cart__delivery-notice">
+          <div class="mini-cart__delivery-icon"></div>
+          {{ section.settings.delivery_notice }}
+        </div>
+        {%- endif -%}
+        
+        {%- assign cartItemProducts = cart.items | map: "product" -%}
+                
+        {%- assign cartItemProductIds = cartItemProducts | map: "id" -%}
+        
+        {%- assign recommendedProductBlocks = section.blocks | where: "type", "product" -%} 
+        {%- if recommendedProductBlocks.size > 0 -%}
+        <div class="product-recommendations-container">
+          {%- for recommendedProductBlock in recommendedProductBlocks -%}
+           
+          {%- assign recommendedProductHandle = recommendedProductBlock.settings.recommended_product -%}
+          {%- assign recommendedProduct = all_products[recommendedProductHandle] -%}
+          
+          
+          {%- if recommendedProduct.id != blank -%}
+          
+          {%- unless cartItemProductIds contains recommendedProduct.id -%}
+          <div class="recommended_product">
+            
+            <a href="{{ recommendedProduct.url }}" class="recommend_product_image">
+            <img src="{{ recommendedProduct | image_url }}" />
+            </a>        
+            <div class="recommend_product_details">
+              <h2 class="product_title">{{ recommendedProduct.title }}</h2>
+                   
+              {% render 'price' %}
+              
+            </div>
+            
+            <div class="quick_add">
+              {%- render 'product-options', product: recommendedProduct -%}
+            </div>
+          </div>
+          {%- endunless -%}
+          {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+        
+      </div>
+
+    {% if cart != empty %}
+    <div class="cart-drawer__links ">
+
+      <form action="{{ routes.cart_url }}" method="post" id="cart-drawer-form">
+        {% comment %}
+        <button class="button button--primary button--full-width" name="checkout">מעבר ל{{ 'sections.cart_drawer.checkout' | t }}</button>
+       {% endcomment %}
+       <a class="button button--primary button--full-width" href="{{ routes.cart_url }}">מעבר ל{{ 'sections.cart_drawer.checkout' | t }}</a>
+      </form>
+      <!--         <button type="button" class="link button-label">{{ 'sections.cart_drawer.continue_shopping' | t }}</button> -->
+    </div> 
+    {%- endif -%}
+  
+</cart-drawer>
+
+
+
+<script> 
+if(document.querySelector('#cart-drawer-form')){
+  document.querySelector('#cart-drawer-form').addEventListener('submit', e => {
+  e.preventDefault();
+
+  let cartNoteValue = document.querySelector('[name="note"]').value;
+
+let data = {
+   note: cartNoteValue
+};
+  fetch(window.Shopify.routes.root + 'cart/update.js', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+}).then(response => response.json())
+  .then( response => {
+    console.log(response);
+    window.location.href = "/checkout";
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+  
+})
+}
+
+</script>
+
+
+
+{% style %}
+.cart-drawer {
+     display: none;
+  } 
+{% endstyle %}
+
+
+{% schema %}
+  {
+    "name": "t:sections.mini-cart.name",
+    "class": "shopify-section--mini-cart",
+    "settings": [
+        {
+        "type": "header",
+        "content": "Delivery Notice Wrapper"
+        },
+		{
+          "type": "text",
+          "id": "delivery_notice",
+          "default": "Delivery Notice",
+		  "label": "t:sections.mini-cart.settings.delivery_notice.label"
+        },
+        {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "default": false,
+        "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+      }
+	],
+	"blocks": [
+      {
+	  "type": "empty_cart_button",
+ 	  "name": "t:sections.mini-cart.blocks.empty_cart_button.name",
+      "limit": 6,
+	  "settings": [
+		{
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.mini-cart.blocks.empty_cart_button.settings.button_label.label",
+          "info": "t:sections.mini-cart.blocks.empty_cart_button.settings.button_label.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.mini-cart.blocks.empty_cart_button.settings.button_link.label"
+        }
+		
+	   ]
+      },
+	{
+		"type": "product",
+		"name": "t:sections.mini-cart.blocks.product.name",
+		"limit": 3,
+		"settings": [
+			{
+          "type": "product",
+          "id": "recommended_product",
+          "label": "t:sections.mini-cart.blocks.product.settings.recommended_product.label"
+        	}
+		]
+}
+	]
+  }
+{% endschema %}

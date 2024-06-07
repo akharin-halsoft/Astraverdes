@@ -1,0 +1,214 @@
+{%- assign showOptions = false -%}
+{%- assign showSizes = settings.show_sizes -%}
+
+{%- for _tag in product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+{%- assign _downcaseTag = _tag | downcase -%}
+
+{%- if _downcaseTag contains 'men' -%}
+
+{%- assign gender = "men" -%}
+
+{%- endif -%}
+
+
+{%- if _downcaseTag contains 'women' -%}
+
+{%- assign gender = "women" -%}
+
+{%- endif -%}
+
+{%- endfor -%}
+
+{%- if showSizes -%}
+
+{%- assign showOptions = true -%}
+
+{%- endif -%}
+
+{%- assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ',' -%}
+
+{%- if showOptions -%}
+<div class="product-options-wrapper">
+
+  {%- if showSizes -%}
+  <product-grid-form class="product-form" data-cart-type="{{ settings.cart_type }}">
+    {%- form 'product',product, novalidate: 'novalidate' -%}
+    <div class="quick-add-wrapper">
+
+      <span class="plus-icon"></span>
+      <span class="quick-add-text">{{'products.product.quick_add' | t}}</span>
+    </div>
+
+    {%- for option in product.options_with_values -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: option %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {%- assign downcase_option = option.name | downcase -%}
+    {%- if size_label contains downcase_option -%}
+
+    <div class="size-options-wrapper">
+      <div class="sizes sizes--inside-quick-add">
+        <div class="sizes__pre_title--container">
+          Select your size
+        </div>
+        
+        <div class="size-options-inner_wrapper">
+          <div class="sizes__title--container">
+          <p class="size-heading">EU {{gender | append: 's'  | capitalize }} Sizes</p>
+        </div>
+        <div class="sizes__wrapper">
+          {%- for value in option.values -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: value %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+          {%- assign _option_index = 'option' | append: option.position -%}
+
+          {%- for variant in product.variants -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: variant %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+{% comment %} Wholesale_Club_Product_Prices Start {% endcomment %}
+{% assign base_product = product %}
+{% assign base_variant = variant %}
+
+{% if shop.metafields.sawholesale['base_price'] == blank %}
+  {% assign base_price = 'compare_at_price' %}
+{% else %}
+  {% assign base_price = shop.metafields.sawholesale['base_price'] %}
+{% endif %}
+
+{% assign saw_discount = 0 %}{% assign saw_has_discount = false %}
+
+{% if customer.tags != blank %}
+  {% for mf in base_product.metafields.sawholesale %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: mf %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    {% capture product_customer_tag %}{{ mf | first | replace: 'discount_', '' }}{% endcapture %}
+    {% if customer.tags contains product_customer_tag %}
+      {% assign saw_has_discount = true %}
+      {% assign discount_key = product_customer_tag | prepend: 'discount_' %}
+      {% assign price_key = product_customer_tag | prepend: 'price_' %}
+      {% assign saw_discount = base_product.metafields.sawholesale[discount_key] | divided_by: 100.0 %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% assign saw_discount = 1 | minus: saw_discount %}
+
+{% if base_price == 'price' or base_variant.compare_at_price == blank  or base_variant.compare_at_price == 0 or base_variant.compare_at_price < base_variant.price %}
+  {% assign saw_variant_compare_at_price = base_variant.price %}
+{% else %}
+  {% assign saw_variant_compare_at_price = base_variant.compare_at_price %}
+{% endif %}
+
+{% assign cpe = shop.metafields.sawholesale['cpe'] | default: "true" %}
+{% if base_variant.metafields.sawholesale[price_key] != blank and cpe == "true" %}
+  {% assign saw_variant_price = base_variant.metafields.sawholesale[price_key] %}
+{% else %}
+  {% assign saw_variant_price = saw_variant_compare_at_price | times: saw_discount %}
+{% endif %}
+
+{% if saw_has_discount == false or saw_variant_price >= saw_variant_compare_at_price %}
+  {% assign WCProduct_Price = base_product.price %}
+  {% assign WCProduct_ComparePrice = base_product.compare_at_price %}
+  {% assign WCProduct_PriceMin = base_product.price_min %}
+  {% assign WCProduct_ComparePriceMin = base_product.compare_at_price_min %}
+  {% assign WCProduct_PriceMax = base_product.price_max %}
+  {% assign WCProduct_ComparePriceMax = base_product.compare_at_price_max %}
+  {% assign WCProduct_VariantPrice = base_variant.price %}
+  {% assign WCProduct_VariantComparePrice = base_variant.compare_at_price %}
+{% else %}   
+  {% assign WCProduct_Price = saw_variant_price %}
+  {% assign WCProduct_PriceMin = base_product.price_min | times: saw_discount %}
+  {% assign WCProduct_PriceMax = base_product.price_max | times: saw_discount %}
+  {% assign WCProduct_ComparePrice = saw_variant_compare_at_price %}
+  {% if base_product.compare_at_price_min != 0 %}{% assign WCProduct_ComparePriceMin = base_product.compare_at_price_min %}{% else %}{% assign WCProduct_ComparePriceMin = base_product.price_min %}{% endif %}
+  {% if base_product.compare_at_price_max != 0 %}{% assign WCProduct_ComparePriceMax = base_product.compare_at_price_max %}{% else %}{% assign WCProduct_ComparePriceMax = base_product.price_max %}{% endif %}
+  {% assign WCProduct_VariantPrice = saw_variant_price %}
+  {% assign WCProduct_VariantComparePrice = saw_variant_compare_at_price %}
+{% endif %}
+{% comment %} Wholesale_Club_Product_Prices End {% endcomment %}
+
+
+          {%- if variant[_option_index] == value -%}
+          {%- assign _variant = variant -%}
+          {%- break -%}
+          {%- endif -%}
+          {%- endfor -%}
+
+          {% comment %}
+          <div class="{% unless _variant.available %} soldout {% endunless %} option-value" data-variant="{{_variant.id}}">{{value | capitalize  }}</div>
+          {% endcomment %}
+          <button name="id" type="submit" value="{{_variant.id}}" {% unless _variant.available %} disabled {% endunless %} class="{% unless _variant.available %} soldout {% endunless %} option-value {% if _variant.inventory_quantity < 4 %} minimum-quantity-soldout{% endif %}" data-variant="{{_variant.id}}">{{value | capitalize  }}</button>
+
+          {%- endfor -%}
+          <div class="size-chart-icon-wrapper option-value" data-size-chart data-product-id="{{product.id}}" data-product-url="{{product.url}}"><svg data-v-08261c15="" width="26" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M23.55.5a2.18 2.18 0 012.18 2.18v5.88a2.18 2.18 0 01-2.18 2.18H2.68A2.18 2.18 0 01.5 8.56V2.68A2.18 2.18 0 012.68.5zm-18.608 1H2.68A1.18 1.18 0 001.5 2.68v5.88c0 .652.528 1.18 1.18 1.18h20.87a1.18 1.18 0 001.18-1.18V2.68a1.18 1.18 0 00-1.18-1.18h-1.858v4.12a.5.5 0 01-.992.09l-.008-.09V1.5h-3.039v2.58a.5.5 0 01-.991.09l-.008-.09-.001-2.58h-3.038v4.12a.5.5 0 01-.992.09l-.008-.09V1.5H9.576v2.58a.5.5 0 01-.991.09l-.008-.09-.001-2.58H5.942v4.12a.5.5 0 01-.992.09l-.008-.09V1.5z" fill="#222" fill-rule="nonzero"></path></svg></div>
+        </div>
+          <div class="quick-view-sizes__fit">
+          	{{ 'quick_view_subtitle.quick_view_sizes' | t }}
+          </div>
+          </div>
+        
+        <span class="quick-view-sizes__back">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40">
+            <defs>
+              <filter id="a" width="143.8%" height="143.8%" x="-21.9%" y="-15.6%" filterUnits="objectBoundingBox">
+                <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+                <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0516280594 0"></feColorMatrix>
+              </filter>
+              <circle id="b" cx="16" cy="16" r="16"></circle>
+            </defs>
+            <g fill="none" fill-rule="evenodd" transform="translate(4 2)">
+              <use fill="#000" filter="url(#a)" xlink:href="#b"></use>
+              <use fill="#FFF" xlink:href="#b"></use>
+              <g stroke="#222">
+                <path d="M15.2 22.564L10.55 16.2l4.65-6.364"></path>
+                <path stroke-linecap="square" d="M11.482 16.082h11.7"></path>
+              </g>
+            </g>
+          </svg>
+        </span>
+        
+        
+        
+      </div>
+
+    </div>
+
+    {%- endif -%}
+    {%- endfor -%}
+
+    {%- endform -%}
+  </product-grid-form>
+  {%- endif -%}
+
+</div>
+
+{%- endif -%}

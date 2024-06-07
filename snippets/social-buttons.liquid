@@ -1,0 +1,28 @@
+{% capture current_url %}{% if context == 'article' %}{{ shop.url }}{{ article.url }}{% else %}{{ canonical_url }}{% endif %}{% endcapture %}
+<div class="article-nav__share-menu">
+
+  {% capture title %}{% if context == 'article' %}{{ article.title | truncate: 30 | url_escape }}{% else %}{{ product.title | truncate: 30 | url_escape }}{% endif %}{% endcapture %}
+  {% capture shop_name %}{{ shop.name | url_param_escape }}{% endcapture %}
+  {% capture twitter_name %}{{ settings.twitter_link | split: 'twitter.com/' | last }}{% endcapture %}
+
+  <a class="article-nav__share-link" title="{{ 'general.social.alt_text.share_on_facebook' | t }}" href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}">
+    <div class="article-nav__share-link__icon icon-facebook"></div>
+    <span>Facebook</span>
+  </a>
+
+  <a class="article-nav__share-link" title="{{ 'general.social.alt_text.share_on_twitter' | t }}" href="https://twitter.com/intent/tweet?text={{ title | replace: '&','%26' }}&url={{ current_url }}{%- if twitter_name != blank -%}&via={{ twitter_name }}{%- endif -%}">
+    <div class="article-nav__share-link__icon icon-twitter"></div>
+    <span>Twitter </span>
+  </a>
+
+  <a class="article-nav__share-link" title="{{ 'general.social.alt_text.share_on_googleplus' | t }}" href="https://plus.google.com/share?url={{ current_url }}">
+    <div class="article-nav__share-link__icon icon-google-plus"></div>
+    <span>Google+ </span>
+  </a>
+
+  <a class="article-nav__share-link" href="mailto:?subject={{ 'general.social.alt_text.share_on_email' | t: title: title }}&amp;body={{ 'general.social.alt_text.share_on_email' | t: title: title, name: shop_name }}%0D%0A%0D%0A{{ current_url }}" class="icon-mail-share" title="{{ 'general.social.alt_text.share_on_email' | t }}">
+    <div class="article-nav__share-link__icon icon-email"></div>
+    <span>Email </span>
+  </a>
+
+</div>

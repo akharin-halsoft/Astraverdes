@@ -1,0 +1,128 @@
+{{ 'two-column-block.css' | asset_url | stylesheet_tag }}
+<div class="cm-{{ section.id }}">
+  {%- if section.settings.section_title != blank -%}
+  	<h2 class="section-title">{{ section.settings.section_title }}</h2>
+  {% endif %}
+  
+  <div class="two-column-wrapper">
+    {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+      <div class="featured-card">
+        {%- if block.settings.block_image != blank -%}
+        <div class="featured-card-image" style="background-image:url('{{ block.settings.block_image | img_url: "master" }}')"></div>
+        {%- else -%}
+        <div class="featured-card-image" style="background-color:{{ block.settings.block_color }}"></div>
+        {%- endif -%}
+        <div class="featured-content-overlay">
+          <div class="featured-content">
+            {%- if block.settings.block_sub_title != blank or block.settings.block_title != blank -%}
+            <div class="featured-title-container">              
+              <p>{{ block.settings.block_sub_title }}</p>
+              <h2>{{ block.settings.block_title }}</h2>
+            </div>
+            {%- endif -%}            
+            
+            <div class="featured-cta-container">
+              {%- if block.settings.block_button_text1 != blank -%}
+              <a href="{{ block.settings.block_button_text1_link }}" class="cta-button">{{ block.settings.block_button_text1 }}</a>
+              {%- endif -%}
+              {%- if block.settings.block_button_text2 != blank -%}
+              <a href="{{ block.settings.block_button_text2_link }}" class="cta-button">{{ block.settings.block_button_text2 }}</a> 
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>    
+    {%- endfor -%}
+  </div>
+  
+  
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "t:sections.two-column-block.name",
+    "class": "custom-two-column-blocks",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "default": "Section Title",
+        "label": "t:sections.two-column-block.settings.section_title.label"
+      }  
+	],
+	"blocks": [
+		{
+		"type": "text",
+		"name": "t:sections.two-column-block.blocks.text.name",
+		"settings": [
+			{
+              "type": "color",
+              "id": "block_color",
+			  "label": "t:sections.two-column-block.blocks.text.settings.block_color.label"
+            },
+            {
+              "type": "image_picker",
+              "id": "block_image",
+			  "label": "t:sections.two-column-block.blocks.text.settings.block_image.label",
+			  "info": "t:sections.two-column-block.blocks.text.settings.block_image.info"
+            },
+			{
+              "type": "text",
+              "id": "block_sub_title",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_sub_title.label"
+            },
+           {
+              "type": "text",
+              "id": "block_title",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_title.label"
+            },
+			{
+              "type": "text",
+              "id": "block_button_text1",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_button_text1.label"
+            },
+			{
+              "type": "url",
+              "id": "block_button_text1_link",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_button_text1_link.label"
+            },
+			{
+              "type": "text",
+              "id": "block_button_text2",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_button_text2.label"
+            },
+			{
+              "type": "url",
+              "id": "block_button_text2_link",
+              "label": "t:sections.two-column-block.blocks.text.settings.block_button_text2_link.label"
+            } 
+          ] 
+		}
+	],
+      "presets": [
+        {
+          "name": "t:sections.two-column-block.presets.name",
+          "blocks": [
+            {
+              "type": "text"
+            }
+          ]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

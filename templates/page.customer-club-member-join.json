@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 24,
+        "padding_bottom": 28
+      }
+    },
+    "0807895c-790f-4023-ac62-2b66b2a28f27": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15936351273098__0807895c-790f-4023-ac62-2b66b2a28f27-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1.png",
+            "imageMobile": "shopify:\/\/shop_images\/roger_mobile.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15936351273098__0807895c-790f-4023-ac62-2b66b2a28f27-slide-1"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": ""
+      }
+    },
+    "0cc40294-69cc-4354-bbc8-357acb12600e": {
+      "type": "customer-logo-brand-logo-text",
+      "settings": {
+        "brand_image": "shopify:\/\/shop_images\/ing_logo.png",
+        "section_title": "הרשמו למועדון הלקוחות שלנו",
+        "section__sub_title": "ותוכלו ליהנות מהטבות בלעדיות, דגמים ייחודיים ומבצעים לפני כולם."
+      }
+    },
+    "cdf285d0-8ca1-4126-8900-e1636e57a126": {
+      "type": "image-with-form",
+      "blocks": {
+        "1ab07dd8-38ef-4213-b0ec-a98496c635ab": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_6_2x_30e6fc56-c68f-45fc-817d-685161617e01.png"
+          }
+        },
+        "38c99562-14d6-4658-89ff-7915815700a2": {
+          "type": "form",
+          "settings": {
+            "bottom_content": "אישור קבלת דיוור ההרשמה ללא תשלום, בכפוף לתקנון.מדיניות שימוש באתר.",
+            "success_message": "<p>ברוכים הבאים למועדון הלקוחות של ING SPORT.  לרגל הצטרפותכם, קבלו הנחה בגובה 50 ₪ למימוש בקנייתכם הבאה באתר <a href=\"http:\/\/www.ingsport.co.il\/\" target=\"_blank\">www.ingsport.co.il<\/a>  ING.   קוד  קופון:  INGCLUB50<br\/><br\/>הערות בקטן: לחברי מועדון הנרשמים באתר, בקנייה מעל 450 ₪, קופון אחד למשתמש ולעסקה, אין כפל הנחות. בתוקף עד ה-31\/12\/2023. כפוף לתקנון. ט.ל.ח<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1ab07dd8-38ef-4213-b0ec-a98496c635ab",
+        "38c99562-14d6-4658-89ff-7915815700a2"
+      ],
+      "settings": {
+        "section_title": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "0807895c-790f-4023-ac62-2b66b2a28f27",
+    "0cc40294-69cc-4354-bbc8-357acb12600e",
+    "cdf285d0-8ca1-4126-8900-e1636e57a126"
+  ]
+}

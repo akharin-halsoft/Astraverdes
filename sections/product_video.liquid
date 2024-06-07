@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="{{ 'product_video.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'product_video.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% if product.metafields.my_fields.video_url != blank and product.metafields.my_fields.video_poster_image != blank %}
+<div class="poster-image" style="background-image:url({{ product.metafields.my_fields.video_poster_image |img_url :'large' }});"></div>
+<div class="img_video">
+  <div class="play_button">
+    <div class="media-caption__play-button">
+      <i class="media-caption__play-button--default icon-play_default"></i> 
+      <i class="media-caption__play-button--hover icon-play_hover"></i>
+    </div>
+  </div>
+  <div class="lightbox" >
+    <div  class="videoModal modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+      <div class="modal-header">
+        <button type="button" class="close full-height" data-dismiss="modal" aria-hidden="true">X</button>
+      </div>
+      <div class="modal-body">
+        <iframe src="{{ product.metafields.my_fields.video_url }}" frameborder="0" allowfullscreen=""></iframe>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Video Section",
+  	"class": "section-product-video-wrapper",
+    "settings": []
+  }
+{% endschema %}
+

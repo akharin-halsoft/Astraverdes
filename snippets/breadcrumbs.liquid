@@ -1,0 +1,19 @@
+<div class="breadcrumb_text">
+  <ul>
+    <li>
+      <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}">
+        <span>{{ 'general.home' | t }}</span>
+      </a>
+      <span class="breadcrumb__separator">
+        <svg data-v-5dd87ed9="" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="breadcrumb__separator-icon">
+          <path d="M20.657 13L15 17.81 9.343 13" stroke="#666" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+    </li>
+    <li>
+      <a href="{{ collection.url }}" title="{{ collection.title | escape }}" class="breadcrumb_link">
+        <span class="boost-pfs-filter-collection-header">{{ collection.title }}</span>
+      </a>
+    </li>
+  </ul>    
+</div>

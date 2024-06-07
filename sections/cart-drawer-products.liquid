@@ -1,0 +1,11 @@
+<div id="cart-drawer-products-list" class="cart-drawer-products-list">
+{%- if cart != empty -%}
+
+  {%- render 'cart-drawer-products' -%}
+  
+{%- else -%}
+  
+  {%- render 'empty-cart' -%}
+{%- endif -%}
+  
+</div>

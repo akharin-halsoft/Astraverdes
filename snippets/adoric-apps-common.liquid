@@ -1,0 +1,145 @@
+<script type="text/javascript">
+  window.Adoric_State = window.Adoric_State || {};
+  window.Adoric_State.shop = {
+    permanent_domain: '{{ shop.permanent_domain }}',
+    currency: {{ shop.currency | json }},
+    money_format: {{ shop.money_format | json }},
+    id: {{ shop.id | json }}
+  };
+  {% if customer %}
+      window.Adoric_State.customer = {
+        id: {{ customer.id | json }},
+        tags: {{ customer.tags | json }},
+        email: {{customer.email | json}},
+        accepts_marketing: {{ customer.accepts_marketing | json }},
+        first_name: {{ customer.first_name | json }},
+        last_name: {{ customer.last_name | json }},
+        orders_count: {{ customer.orders_count | json }},
+        tags: {{ customer.tags | json }},
+        total_spent: {{ customer.total_spent | json }}
+      };
+  {% endif %}
+  window.Adoric_State.pageTitle = '{{ page_title }}'
+  window.Adoric_State.template = '{{ template | split: "." | first }}';
+  window.Adoric_State.cart = {% if cart.item_count > 0 %}{{ cart | json }}{% else %}{}{% endif %};
+
+  {% if collection %}
+      window.Adoric_State.collection = {{ collection | json }};
+
+      if (window.Adoric_State.template == 'collection'){
+        if (window.Adoric_State.collection) {
+          window.Adoric_State.collectionName = window.Adoric_State.collection.handle
+        } else {
+          window.Adoric_State.collectionName = 'all'
+        }
+      }
+  {% endif %}
+
+  const ADORIC_RECENTRLY_VIEWED_PRODUCT_KEY = '_adoricRecentlyViewed';
+  window.Adoric_State.counters = ["#CartCount span:first-child","#Cartcount",".cart-counter",".cart-count-bubble span:first-child",".number-wrapper .number",".header-cart__count",".cart-link .cartCountN",".cart-button span:first-child","#cartCount",".cart_count","a[href=\"/cart\"] span:not([class])","a[href=\"/cart\"] span[class^=\"count\"]","a[href=\"/cart\"] span[class$=\"Count\"]"]
+  const ADORIC_SAVED_PRODUCTS_COUNT = 16;
+
+  window.Adoric_State.getRecentlyViewed = async () => {
+    const storageData = JSON.parse(localStorage.getItem(ADORIC_RECENTRLY_VIEWED_PRODUCT_KEY)) || [];
+    const handles = window.Adoric_State.product 
+      ? storageData.filter(item => item.id !== window.Adoric_State.product.id).map(({ handle }) => handle)
+      : storageData.map(({ handle }) => handle);
+
+    return fetch(window.Shopify.routes.root + `search?view=view-adoric-json&q=${handles.join(',')}`)
+      .then(response => response.json());
+  }
+
+  const variantsMapper = (variant, product) => {
+    const variantData =  {
+      variantId: variant.id,
+      productId: product.id,
+      price: variant.price ? variant.price / 100 : null,
+      comparePrice: variant.compare_at_price ? variant.compare_at_price / 100 : null,
+      title: variant.title || product.title,
+      image: null,
+      imageAlt: null
+    };
+
+    if (variant.featured_image) {
+      variantData.image = variant.featured_image.src;
+      variantData.imageAlt = variant.featured_image.alt;
+    } else {
+      const image = product?.media?.find(file => file.media_type === 'image');
+
+      if (image) {
+        variantData.image = image.src;
+        variantData.imageAlt = image.alt;
+      } else {
+        variantData.image = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='180' viewBox='0 0 140 180' fill='none'%3E%3Crect width='140' height='180' fill='%23DADADA'/%3E%3Cpath d='M85.4781 71.252H54.5241C52.029 71.252 50 73.2803 50 75.7783V104.227C50 106.722 52.029 108.748 54.5241 108.748H85.4779C87.973 108.748 89.9999 106.722 89.9999 104.227V75.7783C90 73.2803 87.9732 71.252 85.4781 71.252ZM75.866 77.9835C78.2789 77.9835 80.2357 79.9405 80.2357 82.3532C80.2357 84.766 78.2788 86.7229 75.866 86.7229C73.4525 86.7229 71.4963 84.766 71.4963 82.3532C71.4963 79.9405 73.4525 77.9835 75.866 77.9835ZM84.0592 104.566H69.9996H56.5663C55.3595 104.566 54.822 103.693 55.366 102.616L62.8653 87.7622C63.4086 86.6852 64.4442 86.589 65.1776 87.5473L72.7183 97.4019C73.4517 98.3603 74.7335 98.4419 75.5819 97.5832L77.4266 95.7151C78.2744 94.8564 79.5234 94.9627 80.2152 95.951L84.9921 102.774C85.6827 103.764 85.2661 104.566 84.0592 104.566Z' fill='white'/%3E%3C/svg%3E";
+        variantData.imageAlt = 'Product image';
+      }
+    }
+
+    return variantData;
+  }
+
+  window.Adoric_State.formatProducts = (products) => {
+    return products.map(product => {
+      const productData = {
+        productId: product.item.id,
+        title: product.item.title,
+        handle: product.item.handle,
+        description: product.trm.description
+      };
+
+      if (product.item.variants.length === 1) {
+        productData.hasOneVariant = true;
+        productData.variant = variantsMapper(product.item.variants[0], product.item);
+      } else {
+        productData.variants = product.item.variants.map(variant => variantsMapper(variant, product.item));
+      }
+      
+      return productData;
+    });
+  }
+
+  window.Adoric_State.getProductsByHandles = (handles) => {
+      return fetch(window.Shopify.routes.root + `search?view=view-adoric-json&q=${handles.join(',')}`)
+        .then(response => response.json());
+  }
+
+  window.Adoric_State.recentlyRecommendation = async () => {
+    const { products } = await window.Adoric_State.getRecentlyViewed();
+
+    return window.Adoric_State.formatProducts(products);
+  }
+
+  {% if product %}
+    if (window.Adoric_State.template == 'product'){
+      window.Adoric_State.collectionsIds = {{ product.collections | json }}.map((collection) => collection.id);
+      window.Adoric_State.product = {{ product | json }};
+  
+      function setProductAsViewed() {
+        const oldProductsStr = localStorage.getItem(ADORIC_RECENTRLY_VIEWED_PRODUCT_KEY);
+        if (!oldProductsStr) {
+          return localStorage.setItem(
+            ADORIC_RECENTRLY_VIEWED_PRODUCT_KEY, 
+            JSON.stringify([{ id: window.Adoric_State.product.id, handle: window.Adoric_State.product.handle }])
+          );
+        }
+
+        const oldProducts = JSON.parse(oldProductsStr)
+            .filter(oldProduct => oldProduct.id !== window.Adoric_State.product.id);
+
+        oldProducts.unshift({ id: window.Adoric_State.product.id, handle: window.Adoric_State.product.handle });
+
+        const newProducts = oldProducts.slice(0, ADORIC_SAVED_PRODUCTS_COUNT);
+
+        localStorage.setItem(
+            ADORIC_RECENTRLY_VIEWED_PRODUCT_KEY, 
+            JSON.stringify(newProducts)
+          );
+      }
+
+      setProductAsViewed();
+
+    }
+  {% endif %}
+
+
+</script>

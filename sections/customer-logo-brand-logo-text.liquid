@@ -1,0 +1,124 @@
+<div class="brand_logo_with_text_wrapper">
+  <div class="page-width">
+    {%- if section.settings.brand_image != blank -%}
+    <div class="image_wrapper">
+      <img src="{{ section.settings.brand_image | img_url: "master" }}">
+    </div>
+    {%- endif -%}
+    <div class="content_wrapper">
+      {%- if section.settings.section_title != blank -%}
+      <h2>{{ section.settings.section_title }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.section__sub_title != blank -%}
+      <p>{{ section.settings.section__sub_title }}</p>
+      {%- endif -%}      
+    </div>
+    
+  </div>
+</div>
+
+<style>
+
+.brand_logo_with_text_wrapper {
+    padding: 64px 0 62px;
+}
+
+.brand_logo_with_text_wrapper .image_wrapper {
+    text-align: center;
+    margin-bottom: 61px;
+}
+
+.brand_logo_with_text_wrapper .content_wrapper {
+    text-align: center;
+}
+
+.brand_logo_with_text_wrapper .content_wrapper h2 {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    /* font-family: Open Sans Hebrew; */
+      font-family: HelveticaNow,Arial,sans-serif;
+}
+
+.brand_logo_with_text_wrapper .content_wrapper p {
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* font-family: Open Sans Hebrew; */
+      font-family: HelveticaNow,Arial,sans-serif;
+    margin: 0;
+}
+
+@media (max-width:767px) {
+  .brand_logo_with_text_wrapper {
+    padding: 48px 0 52px;
+}
+  .brand_logo_with_text_wrapper .content_wrapper h2 {
+    font-size: 32px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.brand_logo_with_text_wrapper .content_wrapper p {
+    font-size: 24px;
+}
+
+.brand_logo_with_text_wrapper .image_wrapper img {
+    max-width: 140px;
+}
+
+  .brand_logo_with_text_wrapper .image_wrapper {
+    margin-bottom: 50px;
+}
+
+  
+}
+
+body.template-page-customer-club-member-join .brand_logo_with_text_wrapper .image_wrapper img {
+    width: 178px !important;
+}  
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Brand Logo With Text",
+    "settings": [
+       {
+        "type": "image_picker",
+        "id": "brand_image",
+        "label": "Brand Image"
+      } ,
+       {
+        "type": "text",
+        "id": "section_title",
+        "default": "Section Heading",
+        "label": "Section Heading"
+      },
+       {
+        "type": "text",
+        "id": "section__sub_title",
+        "default": "Section Sub Heading",
+        "label": "Section Sub Heading"
+      }  
+    ],
+    "presets": [
+      {
+        "name": "Brand Logo With Text"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

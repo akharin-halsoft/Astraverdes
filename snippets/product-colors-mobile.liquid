@@ -1,0 +1,207 @@
+{%- assign colorGroups = product.metafields.colorgroups.gender.value | default: 'Men, Women'-%}
+
+{%- assign hasMenProducts = false -%}
+{%- assign hasWomenProducts = false -%}
+
+{% assign collectionProducts = false %}
+{% if collection and  collection.handle == "police-marathon-2024" %}
+
+ {% assign collectionProducts = collection.products | map: "id" %}
+{% endif %}
+
+{%- for _product in colorCollection -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _product %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+{%- if _product.id != product.id -%}
+
+{%- for _tag in _product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+{% if collectionProducts and collectionProducts contains _product.id %}
+
+  {%- if _tag == "M"  -%}
+
+{%- assign hasMenProducts = true -%}
+
+{%- endif -%}
+
+{%- if _tag == "W" -%}
+
+{%- assign hasWomenProducts = true -%}
+
+{%- endif -%}
+  
+{% else %}
+{%- if _tag == "M"  -%}
+
+{%- assign hasMenProducts = true -%}
+
+{%- endif -%}
+
+{%- if _tag == "W" -%}
+
+{%- assign hasWomenProducts = true -%}
+
+{%- endif -%}
+{%- endif -%}
+
+{%- endfor -%}
+
+{%- endif -%}
+
+{%- endfor -%}
+
+{%- assign colorGroupsArray = colorGroups | split: "," -%}
+<div class="main-gender-product-wrapper">
+  <div class="color-products-mobile custom-gender-product-wrapper">
+    {%- for colorGroup in colorGroupsArray -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: colorGroup %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+    {%- assign _colorGroup = colorGroup | capitalize  -%}
+    {%- assign _colorGroupDowncase = _colorGroup | downcase | strip  -%}
+
+    {%- assign _gender = false -%}
+    
+    {%- if _colorGroupDowncase == "men" or _colorGroupDowncase == "mens" -%}
+    
+     {%- assign _gender = "men" -%}
+    
+    {%- endif -%}
+    
+    {%- if _colorGroupDowncase == "women" or _colorGroupDowncase == "womens" -%}
+
+    {%- assign _gender = "women" -%}
+
+    {%- endif -%}
+
+    {%- if _gender -%}
+    
+    {%- assign _colorGroupHandle = _colorGroup | handle -%}
+      {%- assign _current_tags = current_tags | join: "," | downcase -%}
+      
+    {%- assign showGroup = true -%}
+    {%- assign hasGenderCollection = false -%}
+    
+    {%- if _current_tags contains "men" or _current_tags contains "women" -%}
+    
+    {%- assign showGroup = false -%}
+    
+    {%- for _current_tag in current_tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _current_tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    
+    {%- assign _downcaseCurrentTag = _current_tag | downcase -%}
+    
+    {%- if _downcaseCurrentTag == _colorGroupHandle -%}
+    
+    {%- assign showGroup = true -%}
+    {%- break -%}
+    
+    {%- endif -%}
+     
+    {%- endfor -%}
+    {%- endif -%}
+    
+    {%- unless is_collection -%}
+    
+    {%- assign showGroup = true -%}
+    
+    {%- endunless -%}
+    
+    {%- if showGroup -%}
+
+        {%- if _gender == "men" and hasMenProducts -%}
+
+        {%- for _product in colorCollection -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _product %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+            {% assign showProductColor = true %}
+
+        {% if collectionProducts %}
+
+          {% unless collectionProducts contains _product.id %}
+              {% assign showProductColor = false %}
+          {% endunless %}
+        {% endif %}
+        {%- if _product.tags contains "Men" and showProductColor -%}
+
+        <div data-product-id="{{_product.id}}" data-product-color-mobile data-product-url="{{_product.url}}" class="{{ _gender | handle }} {% if _product.id == product.id -%} active-product{% endif %} product-image-wrapper">
+
+          <img src="{{_product.featured_image | img_url: 'master'}}" alt="{{_product.title}}" />
+
+        </div>
+
+        {%- endif -%}
+        
+        {%- endfor -%}
+
+        {%- endif -%}
+
+        {%- if _gender == "women" and hasWomenProducts -%}
+
+        {%- for _product in colorCollection -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: _product %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+                  {% assign showProductColor = true %}
+
+        {% if collectionProducts %}
+
+          {% unless collectionProducts contains _product.id %}
+              {% assign showProductColor = false %}
+          {% endunless %}
+        {% endif %}
+        {%- if _product.tags contains "Women" and showProductColor -%}
+
+        <div data-product-id="{{_product.id}}" data-product-color-mobile data-product-url="{{_product.url}}" class="{% if _product.id == product.id -%} active-product{% endif %} product-image-wrapper">
+
+          <img src="{{_product.featured_image | img_url: 'master'}}" alt="{{_product.title}}" />
+
+        </div>
+
+        {%- endif -%}
+        
+        {%- endfor -%}
+
+        {%- endif -%}
+    
+    {%- endif -%}
+    {%- endif -%}
+
+    {%- endfor -%}
+  </div>
+</div>

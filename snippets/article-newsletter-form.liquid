@@ -1,0 +1,55 @@
+<h2>{{ 'customer.article-newsletter.form_upper_content' | t }}</h2>
+<br>
+{% form 'customer' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+        <p class="note form-success">Thank you for participating in our contest!</p>
+      {% endif %}
+
+    <div class="field">
+
+      <label for="Gender" class="label--hidden">{{ 'customer.article-newsletter.shopping_for' | t }}</label>
+
+      <div class="custom-select">
+      <select aria-label="Gender" id="Gender" name="contact[gender]" class="field__input field__input--select is-placeholder">
+        <option disabled="" selected="" value="">Select...</option>
+        <option value="none">- Please Select -</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="both">Unisex</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Email" class="label--hidden">{{ 'customer.article-newsletter.email' | t }}</label>
+      <input type="email" name="contact[email]" id="Email" placeholder="{{ 'customer.article-newsletter.email' | t }}" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="field">
+      <label for="FirstName" class="label--hidden">{{ 'customer.article-newsletter.first_name' | t }}</label>
+      <input type="text" name="contact[first_name]" id="FirstName" placeholder="{{ 'customer.article-newsletter.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words">
+    </div>
+    <div class="field">
+      <label for="LastName" class="label--hidden">{{ 'customer.article-newsletter.last_name' | t }}</label>
+      <input type="text" name="contact[last_name]" id="LastName" placeholder="{{ 'customer.article-newsletter.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+    </div>
+
+      {%- comment -%}
+      <label for="CreateTags" class="label--hidden">Tags</label>
+      <input type="hidden" name="contact[tags]" id="CreateTag2" value="This Contest Only">
+
+      <div id="accept" class="clearfix inputrow">
+        <label for="accepts_marketing" class="login">Mailing List?</label>
+        <input type="hidden" name="contact[accepts_marketing]" value="false" />
+        <input type="checkbox" name="contact[accepts_marketing]" id="accepts_marketing" class="{% if form.errors contains 'email' %} error{% endif %}" value="true" checked />
+        Subscribe to stay updated with new products and offers!
+      </div>     
+      {%- endcomment -%}
+      <div class="field form_text">
+        {{ 'customer.article-newsletter.newsletter_text' | t }} <a href="{{ 'customer.article-newsletter.newsletter_link' | t }}">{{ 'customer.article-newsletter.newsletter_link_text' | t }}</a>
+        	
+      </div>
+		<button type="submit" >{{ 'customer.article-newsletter.button_text' | t }}</button>
+      
+		
+    {% endform %}

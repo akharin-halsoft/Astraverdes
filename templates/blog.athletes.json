@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "athletes-blog",
+      "settings": {
+        "athletes_menu": "athletes-menu",
+        "show_blog_title": false,
+        "layout": "collage",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": false,
+        "show_author": false,
+        "bottom_text_title": "Meet On Athletes",
+        "bottom_text_subtitle": "Elite athletes all over the world are running on Clouds",
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "athletes-article": {
+      "type": "athletes-article",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": false,
+            "blog_show_author": false
+          }
+        },
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        },
+        "9178f5e0-e5b0-4c95-b1e9-59f37ba5ef0c": {
+          "type": "featured_top",
+          "settings": {
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "featured_image",
+        "9178f5e0-e5b0-4c95-b1e9-59f37ba5ef0c",
+        "content"
+      ],
+      "settings": {
+      }
+    },
+    "article-products": {
+      "type": "article-products",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "article-newsletter-form": {
+      "type": "article-newsletter-form",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "article-tag": {
+      "type": "article-tag",
+      "settings": {
+      }
+    },
+    "author-related-articles": {
+      "type": "author-related-articles",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "athletes-article",
+    "article-products",
+    "article-newsletter-form",
+    "article-tag",
+    "author-related-articles"
+  ]
+}

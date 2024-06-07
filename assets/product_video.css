@@ -1,0 +1,214 @@
+.section-product-video-wrapper {
+  position: relative;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  opacity: 0;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.lightbox:target {
+  outline: none;
+  display: block;
+}
+
+.videoModal {
+  border-radius: 0;
+  width: 100%;
+  margin:auto;
+  height: 100%;
+}
+
+.videoModal .modal-body {
+  height: 100%;
+  padding: 0;
+  max-height: none;
+  overflow: hidden;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+}
+
+.videoModal .modal-body iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.videoModal .modal-footer:empty {
+  display: none !important;
+}
+
+.videoModal .modal-header {
+  border: 0;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: auto;
+  z-index: 1;
+}
+
+.videoModal .modal-header button.close {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 20px;
+  font-size: 0;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.videoModal .modal-header button.close:before {
+  content: "\e603";
+  font-size: 16px;
+}
+
+.section-product-video-wrapper .poster-image {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  vertical-align: bottom;
+  max-height: 999px;
+  height: 640px;
+}
+
+
+.section-product-video-wrapper .img_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-product-video-wrapper .img_video .play_button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.play_button .media-caption__play-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 0 0 15px;
+  font-size: 50px;
+  color: #fff;
+}
+
+.play_button .media-caption__play-button .icon-play_default, .play_button .media-caption__play-button .icon-play_hover {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: opacity .1s;
+  transition: opacity .1s;
+}
+
+.play_button .media-caption__play-button .icon-play_default:before {
+  content: "\e947";
+}
+
+.play_button .media-caption__play-button .icon-play_hover:before {
+  content: "\e948";
+}
+
+.play_button .media-caption__play-button .icon-play_hover {
+  opacity: 0;
+}
+
+.play_button .media-caption__play-button .icon-play_default {
+  opacity: 1;
+}
+
+.play_button .media-caption__play-button:hover {
+  cursor: pointer;
+  opacity: .75;
+}
+
+.play_button .media-caption__play-button:hover .icon-play_default {
+  opacity: 0;
+}
+
+.play_button .media-caption__play-button:hover .icon-play_hover {
+  opacity: 1;
+}
+
+body.show_video_popup {
+	overflow:hidden;
+}
+
+.show_video_popup .lightbox {
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+}
+
+
+@media  (min-width: 350px) {
+  .section-product-video-wrapper .poster-image {
+    height: 550px;
+  }
+}
+
+@media (max-width: 799px) and (min-height: 600px), (min-width: 800px) {
+  .section-product-video-wrapper .poster-image {
+    height: 100vh;
+  }
+}
+
+@media (min-width:800px) {
+  .play_button .media-caption__play-button {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 32px;
+    font-size: 80px;
+  }
+}
+
+
+@media  (min-width: 950px) {
+  .section-product-video-wrapper .poster-image {
+    height: calc(100vh - 78px);
+  }
+}

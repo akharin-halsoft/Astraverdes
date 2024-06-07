@@ -1,0 +1,729 @@
+/* .blog-articles {
+  display: grid;
+  grid-gap: 1rem;
+  column-gap: var(--grid-mobile-horizontal-spacing);
+  row-gap: var(--grid-mobile-vertical-spacing);
+}
+ */
+/* .blog-articles .card-wrapper {
+  width: 100%;
+}
+ */
+/* @media screen and (min-width: 750px) {
+  .blog-articles {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--grid-desktop-horizontal-spacing);
+    row-gap: var(--grid-desktop-vertical-spacing); 
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1),
+  .blog-articles--collage > *:nth-child(3n + 2):last-child {
+    grid-column: span 2;
+    text-align: center;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .card,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .card {
+    text-align: center;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--small .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--small .ratio::before {
+    padding-bottom: 22rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--medium .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--medium .ratio::before {
+    padding-bottom: 44rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--large .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--large .ratio::before {
+    padding-bottom: 66rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--small .ratio .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--small .ratio .ratio::before {
+    padding-bottom: 27.5rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--medium .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--medium .ratio::before {
+    padding-bottom: 55rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--large .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--large .ratio::before {
+    padding-bottom: 82.5rem;
+  }
+}
+
+
+ */
+
+.template-blog .footer {
+  margin-top: 0;
+}
+
+.main-blog {
+  background-color: #f7f7f7;
+}
+
+.template-blog .tag-filter-container {
+  display: none;
+  position: relative;
+}
+
+.template-blog.template-blog-athletes .tag-filter-container {
+    display: block;
+}
+
+.template-blog .tag-filter-container .tag-filters {
+  background: #46494e;
+  padding: 20px 20px 0;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  font-size: 0;
+}
+
+.template-blog .tag-filter-container .tag-filters > .tag-filters__item {
+  display: inline-block;
+  padding-bottom: 20px;
+  line-height: normal;
+}
+
+.template-blog .tag-filter-container .tag-filters > .tag-filters__item > a {
+  color: #999;
+  padding: 10px 5px;
+  position: relative;
+  text-decoration: none;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: normal;
+  outline: 0;
+}
+
+.template-blog .tag-filter-container .tag-filters > .tag-filters__item > a:hover {
+  color: #ffffff;
+}
+
+.template-blog .tag-filter-container .tag-filters > .tag-filters__item.active > a {
+  color: #36dfb5;
+  position: relative;
+}
+
+.template-blog .tag-filter-container .tag-filters > .tag-filters__item.active > a:after {
+  bottom: 0;
+  content: '•';
+  display: block;
+  font-size: 100%;
+  left: 0;
+  line-height: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.main-blog-inner.page-width {
+  max-width: 1230px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.main-blog .blog-articles .blog-articles__article {
+  vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  float: left;
+  display: unset;
+}
+
+/* .main-blog .main-blog-inner .blog-articles {
+  margin-left: -20px;
+}
+ */
+.main-blog .blog-articles .blog-articles__article .article-card .card__content.first-child {
+  display: none;
+}
+
+.
+.main-blog .main-blog-inner .blog-articles .card__content {
+    display: block;
+    min-height: auto;
+}
+
+.main-blog .main-blog-inner .blog-articles .card__content.first-child .card__information {
+  padding: 16px;
+  text-align: left;
+  color: #333;
+  margin: 20px auto 0;
+}
+
+.main-blog .main-blog-inner .blog-articles .card__content.first-child .card__information .card__heading {
+  margin: 0;
+  padding: 0.5em 0;
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
+  color: #333;
+}
+
+.main-blog .main-blog-inner .blog-articles .card__content.first-child .card__information .article-card__excerpt_outer {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding: 0.5em 0;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  color: #777;
+  transition: color 0.4s;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.main-blog .main-blog-inner .blog-articles .card__content.first-child .card__information .article-card__excerpt_outer .article-feature__text-keyline {
+    display: block;
+    position: absolute;
+    top: -12px;
+    right: 0;
+    left: 0;
+    border-top: 1px #333 solid;
+    transition: all 0.4s ease;
+}
+
+.main-blog .blog-articles .blog-articles__article .card-wrapper > .full-unstyled-link,
+.first_blog_post .card-wrapper > .full-unstyled-link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+
+
+.main-blog .main-blog-inner .blog-articles .blog-articles__article:hover .card__content.first-child  .card__information .article-card__excerpt_outer .article-feature__text-keyline {
+  right: 30px;
+  left: 30px;
+}
+
+.main-blog .main-blog-inner .blog-articles .card__content.main {
+    position: relative;
+    padding: 20px;
+    text-align: right;
+    background-color: #ffffff;
+}
+
+.blog-articles__article .card-wrapper .card--media .card__content .card__information > .card__heading {
+    padding: 0.5em 0;
+    font-family: "Neutraface Slab Book", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.1em;
+    color: #333;
+    letter-spacing: normal;
+}
+
+.blog-articles__article .card-wrapper .card--media .card__content .card__information .article-card__excerpt_outer {
+  position: relative;
+  margin: 15px 0 0;
+  padding: 0.5em 0;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.1em;
+  color: #999;
+  letter-spacing: normal;
+}
+
+.blog-articles__article .card-wrapper .card--media .card__content .card__information .article-card__excerpt_outer .article-feature__text-keyline {
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  opacity: 1;
+  background-color: #333;
+  transition: all 0.4s ease;
+}
+
+.blog-articles__article:hover .card-wrapper .card--media .card__content .card__information .article-card__excerpt_outer .article-feature__text-keyline {
+    right: 30px;
+    left: 30px;
+}
+
+.blog-articles__article:hover .card-wrapper .card--media .card__content .card__information .article-card__excerpt_outer {
+    color: #333;
+    transition: color 0.4s;
+}
+
+
+.first_blog_post .card-wrapper .card.article-card {
+  margin-bottom: 20px;
+}
+
+.first_blog_post .card-wrapper .card.article-card .card__content.main {
+  display: none;
+}
+
+.first_blog_post .card-wrapper .card.article-card .card__content {
+  min-height: auto;
+  display: block;
+}
+
+.first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+  padding: 16px;
+  text-align: left;
+  color: #333;
+  margin: 20px auto 0;
+}
+
+.first_blog_post .blog-articles__article {
+  width: 100%;
+  display: block;
+}
+
+.first_blog_post .card-wrapper .card.article-card .card__content .card__information .card__heading {
+  margin: 0;
+  padding: 0.5em 0;
+  font-family: Neutraface Slab Book,Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  color: #333;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.first_blog_post .card-wrapper .card.article-card .card__content .card__information .article-card__excerpt_outer {
+  line-height: normal;
+  margin-bottom: 10px;
+  transition: all .4s;
+}
+
+.card-wrapper .card.article-card .card__inner {
+  display: block;
+}
+
+.card-wrapper .card.article-card .card__inner::before, .card-wrapper .card.article-card .card__inner::after {
+  display: none;
+}
+
+.card-wrapper .card.article-card .card__inner .article-card__image-wrapper {
+  width: 100%;
+  margin: 0;
+  position: static;
+}
+
+.card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image {
+  position: static;
+}
+
+.card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image > img {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+
+.template-blog-athletes .blog-articles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -20px;
+  padding-bottom: 20px;
+  font-size: 0;
+}
+
+.template-blog-athletes .blog-articles .blog-articles__article {
+  float: none;
+  padding-top: 20px;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  white-space: normal;
+  width: 100%;
+  margin: 0;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.template-blog-athletes .card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image,
+.template-blog-teams .card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image {
+  font-size: 0;
+  background-size: cover;
+  background-position: center center;
+  height: 220px;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: opacity 0.4s ease, -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease, -webkit-transform 0.4s ease;
+  display: block;
+}
+
+.template-blog-athletes .first_blog_post .card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image {
+	height:auto;
+}
+
+.template-blog-athletes .blog-articles__article:hover .card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image,
+.template-blog-teams .blog-articles__article:hover .card-wrapper .card.article-card .card__inner .article-card__image-wrapper .article-card__image {
+  -webkit-transform: scale(1.04) translateZ(0);
+  transform: scale(1.04) translateZ(0);
+}
+
+
+.template-blog-athletes .card-wrapper .card--media>.card__content .card__information,
+.template-blog-temas .card-wrapper .card--media>.card__content .card__information {
+    padding: 0;
+}
+
+
+.athletes-content .athletes-content__title {
+  font-family: "Neutraface Slab Book", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: normal;
+  margin: 10px;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333;
+  text-align: center;
+}
+
+.athletes-content .athletes-content__text {
+  color: #999;
+  font-family: "HelveticaNow", Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  position: relative;
+  text-align: center;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.athletes-content .athletes-content__text .athletes-content__text-keyline {
+  border-top: 1px #999 solid;
+  left: 60px;
+  position: absolute;
+  right: 60px;
+  top: -20px;
+  transition: all 0.4s ease;
+  display: block;
+}
+
+.template-blog-athletes .card-wrapper .card--media>.card__content .card__information.with_athletes_position_title .article-card__excerpt_outer,
+.template-blog-teams .card-wrapper .card--media>.card__content .card__information.with_athletes_position_title .article-card__excerpt_outer {
+  display: none;
+}
+
+.athletes_position_wrapper {
+    color: #999;
+    font-family: "HelveticaNow", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.1em;
+    margin: 15px 0 0;
+    padding: 0.5em 0;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.blog-articles__article:hover .athletes_position_wrapper {
+  color: #333;
+  transition: color .4s;
+}
+
+.athletes_position_wrapper .athletes-summary__text-keyline {
+    background-color: #333;
+    content: '';
+    height: 1px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    transition: all 0.4s ease;
+    display: block;
+}
+
+.blog-articles__article:hover .athletes_position_wrapper .athletes-summary__text-keyline {
+    right: 30px;
+    left: 30px;
+}
+
+
+.athletes_position_wrapper img.athletes-summary__flag {
+  float: left;
+  height: 20px;
+  margin-bottom: 4px;
+  margin-right: 7px;
+  margin-top: -3px;
+  vertical-align: bottom;
+  width: 20px;
+  max-width: 100%;
+}
+
+.template-blog-athletes .main-blog .main-blog-inner .blog-articles .card__content.main {
+  min-height: auto;
+}
+
+.loader-ellips {
+  text-align: center;
+}
+
+.loader-ellips img {
+  width: 50px;
+  height: auto;
+}
+
+.template-blog-teams .main-blog .blog-articles .blog-articles__article {
+  padding-top: 20px;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  white-space: normal;
+  display: inline-block;
+  padding-left: 20px;
+  width: 100%;
+  float: none;
+  margin-bottom: 0;
+}
+
+.template-blog-teams .main-blog-inner.page-width.teams {
+  padding-bottom: 20px;
+}
+
+
+@media (max-width:949px) {
+  .template-blog .tag-filter-container {
+  	top:60px !important;
+  }
+  
+  .template-blog.teams .tag-filter-container {
+    display: block;
+  }
+  
+
+
+}
+
+
+@media (max-width:799px) {
+  .template-blog .tag-filter-container {
+    position: absolute !important;
+    width: 100%;
+  }
+
+  .main-blog {
+    margin-top: 22px;
+  }
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    width: 100% !important;
+}
+  
+  .template-blog.template-blog-athletes .tag-filter-container {
+    position: static !important;
+}
+
+  
+}
+
+@media (max-width:599px) {
+
+  .template-blog-teams  .main-blog {
+    margin-top: 74px;
+  }
+  
+    .template-blog-teams .main-blog-inner.page-width.teams {
+    padding-bottom: 0;
+  }
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    margin-top: 0;
+  }
+  
+  .template-blog .announcement-bar {
+    height: 0;
+  }
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content {
+    order: 2;
+}
+  
+  .main-blog {
+    margin-top: 0;
+  }
+  
+  .template-blog-teams .main-blog .blog-articles .blog-articles__article:last-of-type {
+    margin-bottom: 20px;
+}
+  
+}
+
+@media (min-width:450px) {
+  .template-blog-athletes .main-blog .blog-articles .blog-articles__article {
+    width: 50%;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .template-blog .tag-filter-container {
+    display: block;
+    position: relative;
+  }
+  
+  .main-blog .blog-articles .blog-articles__article,
+  .image-grid__col-sizer {
+    width: 49%;
+}
+  
+  .image-grid__col-sizer {
+  	display: block!important;
+  }
+  
+  .image-grid__gutter-sizer {
+    width: 2%;
+    display: block!important;
+}
+  
+  
+.first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    text-align: center;
+}
+  
+.first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    width: 65%;
+}
+
+  
+  .main-blog .main-blog-inner .blog-articles .card__content.first-child .card__information .article-card__excerpt_outer .article-feature__text-keyline {
+    top: -15px;
+    right: 60px;
+    left: 60px;
+}
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information .card__heading {
+    margin: 10px 0 0;
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information .article-feature__text-keyline {
+    top: -15px;
+    right: 60px;
+    left: 60px;
+}
+  
+  .template-blog-athletes .blog-articles.articles-teams .blog-articles__article {
+    width: 100%;
+}
+  
+  .template-blog-teams .main-blog .blog-articles .blog-articles__article {
+    width: 100%;
+}
+  
+  
+}
+
+@media (min-width: 800px) {
+  .template-blog .tag-filter-container {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 99;
+  }
+
+  .template-blog .tag-filter-container .tag-filters > .tag-filters__item > a {
+    padding: 10px 10px;
+  }
+
+  .main-blog .blog-articles .blog-articles__article,
+  .image-grid__col-sizer {
+    width: 32%;
+  }
+
+  .image-grid__col-sizer  {
+    display:block !important;
+  }
+
+  .image-grid__gutter-sizer {
+    width: 2%;
+    display:block !important;
+  }
+
+
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    width: 70%;
+  }
+
+  .template-blog-athletes .main-blog .blog-articles .blog-articles__article {
+    width: 25%;
+  }
+
+  .athletes-content .athletes-content__title {
+    font-size: 52px;
+  }
+
+
+  .athletes-content {
+    padding-top: 60px;
+  }
+  
+  .template-blog.teams .athletes-content {
+    padding-top: 19px;
+  }
+  
+  .template-blog-athletes .blog-articles.articles-teams .blog-articles__article {
+    width: 50%;
+}
+  
+  .main-blog .blog-articles .blog-articles__article,
+  .image-grid__col-sizer {
+    width: 32%;
+  }
+
+  .image-grid__col-sizer {
+    display: block!important;
+  }
+
+  .image-grid__gutter-sizer {
+    width: 2%;
+    display: block!important;
+  }
+  
+  .template-blog-teams .main-blog .blog-articles .blog-articles__article {
+    width: 50%;
+}
+  
+
+}
+
+@media (min-width: 950px) {
+  .template-blog .tag-filter-container .tag-filters > .tag-filters__item > a {
+    padding: 10px 20px;
+  }
+  
+  .first_blog_post .card-wrapper .card.article-card .card__content .card__information {
+    width: 540px;
+  }
+  
+}

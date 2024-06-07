@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "show_filter": true,
+        "tags": "מאמרים,טיפים לריצה, אירועים ופעילויות,סיפורי ספורטאים,קיימות",
+        "show_blog_title": false,
+        "layout": "collage",
+        "items_per_page": 4,
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": false,
+        "show_author": false,
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

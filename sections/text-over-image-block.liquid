@@ -1,0 +1,96 @@
+{{ 'text-over-image-block.css' | asset_url | stylesheet_tag }}
+<div class="cm-{{ section.id }}">
+  {%- if section.settings.section_title != blank -%}
+  <h2 class="section-title">{{ section.settings.section_title }}</h2>
+  {% endif %}
+  
+  <div class="blocks-wrapper">
+    {%- for block in section.blocks -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: block %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    <div class="category_slider_card">
+      <div class="category-slider">
+        {%- if block.settings.block_image != blank -%}
+        <div class="category-card__image" style="background-image:url('{{ block.settings.block_image | img_url: "master" }}')"></div>
+        {% else %}
+        <div class="category-card__image" style="background-color:{{ block.settings.block_color }}"></div>
+        {% endif %}
+        {%- if block.settings.block_title != blank -%}
+        <h3 class="category-card__title">{{ block.settings.block_title }}</h3>
+        {% endif %}
+         {%- if block.settings.block_link != blank -%}
+      <a href="{{ block.settings.block_link }}"></a>
+      {% endif %}
+      </div>
+     
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "t:sections.text-over-image-block.name",
+	"class": "custom-single-image-text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "default": "Section Title",
+        "label": "t:sections.text-over-image-block.settings.section_title.label"
+      }  
+	],
+    "blocks": [
+		{
+		"type": "text",
+		"name": "t:sections.text-over-image-block.blocks.text.name",
+		"settings": [
+			{
+              "type": "color",
+              "id": "block_color",
+			  "label": "t:sections.text-over-image-block.blocks.text.settings.block_color.label"
+            },
+            {
+              "type": "image_picker",
+              "id": "block_image",
+			  "label": "t:sections.text-over-image-block.blocks.text.settings.block_image.label",
+			  "info": "t:sections.text-over-image-block.blocks.text.settings.block_image.info"
+            },
+           {
+              "type": "text",
+              "id": "block_title",
+              "label": "t:sections.text-over-image-block.blocks.text.settings.block_title.label"
+            },
+   			{
+              "type": "url",
+              "id": "block_link",
+              "label": "t:sections.text-over-image-block.blocks.text.settings.block_link.label"
+            } 
+          ]
+		}
+	],
+	"presets": [
+      {
+        "name": "t:sections.text-over-image-block.presets.name",
+        "blocks": [
+          {
+            "type": "text"
+          }
+        ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

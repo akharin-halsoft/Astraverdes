@@ -1,0 +1,24 @@
+<div class="athletes_article_form_wrapper">
+  <h2>Follow {{ article.metafields.article.athletes_name }}</h2>
+  <div class="article_form_wrapper">
+    {%- if article.metafields.article.athletes_name -%}
+    <h2 >Follow {{ article.metafields.article.athletes_name }} {{ 'customer.article-newsletter.form_upper_content' | t }}</h2>
+    {%- endif -%}
+
+
+    {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+    <p class="note form-success">Thank you for participating in our contest!</p>
+    {% endif %}
+
+    <div class="field">
+      <label for="Email" class="label--hidden">{{ 'customer.article-newsletter.email' | t }}</label>
+      <input type="email" name="contact[email]" id="Email" placeholder="{{ 'customer.article-newsletter.email' | t }}" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+    </div>   
+
+    <button type="submit" >Sign up</button>
+
+    {% endform %}
+  </div>
+</div>

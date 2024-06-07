@@ -1,0 +1,84 @@
+{
+  "sections": {
+    "d7db7b6b-18ea-48a8-a604-f0f02ee23353": {
+      "type": "block-collection-list",
+      "blocks": {
+        "06ab3b8e-332d-48ec-be67-97a71046cdfa": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_3_92fd2221-07a3-4ce8-82b4-3b3e0c5e20fc.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/the-roger-collaction"
+          }
+        },
+        "95afda7e-f337-4b53-809d-a1d68e72980a": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_2_c33011be-512d-48ed-b5f0-6915a690d9c9.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/new-arrivel"
+          }
+        },
+        "63b16c56-7908-41b8-a6c7-5fcb230c1e5b": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_5_243d1920-b445-4702-933b-1c83ff17f003.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/last-chance"
+          }
+        },
+        "20629dc0-fdb8-4f9c-8e7f-34fd85672b2d": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_4_83258517-e3b6-45c7-a111-df5343e4ab98.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/cloud-collection"
+          }
+        },
+        "361ee573-2130-4054-9d1c-34d1b9b564f6": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_copy_b10f0159-7e1e-47e0-a807-4860bd2b53ae.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/men-shoes-running"
+          }
+        },
+        "957019c7-86ad-43c3-beae-7d480873798b": {
+          "type": "text",
+          "settings": {
+            "block_color": "",
+            "block_image": "shopify:\/\/shop_images\/127173_11ede397-bccd-4555-b01a-b0739c55de80.jpg",
+            "block_title": "",
+            "block_link": "shopify:\/\/collections\/men-apparel"
+          }
+        },
+        "92980121-a884-46e0-9357-75d6e945f6ff": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "06ab3b8e-332d-48ec-be67-97a71046cdfa",
+        "95afda7e-f337-4b53-809d-a1d68e72980a",
+        "63b16c56-7908-41b8-a6c7-5fcb230c1e5b",
+        "20629dc0-fdb8-4f9c-8e7f-34fd85672b2d",
+        "361ee573-2130-4054-9d1c-34d1b9b564f6",
+        "957019c7-86ad-43c3-beae-7d480873798b",
+        "92980121-a884-46e0-9357-75d6e945f6ff"
+      ],
+      "settings": {
+        "section_title": "רשימת אוסף גברים"
+      }
+    }
+  },
+  "order": [
+    "d7db7b6b-18ea-48a8-a604-f0f02ee23353"
+  ]
+}

@@ -1,0 +1,95 @@
+{% assign offersCount = 0 %}
+{%- if settings.cart_show_free_shipping_threshold and settings.cart_free_shipping_threshold != '' -%}
+{% assign offersCount = 1 %}
+{%- assign free_shipping_thresholds = settings.cart_free_shipping_threshold | remove: ' ' | split: ',' -%}
+{%- assign has_found_matching_threshold = false -%}
+
+{%- if free_shipping_thresholds.size > 1 -%}
+{%- for threshold in free_shipping_thresholds -%}
+{%- assign threshold_parts = threshold | split: ':' -%}
+{%- assign currency_code = threshold_parts | first | upcase -%}
+
+{%- if currency_code == cart.currency.iso_code -%}
+{%- assign free_shipping_calculated_threshold = threshold_parts | last -%}
+{%- assign has_found_matching_threshold = true -%}
+{%- break -%}
+{%- endif -%}
+{%- endfor -%}
+{%- else -%}
+{%- assign free_shipping_calculated_threshold = free_shipping_thresholds | last -%}
+{%- assign has_found_matching_threshold = true -%}
+{%- endif -%}
+
+{%- assign threshold_in_cents = free_shipping_calculated_threshold | times: 100 -%}
+{%- assign cart_threshold_in_cents = threshold_in_cents -%}
+
+{%- assign vipCustomer = false -%}
+{% if customer.tags contains "vip gold" or customer.tags contains "vip silver" %}
+{%- assign vipCustomer = true -%}
+{% endif %}
+{%- assign showFreeProducts = true -%}
+{%- if settings.allow_only_vip_customers -%}
+{%- assign showFreeProducts = false -%}
+{%- if vipCustomer -%}
+{%- assign showFreeProducts = true -%}
+{%- endif -%}
+{%- endif -%}
+
+{% assign hasYards = false %} 
+{% for line_item in cart.items %}
+{% assign productUnit = line_item.product.metafields.unit.the-unit -%}      
+{% assign line_item_title = line_item.title | downcase %}
+{% unless line_item_title contains "swatch" %}
+{% if line_item_title contains 'yard' or productUnit contains 'yard'  %}
+{% assign hasYards = true %}
+{% break %}
+{% endif %}
+{% endunless %}
+{% endfor %}
+  
+{% assign progressBarMessage = "" %}
+{%  if showFreeProducts %}
+
+
+{%- if cart.total_price >= threshold_in_cents -%}
+{% assign freeOfferTiers = freeOfferTiers | append: "|"  | append: "free shipping" %}
+   {% else %}
+     
+  {%- assign remaining_amount =  cart.total_price | minus: threshold_in_cents | abs | money -%}
+    {% unless offerUnlockMessage %} 
+  {% assign offerUnlockMessage = "<b>Spend "  | append: remaining_amount | append: "</b> more to unlock free shipping!" %}
+  {%  endunless %}
+   {% endif %} 
+
+{%- capture remaining_amount -%}{{ cart.total_price | minus: threshold_in_cents | abs | money }}{%- endcapture -%}
+{%- if cart.total_price >= threshold_in_cents -%}
+{% assign progressBarMessage =  'cart.general.free_shipping' | t %}
+{%- else -%}
+{% assign progressBarMessage = 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount %}
+{% endif %} 
+{% endif %}
+
+{% endif %}
+
+{%- if settings.cart_show_free_shipping_threshold and settings.cart_free_shipping_threshold != '' -%}
+				
+
+				{%- if has_found_matching_threshold -%}
+					
+                    {%  assign progress = cart.total_price | times: 1.0 | divided_by: cart_threshold_in_cents | at_most: 1  %}
+					<free-shipping-bar threshold="{{ cart_threshold_in_cents }}" class="{%  if showFreeProducts %}shipping-bar-sale {%  endif %}shipping-bar {% if progress == 1 %} completed {%  endif %}" style="--progress: {{ progress }}">
+
+                  <span class="shipping-bar__text text--small">You are eligible for free shipping!{% comment %}{{ progressBarMessage }}{% endcomment %}</span>
+                  <span class="shipping-bar__subheading text--small unlock-rewards">{{ offerUnlockMessage }}</span>
+					</free-shipping-bar>
+				{%- endif -%}
+			{%- endif -%}
+ 
+ <div class="cart_shipping">
+  <span class="order_text">
+    משלוח
+  </span>
+  <span class="order_amount">
+    חינם
+  </span>
+</div>

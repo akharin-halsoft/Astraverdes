@@ -1,0 +1,586 @@
+{
+  "current": {
+    "colors_solid_button_labels": "#ffffff",
+    "colors_accent_1": "#334fb4",
+    "gradient_accent_1": "",
+    "colors_accent_2": "#334fb4",
+    "gradient_accent_2": "",
+    "colors_text": "#000000",
+    "colors_outline_button_labels": "#121212",
+    "colors_background_1": "#ffffff",
+    "gradient_background_1": "",
+    "colors_background_2": "#f7f7f7",
+    "gradient_background_2": "",
+    "type_header_font": "assistant_n4",
+    "heading_scale": 135,
+    "type_body_font": "serif",
+    "body_scale": 130,
+    "page_width": 1000,
+    "spacing_sections": 32,
+    "spacing_grid_horizontal": 8,
+    "spacing_grid_vertical": 8,
+    "buttons_border_thickness": 1,
+    "buttons_border_opacity": 100,
+    "buttons_radius": 0,
+    "buttons_shadow_opacity": 0,
+    "buttons_shadow_horizontal_offset": 0,
+    "buttons_shadow_vertical_offset": 4,
+    "buttons_shadow_blur": 5,
+    "variant_pills_border_thickness": 1,
+    "variant_pills_border_opacity": 55,
+    "variant_pills_radius": 40,
+    "variant_pills_shadow_opacity": 0,
+    "variant_pills_shadow_horizontal_offset": 0,
+    "variant_pills_shadow_vertical_offset": 4,
+    "variant_pills_shadow_blur": 5,
+    "show_vendor": false,
+    "inputs_border_thickness": 1,
+    "inputs_border_opacity": 55,
+    "inputs_radius": 0,
+    "inputs_shadow_opacity": 0,
+    "inputs_shadow_horizontal_offset": 0,
+    "inputs_shadow_vertical_offset": 4,
+    "inputs_shadow_blur": 5,
+    "card_style": "standard",
+    "card_image_padding": 0,
+    "card_text_alignment": "left",
+    "card_color_scheme": "background-2",
+    "card_border_thickness": 0,
+    "card_border_opacity": 10,
+    "card_corner_radius": 0,
+    "card_shadow_opacity": 0,
+    "card_shadow_horizontal_offset": 0,
+    "card_shadow_vertical_offset": 4,
+    "card_shadow_blur": 5,
+    "text_boxes_border_thickness": 0,
+    "text_boxes_border_opacity": 10,
+    "text_boxes_radius": 0,
+    "text_boxes_shadow_opacity": 0,
+    "text_boxes_shadow_horizontal_offset": 0,
+    "text_boxes_shadow_vertical_offset": 4,
+    "text_boxes_shadow_blur": 5,
+    "media_border_thickness": 1,
+    "media_border_opacity": 5,
+    "media_radius": 0,
+    "media_shadow_opacity": 0,
+    "media_shadow_horizontal_offset": 0,
+    "media_shadow_vertical_offset": 4,
+    "media_shadow_blur": 5,
+    "popup_border_thickness": 1,
+    "popup_border_opacity": 10,
+    "popup_corner_radius": 0,
+    "popup_shadow_opacity": 0,
+    "popup_shadow_horizontal_offset": 0,
+    "popup_shadow_vertical_offset": 4,
+    "popup_shadow_blur": 5,
+    "drawer_border_thickness": 1,
+    "drawer_border_opacity": 10,
+    "drawer_shadow_opacity": 0,
+    "drawer_shadow_horizontal_offset": 0,
+    "drawer_shadow_vertical_offset": 4,
+    "drawer_shadow_blur": 5,
+    "badge_position": "top left",
+    "badge_corner_radius": 40,
+    "sale_badge_color_scheme": "accent-2",
+    "sold_out_badge_color_scheme": "inverse",
+    "accent_icons": "text",
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/ingsport.co.il",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/on-ag\/mycompany\/",
+    "social_strava_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/orp_israel\/",
+    "social_tiktok_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/On-Running",
+    "social_vimeo_link": "",
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "link_heading_text": "Recent Searches:",
+    "button_1": "Cloudswift",
+    "button_1_link": "#",
+    "button_2": "Waterproof",
+    "button_2_link": "#",
+    "button_3": "Long-T",
+    "button_3_link": "#",
+    "currency_code_enabled": true,
+    "cart_type": "drawer",
+    "cart_free_shipping_threshold": "300",
+    "checkout_logo_image": "shopify:\/\/shop_images\/ing_logo_NEW.png",
+    "cart_show_free_shipping_threshold": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "רוצים להינות ממבצעים והטבות מיוחדות? הירשמו עכשיו בכפתור ההרשמה ותתחילו להנות מהטבות כבר בקניה הקרובה!",
+              "color_scheme": "accent-2",
+              "link": "https:\/\/ingsport.co.il\/account\/login"
+            }
+          },
+          "4ccf1ce2-7ede-4ca3-9ea3-79c7473a203f": {
+            "type": "announcement",
+            "settings": {
+              "text": "משלוח חינם ברכישה מעל 300 ש\"ח",
+              "color_scheme": "inverse",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0",
+          "4ccf1ce2-7ede-4ca3-9ea3-79c7473a203f"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "a7163164-64c1-4a81-8149-f4a5868c0c31": {
+            "type": "text",
+            "settings": {
+              "menu_title": "גברים",
+              "mega_menu": "link-list-3",
+              "menu_bottom_text": "",
+              "menu_image": "shopify:\/\/shop_images\/83677a03dac4bacea50153b3ea01d6c1.jpg",
+              "menu_image_title": "",
+              "menu_image_button_text": "Men",
+              "menu_image_button_link": "\/pages\/men"
+            }
+          },
+          "b35dfa08-1413-4446-aa4b-50e6e25fad25": {
+            "type": "text",
+            "settings": {
+              "menu_title": "נשים",
+              "mega_menu": "link-list-4",
+              "menu_bottom_text": "",
+              "menu_image": "shopify:\/\/shop_images\/bd85e3a34f019c1c34a908d784b8c531.jpg",
+              "menu_image_title": "",
+              "menu_image_button_text": "Women",
+              "menu_image_button_link": "\/pages\/women"
+            }
+          },
+          "text_6U4i3A": {
+            "type": "text",
+            "settings": {
+              "menu_title": "המותגים שלנו",
+              "mega_menu": "link-list-5",
+              "menu_bottom_text": "",
+              "menu_image_title": "",
+              "menu_image_button_text": "",
+              "menu_image_button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "a7163164-64c1-4a81-8149-f4a5868c0c31",
+          "b35dfa08-1413-4446-aa4b-50e6e25fad25",
+          "text_6U4i3A"
+        ],
+        "settings": {
+          "header_width": "full-width",
+          "color_scheme": "accent-2",
+          "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 27.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"130px\" height=\"52px\" viewbox=\"0 0 130 52\" style=\"enable-background:new 0 0 130 52;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<style type=\"text\/css\">\n\t.st0{fill:#44515B;}\n<\/style>\n<g>\n\t<rect x=\"49.8\" y=\"6.9\" class=\"st0\" width=\"4.7\" height=\"37.7\"><\/rect>\n\t<rect x=\"37.9\" y=\"6.9\" class=\"st0\" width=\"9.2\" height=\"37.7\"><\/rect>\n\t<rect x=\"21.4\" y=\"6.9\" class=\"st0\" width=\"13.8\" height=\"37.7\"><\/rect>\n\t<rect x=\"0.3\" y=\"6.9\" class=\"st0\" width=\"18.4\" height=\"37.7\"><\/rect>\n\t<polygon class=\"st0\" points=\"61.8,15 61.8,44.6 57.1,44.6 57.1,6.9 61.4,6.9 83.3,36.7 83.3,6.9 88.1,6.9 88.1,44.6 83.8,44.6 \t\"><\/polygon>\n\t<path class=\"st0\" d=\"M130,25.3v0.4c0,10.8-8.8,19.7-19.7,19.7c-10.8,0-19.7-8.8-19.7-19.7c0-10.8,8.8-19.7,19.7-19.7\n\t\tc8.5,0,15.8,5.5,18.5,13h-5c-2.3-5.2-7.3-8.9-13.5-8.9c-8.5,0-14.9,6.9-14.9,15.5c0,8.5,6.4,15.5,14.9,15.5c7.2,0,12.9-5,14.5-11.7\n\t\th-15.3v-4.2H130z\"><\/path>\n<\/g>\n<\/svg>",
+          "logo_width": 180,
+          "logo_position": "middle-left",
+          "menu": "muly-brand-ing",
+          "mobile_menu": "mobile-muly-brand-ing",
+          "show_line_separator": true,
+          "enable_sticky_header": true,
+          "margin_bottom": 0,
+          "single_menu_title": "",
+          "single_menu_title_link": "shopify:\/\/pages\/store-locator"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "עזרה",
+              "menu": "footer"
+            }
+          },
+          "footer-1": {
+            "type": "link_list",
+            "settings": {
+              "heading": "אודות החברה",
+              "menu": "about-on-menu"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1"
+        ],
+        "settings": {
+          "color_scheme": "background-2",
+          "newsletter_enable": true,
+          "newsletter_heading": "Keep in touch, הרשמו לקהילת ING  וקבלו מידע על מבצעים והשקות",
+          "newsletter_sub_heading": "הפרטים שנאספו אודותי ו\/או שאמסור אגב רכישה בחנויות ו\/או שימוש באתר,יישמרו וישמשו בהתאם לתקנון האתר ו למדיניות הפרטיות",
+          "show_social": true,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": false,
+          "footer_bottom_menu": "footer-bottom-menu",
+          "margin_top": 48,
+          "padding_top": 96,
+          "padding_bottom": 88,
+          "footer_mobile_top_menu": ""
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo_max_width": 100,
+          "color_scheme": "background-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+      "mini-cart": {
+        "type": "mini-cart",
+        "blocks": {
+          "5b90da07-89a6-4b81-aec4-1622bd7540f1": {
+            "type": "empty_cart_button",
+            "settings": {
+              "button_label": "כל המוצרים",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          },
+          "fabd420a-8a28-4d38-8671-9605e8657500": {
+            "type": "empty_cart_button",
+            "settings": {
+              "button_label": "גברים",
+              "button_link": "shopify:\/\/collections\/men"
+            }
+          },
+          "ca71bd9d-df00-48e1-bf57-10690228cdd6": {
+            "type": "empty_cart_button",
+            "settings": {
+              "button_label": "נשים",
+              "button_link": "shopify:\/\/collections\/women"
+            }
+          },
+          "0ba9a807-df28-4b93-a2cb-bb2682d6fb76": {
+            "type": "empty_cart_button",
+            "settings": {
+              "button_label": "The Roger",
+              "button_link": "shopify:\/\/collections\/the-roger-collaction"
+            }
+          },
+          "f00237ac-d321-4651-9b81-538a7ffd1e36": {
+            "type": "product",
+            "disabled": true,
+            "settings": {
+              "recommended_product": "copy-of-cloud-5-lily-frost"
+            }
+          }
+        },
+        "block_order": [
+          "5b90da07-89a6-4b81-aec4-1622bd7540f1",
+          "fabd420a-8a28-4d38-8671-9605e8657500",
+          "ca71bd9d-df00-48e1-bf57-10690228cdd6",
+          "0ba9a807-df28-4b93-a2cb-bb2682d6fb76",
+          "f00237ac-d321-4651-9b81-538a7ffd1e36"
+        ],
+        "settings": {
+          "delivery_notice": "הנחות המועדון יופיעו בדף התשלום",
+          "show_cart_note": true
+        }
+      },
+      "search_overlay": {
+        "type": "search_overlay",
+        "settings": {
+        }
+      },
+      "customer-club-footer": {
+        "type": "customer-club-footer",
+        "blocks": {
+          "b0d425a8-23ea-4996-ac5a-9b8a3b43b13d": {
+            "type": "icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/youtube.png",
+              "icon_url": "https:\/\/www.youtube.com\/On-Running"
+            }
+          },
+          "3c94ea91-283c-49e6-aa79-53d61e0d088a": {
+            "type": "icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/instagram.png",
+              "icon_url": "https:\/\/www.instagram.com\/orp_israel\/"
+            }
+          },
+          "cf4f1777-308e-473c-b6b9-31264b3a4b63": {
+            "type": "icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/fb.png",
+              "icon_url": "https:\/\/www.facebook.com\/ingsport.co.il"
+            }
+          },
+          "9c03d0a8-cbcc-42a2-ba18-1edd209c62f9": {
+            "type": "importer",
+            "settings": {
+              "importer_image": "shopify:\/\/shop_images\/on.png",
+              "importer_link": "https:\/\/ingsport.co.il\/"
+            }
+          },
+          "e0c0d5dd-2f69-4106-96ae-8ac6467cbced": {
+            "type": "importer",
+            "settings": {
+              "importer_image": "shopify:\/\/shop_images\/CAS_X_2.png",
+              "importer_link": ""
+            }
+          },
+          "19f8cb1d-337b-4e4d-ab22-6f57cc37734b": {
+            "type": "importer",
+            "settings": {
+              "importer_image": "shopify:\/\/shop_images\/tropic.png",
+              "importer_link": ""
+            }
+          },
+          "3c1eb2f2-ce2f-4cf8-8f0d-f5f06a537e3a": {
+            "type": "importer",
+            "settings": {
+              "importer_image": "shopify:\/\/shop_images\/cariuma-seeklogo_1.png",
+              "importer_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "b0d425a8-23ea-4996-ac5a-9b8a3b43b13d",
+          "3c94ea91-283c-49e6-aa79-53d61e0d088a",
+          "cf4f1777-308e-473c-b6b9-31264b3a4b63",
+          "9c03d0a8-cbcc-42a2-ba18-1edd209c62f9",
+          "e0c0d5dd-2f69-4106-96ae-8ac6467cbced",
+          "19f8cb1d-337b-4e4d-ab22-6f57cc37734b",
+          "3c1eb2f2-ce2f-4cf8-8f0d-f5f06a537e3a"
+        ],
+        "settings": {
+          "importer_title": "יבואן רשמי:"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "1551801274261955848": {
+        "type": "shopify:\/\/apps\/getbutton-whatsapp-fb-more\/blocks\/embed\/8496319f-de1e-4949-b0de-1602d715f2b0",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "18191747558052796": {
+        "type": "shopify:\/\/apps\/dcart-discount-in-cart\/blocks\/app-embed\/731e2611-8bdf-4514-b5e4-f64f1cae3fb7",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "bss-b2b-f879f2e8c75a": {
+        "type": "shopify:\/\/apps\/bss-b2b-wholesale-solution\/blocks\/config-header\/451233f2-9631-4c49-8b6f-057e4ebcde7f",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "colors_solid_button_labels": "#ffffff",
+      "colors_accent_1": "#121212",
+      "gradient_accent_1": "",
+      "colors_accent_2": "#334fb4",
+      "gradient_accent_2": "",
+      "colors_text": "#121212",
+      "colors_outline_button_labels": "#121212",
+      "colors_background_1": "#ffffff",
+      "gradient_background_1": "",
+      "colors_background_2": "#f3f3f3",
+      "gradient_background_2": "",
+      "type_header_font": "assistant_n4",
+      "heading_scale": 100,
+      "type_body_font": "assistant_n4",
+      "body_scale": 100,
+      "page_width": 1200,
+      "spacing_sections": 0,
+      "spacing_grid_horizontal": 8,
+      "spacing_grid_vertical": 8,
+      "buttons_border_thickness": 1,
+      "buttons_border_opacity": 100,
+      "buttons_radius": 0,
+      "buttons_shadow_opacity": 0,
+      "buttons_shadow_horizontal_offset": 0,
+      "buttons_shadow_vertical_offset": 4,
+      "buttons_shadow_blur": 5,
+      "variant_pills_border_thickness": 1,
+      "variant_pills_border_opacity": 55,
+      "variant_pills_radius": 40,
+      "variant_pills_shadow_opacity": 0,
+      "variant_pills_shadow_horizontal_offset": 0,
+      "variant_pills_shadow_vertical_offset": 4,
+      "variant_pills_shadow_blur": 5,
+      "inputs_border_thickness": 1,
+      "inputs_border_opacity": 55,
+      "inputs_radius": 0,
+      "inputs_shadow_opacity": 0,
+      "inputs_shadow_horizontal_offset": 0,
+      "inputs_shadow_vertical_offset": 4,
+      "inputs_shadow_blur": 5,
+      "card_style": "standard",
+      "card_image_padding": 0,
+      "card_text_alignment": "left",
+      "card_color_scheme": "background-2",
+      "card_border_thickness": 0,
+      "card_border_opacity": 10,
+      "card_corner_radius": 0,
+      "card_shadow_opacity": 0,
+      "card_shadow_horizontal_offset": 0,
+      "card_shadow_vertical_offset": 4,
+      "card_shadow_blur": 5,
+      "text_boxes_border_thickness": 0,
+      "text_boxes_border_opacity": 10,
+      "text_boxes_radius": 0,
+      "text_boxes_shadow_opacity": 0,
+      "text_boxes_shadow_horizontal_offset": 0,
+      "text_boxes_shadow_vertical_offset": 4,
+      "text_boxes_shadow_blur": 5,
+      "media_border_thickness": 1,
+      "media_border_opacity": 5,
+      "media_radius": 0,
+      "media_shadow_opacity": 0,
+      "media_shadow_horizontal_offset": 0,
+      "media_shadow_vertical_offset": 4,
+      "media_shadow_blur": 5,
+      "popup_border_thickness": 1,
+      "popup_border_opacity": 10,
+      "popup_corner_radius": 0,
+      "popup_shadow_opacity": 0,
+      "popup_shadow_horizontal_offset": 0,
+      "popup_shadow_vertical_offset": 4,
+      "popup_shadow_blur": 5,
+      "drawer_border_thickness": 1,
+      "drawer_border_opacity": 10,
+      "drawer_shadow_opacity": 0,
+      "drawer_shadow_horizontal_offset": 0,
+      "drawer_shadow_vertical_offset": 4,
+      "drawer_shadow_blur": 5,
+      "badge_position": "bottom left",
+      "badge_corner_radius": 40,
+      "sale_badge_color_scheme": "accent-2",
+      "sold_out_badge_color_scheme": "inverse",
+      "accent_icons": "text",
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tiktok_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "predictive_search_enabled": true,
+      "predictive_search_show_vendor": false,
+      "predictive_search_show_price": false,
+      "currency_code_enabled": true,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "text": "Welcome to our store",
+                "color_scheme": "background-1",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "color_scheme": "background-1",
+            "logo_width": 90,
+            "logo_position": "middle-left",
+            "menu": "main-menu",
+            "show_line_separator": true,
+            "enable_sticky_header": true,
+            "margin_bottom": 0
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "link_list",
+              "settings": {
+                "heading": "Quick links",
+                "menu": "footer"
+              }
+            },
+            "footer-1": {
+              "type": "link_list",
+              "settings": {
+                "heading": "Info",
+                "menu": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "text",
+              "settings": {
+                "heading": "Our mission",
+                "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
+          ],
+          "settings": {
+            "color_scheme": "background-1",
+            "newsletter_enable": true,
+            "newsletter_heading": "Subscribe to our emails",
+            "show_social": true,
+            "enable_country_selector": false,
+            "enable_language_selector": false,
+            "payment_enable": true,
+            "margin_top": 48,
+            "padding_top": 36,
+            "padding_bottom": 36
+          }
+        },
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo_max_width": 100,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="article__content article-tags">
+  <div class="article-tags__label"> Tags: </div>
+  <div class="article-tags__container">
+    {% for tag in article.tags %}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+    <a href="{{ tag.url }}/blogs/{{ tag | handle }}" class="article-tags__tag">{{ tag }}</a>                
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Article Tag",
+	"class": "article-template__content",
+    "settings": []
+  }
+{% endschema %}

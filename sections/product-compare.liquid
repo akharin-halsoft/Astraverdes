@@ -1,0 +1,98 @@
+
+{%- assign colorsetCollection = false -%}
+
+{%- for tag in product.tags -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop Start {%- endcomment -%}
+{%- capture hide_resource -%}{% render "wc_product_visibility", resource: tag %}{%- endcapture -%}
+{%- if hide_resource == "true" -%}
+  {% continue %}
+{%- endif -%}
+{%- comment -%} Wholesale_Club_Product_Visibility_For_Loop End {%- endcomment -%}
+
+
+
+{%- if tag contains 'ColorSet:' -%}
+
+{%- assign productCardTitle = product.title | split: "-" | first -%}
+{%- assign colorsetCollectionTitle = tag | split: "ColorSet:" | last | strip | handle -%}
+{%- assign colorsetCollection = collections[colorsetCollectionTitle ] -%}
+
+{%- break -%}
+{%- endif -%}
+
+{%- endfor -%}
+
+<div class="product-compare-section">
+  
+  <div class="product-compare-top_bar">
+
+    {%-if section.settings.title != blank -%}
+    <h3 class="specs__headline">{{section.settings.title}}</h3>
+    {%- endif -%}
+
+    {%-if section.settings.description != blank -%}
+    <div class="specs__intro">{{section.settings.description}}</div>
+    {%- endif -%}
+
+
+    {%-if section.settings.button_text != blank -%}
+
+    <div class="specs__intro-link">
+
+      {%-if section.settings.button_link != blank -%}
+
+      <a href="{{section.settings.button_link}}">{{section.settings.button_text}}</a>
+      {%- else -%}
+
+      {{section.settings.button_text}}
+
+      {%- endif -%}
+
+    </div>
+    {%- endif -%}
+  </div>
+
+    <div class="product-compare-list-wrapper">
+      <div class="compare-from">
+        {%- render 'compare-product-specifications', collection: colorsetCollection -%}
+      </div>
+
+      <div class="compare-to">
+        {%- render 'compare-product-specifications', collection: false, compare_from_collection: colorsetCollection -%}
+
+      </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Product compare",
+    "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+    },
+    {
+    "type": "textarea",
+    "id": "description",
+    "label": "Description"
+    },
+    {
+    "type": "text",
+    "id": "button_text",
+    "label": "Button Text"
+    },
+    {
+    "type": "url",
+    "id": "button_link",
+    "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product compare"
+    }
+  ]
+  }
+{% endschema %}

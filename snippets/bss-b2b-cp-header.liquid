@@ -1,0 +1,22 @@
+
+                    {% capture bss_b2b_pl_rules_data %}{% include 'bss-b2b-pl-rules-data' %}{% endcapture %}{% unless bss_b2b_pl_rules_data contains "Liquid error" %}{{ bss_b2b_pl_rules_data }}{% endunless %}{% include 'bss-b2b-cp-rules-data' %} 
+                    <script id="bss-b2b-cp-config-data">
+                    if (typeof BSS_B2B == 'undefined') {
+                        var BSS_B2B = {};
+                    }
+                  
+                    BSS_B2B.plConfigData = [].concat(bssB2BPlConfigData0,bssB2BPlConfigData1,bssB2BPlConfigData2,bssB2BPlConfigData3,bssB2BPlConfigData4,bssB2BPlConfigData5,bssB2BPlConfigData6,bssB2BPlConfigData7,bssB2BPlConfigData8,bssB2BPlConfigData9,bssB2BPlConfigData10,bssB2BPlConfigData11,bssB2BPlConfigData12,bssB2BPlConfigData13,bssB2BPlConfigData14,bssB2BPlConfigData15,bssB2BPlConfigData16,bssB2BPlConfigData17,bssB2BPlConfigData18,bssB2BPlConfigData19,bssB2BPlConfigData20,bssB2BPlConfigData21,bssB2BPlConfigData22,bssB2BPlConfigData23,bssB2BPlConfigData24,bssB2BPlConfigData25,bssB2BPlConfigData26,bssB2BPlConfigData27,bssB2BPlConfigData28,bssB2BPlConfigData29,bssB2BPlConfigData30,bssB2BPlConfigData31,bssB2BPlConfigData32,bssB2BPlConfigData33,bssB2BPlConfigData34,bssB2BPlConfigData35,bssB2BPlConfigData36,bssB2BPlConfigData37,bssB2BPlConfigData38,bssB2BPlConfigData39,bssB2BPlConfigData40,bssB2BPlConfigData41,bssB2BPlConfigData42,bssB2BPlConfigData43,bssB2BPlConfigData44,bssB2BPlConfigData45,bssB2BPlConfigData46,bssB2BPlConfigData47,bssB2BPlConfigData48,bssB2BPlConfigData49,bssB2BPlConfigData50,bssB2BPlConfigData51,bssB2BPlConfigData52,bssB2BPlConfigData53,bssB2BPlConfigData54,bssB2BPlConfigData55,bssB2BPlConfigData56,bssB2BPlConfigData57,bssB2BPlConfigData58,bssB2BPlConfigData59,bssB2BPlConfigData60,bssB2BPlConfigData61,bssB2BPlConfigData62,bssB2BPlConfigData63,bssB2BPlConfigData64,bssB2BPlConfigData65,bssB2BPlConfigData66,bssB2BPlConfigData67,bssB2BPlConfigData68,bssB2BPlConfigData69,bssB2BPlConfigData70,bssB2BPlConfigData71,bssB2BPlConfigData72,bssB2BPlConfigData73,bssB2BPlConfigData74,bssB2BPlConfigData75,bssB2BPlConfigData76,bssB2BPlConfigData77,bssB2BPlConfigData78,bssB2BPlConfigData79,bssB2BPlConfigData80,bssB2BPlConfigData81,bssB2BPlConfigData82,bssB2BPlConfigData83,bssB2BPlConfigData84,bssB2BPlConfigData85,bssB2BPlConfigData86,bssB2BPlConfigData87,bssB2BPlConfigData88,);
+                    BSS_B2B.cpSettings = {"cpType":1,"default_price_color":"#c76666","price_applied_cp_color":"#4d53b3"};
+                </script><style>
+    [bss-b2b-cart-item-key],
+    [bss-b2b-product-id],
+    [bss-b2b-variant-id],
+    [bss-b2b-cart-item-key],
+    [bss-b2b-cart-total-price],
+    [bss-b2b-cart-total-discount],
+    [data-cart-item-regular-price],
+    [bss-b2b-ajax-cart-subtotal],
+    [data-cart-subtotal] {
+        visibility: hidden;
+    }
+</style>
